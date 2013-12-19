@@ -7,11 +7,11 @@ import butterknife.Views.Finder;
 public class BootstrapAuthenticatorActivity$$ViewInjector {
   public static void inject(Finder finder, com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity target, Object source) {
     View view;
-    view = finder.findById(source, 2131099724);
+    view = finder.findById(source, 2131099722);
     target.emailText = (android.widget.AutoCompleteTextView) view;
-    view = finder.findById(source, 2131099725);
+    view = finder.findById(source, 2131099723);
     target.passwordText = (android.widget.EditText) view;
-    view = finder.findById(source, 2131099726);
+    view = finder.findById(source, 2131099724);
     target.signinButton = (android.widget.Button) view;
   }
 }

@@ -14,7 +14,7 @@ import javax.inject.Provider;
  * instance provision of types served by {@code @Provides} methods.
  */
 public final class BootstrapModule$$ModuleAdapter extends ModuleAdapter<BootstrapModule> {
-  private static final String[] INJECTS = { "members/com.pxl.android.cemeo.BootstrapApplication", "members/com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity", "members/com.pxl.android.cemeo.ui.CarouselActivity", "members/com.pxl.android.cemeo.ui.BootstrapTimerActivity", "members/com.pxl.android.cemeo.ui.CheckInsListFragment", "members/com.pxl.android.cemeo.ui.NewsActivity", "members/com.pxl.android.cemeo.ui.NewsListFragment", "members/com.pxl.android.cemeo.ui.UserActivity", "members/com.pxl.android.cemeo.ui.UserListFragment", "members/com.pxl.android.cemeo.core.TimerService", };
+  private static final String[] INJECTS = { "members/com.pxl.android.cemeo.BootstrapApplication", "members/com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity", "members/com.pxl.android.cemeo.ui.CarouselActivity", "members/com.pxl.android.cemeo.ui.CreateMeetingActivity", "members/com.pxl.android.cemeo.ui.CreateMeetingTimeFrameActivity", "members/com.pxl.android.cemeo.ui.CheckInsListFragment", "members/com.pxl.android.cemeo.ui.NewsActivity", "members/com.pxl.android.cemeo.ui.NewsListFragment", "members/com.pxl.android.cemeo.ui.MeetingActivity", "members/com.pxl.android.cemeo.ui.MeetingListFragment", "members/com.pxl.android.cemeo.ui.UserActivity", "members/com.pxl.android.cemeo.ui.UserListFragment", "members/com.pxl.android.cemeo.core.CreateMeeting", };
   private static final Class<?>[] STATIC_INJECTIONS = { };
   private static final Class<?>[] INCLUDES = { };
 

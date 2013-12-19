@@ -27,19 +27,19 @@
     <com.pxl.android.cemeo.ui.view.CapitalizedTextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/timer"
-            android:text="@string/timer"
-            android:drawableLeft="@drawable/ic_timer"
+            android:id="@+id/createmeeting"
+            android:text="@string/create_meeting"
+            android:drawableLeft="@drawable/ic_action_new"
             style="@style/NavMenuButton"
             android:paddingLeft="10dp"
             android:gravity="left|center_vertical"
             />
 
     <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/vert_sep_color"
-            />
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/vert_sep_color"
+        />
 
 
     <TextView

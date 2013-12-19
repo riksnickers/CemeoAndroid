@@ -108,11 +108,11 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             }
         });
 
-        menuDrawer.findViewById(R.id.timer).setOnClickListener(new View.OnClickListener() {
+        menuDrawer.findViewById(R.id.createmeeting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 menuDrawer.toggleMenu();
-                navigateToTimer();
+                navigateToCreateMeeting();
             }
         });
 
@@ -124,16 +124,17 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             case android.R.id.home:
                 menuDrawer.toggleMenu();
                 return true;
-            case R.id.timer:
-                navigateToTimer();
+            case R.id.createmeeting:
+                navigateToCreateMeeting();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void navigateToTimer() {
-        final Intent i = new Intent(this, BootstrapTimerActivity.class);
+    private void navigateToCreateMeeting() {
+        final Intent i = new Intent(this, CreateMeetingActivity.class);
         startActivity(i);
     }
+
 }

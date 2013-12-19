@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.User;
-import com.squareup.picasso.Picasso;
 
 import butterknife.InjectView;
 
@@ -31,7 +30,7 @@ public class UserActivity extends BootstrapActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Picasso.with(this).load(user.getAvatarUrl()).placeholder(R.drawable.gravatar_icon).into(avatar);
+        //Picasso.with(this).load(user.getAvatarUrl()).placeholder(R.drawable.gravatar_icon).into(avatar);
 
         name.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
 

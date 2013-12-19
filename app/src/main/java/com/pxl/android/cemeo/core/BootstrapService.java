@@ -1,11 +1,9 @@
 
 package com.pxl.android.cemeo.core;
 
-import static com.pxl.android.cemeo.core.Constants.Http.HEADER_PARSE_APP_ID;
-import static com.pxl.android.cemeo.core.Constants.Http.HEADER_PARSE_REST_API_KEY;
-import static com.pxl.android.cemeo.core.Constants.Http.PARSE_APP_ID;
-import static com.pxl.android.cemeo.core.Constants.Http.PARSE_REST_API_KEY;
+
 import static com.pxl.android.cemeo.core.Constants.Http.URL_CHECKINS;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_MEETING;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_NEWS;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_USERS;
 
@@ -14,6 +12,7 @@ import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
+
 
 import java.io.IOException;
 import java.io.Reader;
@@ -30,7 +29,8 @@ public class BootstrapService {
     /**
      * GSON instance to use for all request  with date format set up for proper parsing.
      */
-    public static final Gson GSON = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+    //public static final Gson GSON = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+    public static final Gson GSON = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
 
     /**
      * You can also configure GSON with different naming policies for your API. Maybe your api is Rails
@@ -58,11 +58,18 @@ public class BootstrapService {
         private List<News> results;
     }
 
+    private static class MeetingWrapper {
+
+        private List<Meeting> results;
+    }
+
     private static class CheckInWrapper {
 
         private List<CheckIn> results;
 
     }
+
+
 
     private static class JsonException extends IOException {
 
@@ -127,7 +134,7 @@ public class BootstrapService {
         request.userAgent(userAgentProvider.get());
 
         if(isPostOrPut(request))
-            request.contentType(Constants.Http.CONTENT_TYPE_JSON); // All PUT & POST requests to Parse.com api must be in JSON - https://www.parse.com/docs/rest#general-requests
+            request.contentType(Constants.Http.CONTENT_TYPE_JSON); // All PUT & POST requests to api must be in JSON
 
         return addCredentialsTo(request);
     }
@@ -141,8 +148,9 @@ public class BootstrapService {
     private HttpRequest addCredentialsTo(HttpRequest request) {
 
         // Required params for
-        request.header(HEADER_PARSE_REST_API_KEY, PARSE_REST_API_KEY );
-        request.header(HEADER_PARSE_APP_ID, PARSE_APP_ID);
+        //request.header(HEADER_PARSE_REST_API_KEY, PARSE_REST_API_KEY );
+        //request.header(HEADER_PARSE_APP_ID, PARSE_APP_ID);
+
 
         /**
          * NOTE: This may be where you want to add a header for the api token that was saved when you
@@ -176,11 +184,12 @@ public class BootstrapService {
     }
 
     /**
-     * Get all bootstrap Users that exist on Parse.com
+     * Get all bootstrap Users
      *
      * @return non-null but possibly empty list of bootstrap
      * @throws IOException
      */
+
     public List<User> getUsers() throws IOException {
         try {
             HttpRequest request = execute(HttpRequest.get(URL_USERS));
@@ -193,12 +202,14 @@ public class BootstrapService {
         }
     }
 
+
     /**
-     * Get all bootstrap News that exists on Parse.com
+     * Get all bootstrap News
      *
      * @return non-null but possibly empty list of bootstrap
      * @throws IOException
      */
+
     public List<News> getNews() throws IOException {
         try {
             HttpRequest request = execute(HttpRequest.get(URL_NEWS));
@@ -212,13 +223,38 @@ public class BootstrapService {
     }
 
     /**
-     * Get all bootstrap Checkins that exists on Parse.com
+     * Get all meetings
+     *
+     * @return non-null but possibly empty list of meetings
+     * @throws IOException
+     */
+
+    public List<Meeting> getMeetings() throws IOException {
+
+        try {
+            HttpRequest request = execute(HttpRequest.get(URL_MEETING));
+            MeetingWrapper response = fromJson(request, MeetingWrapper.class);
+            if (response != null && response.results != null)
+                return response.results;
+            return Collections.emptyList();
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+
+
+
+    }
+
+    /**
+     * Get all bootstrap Checkins
      *
      * @return non-null but possibly empty list of bootstrap
      * @throws IOException
      */
+
     public List<CheckIn> getCheckIns() throws IOException {
         try {
+
             HttpRequest request = execute(HttpRequest.get(URL_CHECKINS));
             CheckInWrapper response = fromJson(request, CheckInWrapper.class);
             if (response != null && response.results != null)
@@ -228,5 +264,6 @@ public class BootstrapService {
             throw e.getCause();
         }
     }
+
 
 }

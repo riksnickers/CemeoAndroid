@@ -8,8 +8,8 @@ import static org.mockito.Mockito.doReturn;
 
 import com.pxl.android.cemeo.core.BootstrapService;
 import com.pxl.android.cemeo.core.CheckIn;
-import com.pxl.android.cemeo.core.News;
 import com.pxl.android.cemeo.core.User;
+import com.pxl.android.cemeo.core.News;
 import com.pxl.android.cemeo.core.UserAgentProvider;
 import com.github.kevinsawicki.http.HttpRequest;
 

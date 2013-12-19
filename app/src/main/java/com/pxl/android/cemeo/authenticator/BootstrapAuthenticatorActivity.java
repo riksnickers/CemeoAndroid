@@ -9,10 +9,6 @@ import static android.accounts.AccountManager.KEY_BOOLEAN_RESULT;
 import static android.view.KeyEvent.ACTION_DOWN;
 import static android.view.KeyEvent.KEYCODE_ENTER;
 import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
-import static com.pxl.android.cemeo.core.Constants.Http.HEADER_PARSE_APP_ID;
-import static com.pxl.android.cemeo.core.Constants.Http.HEADER_PARSE_REST_API_KEY;
-import static com.pxl.android.cemeo.core.Constants.Http.PARSE_APP_ID;
-import static com.pxl.android.cemeo.core.Constants.Http.PARSE_REST_API_KEY;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_AUTH;
 import static com.github.kevinsawicki.http.HttpRequest.get;
 import static com.github.kevinsawicki.http.HttpRequest.post;
@@ -24,10 +20,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
@@ -51,15 +44,11 @@ import com.pxl.android.cemeo.R.string;
 import com.pxl.android.cemeo.ui.TextWatcherAdapter;
 import com.google.gson.Gson;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.InjectView;
 import butterknife.Views;
-
-import static com.pxl.android.cemeo.core.Constants.Http.USERNAME;
-import static com.pxl.android.cemeo.core.Constants.Http.PASSWORD;
 
 /**
  * Activity to authenticate the user against an API (example API on Parse.com)
@@ -131,8 +120,7 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
         email = intent.getStringExtra(PARAM_USERNAME);
         authTokenType = intent.getStringExtra(PARAM_AUTHTOKEN_TYPE);
         requestNewAccount = email == null;
-        confirmCredentials = intent.getBooleanExtra(PARAM_CONFIRMCREDENTIALS,
-                false);
+        confirmCredentials = intent.getBooleanExtra(PARAM_CONFIRMCREDENTIALS,false);
 
         setContentView(layout.login_activity);
 
@@ -168,9 +156,9 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
         emailText.addTextChangedListener(watcher);
         passwordText.addTextChangedListener(watcher);
 
-        TextView signupText = (TextView) findViewById(id.tv_signup);
-        signupText.setMovementMethod(LinkMovementMethod.getInstance());
-        signupText.setText(Html.fromHtml(getString(string.signup_link)));
+        //TextView signupText = (TextView) findViewById(id.tv_signup);
+        //signupText.setMovementMethod(LinkMovementMethod.getInstance());
+        //signupText.setText(Html.fromHtml(getString(string.signup_link)));
     }
 
     private List<String> userEmailAccounts() {
@@ -234,20 +222,22 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
 
         if (requestNewAccount)
             email = emailText.getText().toString();
-        password = passwordText.getText().toString();
-        showProgress();
+            password = passwordText.getText().toString();
+            showProgress();
 
         authenticationTask = new SafeAsyncTask<Boolean>() {
             public Boolean call() throws Exception {
 
-                final String query = String.format("%s=%s&%s=%s", PARAM_USERNAME, email, PARAM_PASSWORD, password);
+                final String query = String.format("grant_type=password&%s=%s&%s=%s", PARAM_USERNAME, email, PARAM_PASSWORD, password);
 
-                HttpRequest request = get(URL_AUTH + "?" + query)
-                        .header(HEADER_PARSE_APP_ID, PARSE_APP_ID)
-                        .header(HEADER_PARSE_REST_API_KEY, PARSE_REST_API_KEY);
+                HttpRequest request = post(URL_AUTH).send(query);
+
+                        //.header(HEADER_PARSE_APP_ID, PARSE_APP_ID)
+                        //.header(HEADER_PARSE_REST_API_KEY, PARSE_REST_API_KEY);
 
 
-                Ln.d("Authentication response=%s", request.code());
+                Ln.d("statuslog : %s", request);
+                Ln.d("statuslog =%s", request.code());
 
                 if(request.ok()) {
                     final User model = new Gson().fromJson(Strings.toString(request.buffer()), User.class);
@@ -366,6 +356,10 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
             else
                 Toaster.showLong(BootstrapAuthenticatorActivity.this,
                         string.message_auth_failed);
+
+
+                        //toch inloggen bij foute credentials
+                        //finishLogin();
         }
     }
 }

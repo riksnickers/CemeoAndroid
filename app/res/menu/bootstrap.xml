@@ -11,10 +11,10 @@
     </item>
 
     <item
-        android:id="@+id/timer"
-        android:icon="@drawable/ic_action_timer"
+        android:id="@+id/createmeeting"
+        android:icon="@drawable/ic_action_new_dark"
         android:showAsAction="always"
-        android:title="@string/timer">
+        android:title="@string/create_meeting">
     </item>
 
     <item

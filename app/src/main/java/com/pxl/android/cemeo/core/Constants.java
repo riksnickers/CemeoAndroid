@@ -43,12 +43,15 @@ public class Constants {
         /**
          * Base URL for all requests
          */
-        public static final String URL_BASE = "https://api.parse.com";
+        public static final String URL_BASE = "http://192.168.43.72:12429";
+
+        //thuis
+        //public static final String URL_BASE = "http://192.168.0.101:12429";
 
         /**
          * Authentication URL
          */
-        public static final String URL_AUTH = URL_BASE + "/1/login";
+        public static final String URL_AUTH = URL_BASE + "/token";
 
         /**
          * List Users URL
@@ -59,6 +62,16 @@ public class Constants {
          * List News URL
          */
         public static final String URL_NEWS = URL_BASE + "/1/classes/News";
+
+        /**
+         * List Meeting URL
+         */
+        public static final String URL_MEETING = URL_BASE + "/1/classes/News";
+
+        /**
+         * List Contacts URL
+         */
+        public static final String URL_CONTACTS = URL_BASE + "/api/Meeting/Contacts";
 
         /**
          * List Checkin's URL
@@ -82,6 +95,8 @@ public class Constants {
         private Extra() {}
 
         public static final String NEWS_ITEM = "news_item";
+
+        public static final String MEETING_ITEM = "meeting_item";
 
         public static final String USER = "user";
 

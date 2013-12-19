@@ -21,7 +21,7 @@ import com.pxl.android.cemeo.util.Ln;
 
 class BootstrapAccountAuthenticator extends AbstractAccountAuthenticator {
 
-    private static final String DESCRIPTION_CLIENT = "Bootstrap for Android";
+    private static final String DESCRIPTION_CLIENT = "Cemeo_Android";
 
     private final Context context;
 

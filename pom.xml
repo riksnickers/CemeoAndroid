@@ -17,24 +17,19 @@
 
     <licenses>
         <license>
-            <name>Apache License Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <name>Cemeo</name>
+            <url>www.cemeo.be</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
-    <scm>
-        <url>https://github.com.pxl.android.cemeo</url>
-        <connection>scm:git:git://github.com.pxl.android.cemeo.git</connection>
-        <developerConnection>scm:git:git@github.com.pxl.android.cemeo.git</developerConnection>
-    </scm>
 
     <developers>
         <developer>
-            <email>donn@donnfelker.com</email>
-            <name>Donn Felker</name>
-            <url>https://github.com/donnfelker</url>
-            <id>donnfelker</id>
+            <email>jordy4@gmail.com</email>
+            <name>Jordy Baldewijns</name>
+            <url>cemeo.be</url>
+            <id>jordy4</id>
         </developer>
     </developers>
 

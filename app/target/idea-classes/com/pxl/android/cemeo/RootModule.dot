@@ -5,7 +5,6 @@ digraph G1 {
   ApplicationInfo -> Context;
   BootstrapServiceProvider -> UserAgentProvider;
   BootstrapServiceProvider -> ApiKeyProvider;
-  BootstrapTimerActivity -> Bus;
   CarouselActivity -> BootstrapServiceProvider;
   CheckInsListFragment -> LogoutService;
   CheckInsListFragment -> BootstrapServiceProvider;
@@ -13,18 +12,18 @@ digraph G1 {
   InputMethodManager -> Context;
   LogoutService -> AccountManager;
   LogoutService -> Context;
+  MeetingListFragment -> LogoutService;
+  MeetingListFragment -> BootstrapServiceProvider;
   NewsListFragment -> LogoutService;
   NewsListFragment -> BootstrapServiceProvider;
   NotificationManager -> Context;
   PackageInfo -> Context;
   SharedPreferences -> Context;
   TelephonyManager -> Context;
-  TimerService -> NotificationManager;
-  TimerService -> Bus;
   UserAgentProvider -> TelephonyManager;
+  UserAgentProvider -> ClassLoader;
   UserAgentProvider -> ApplicationInfo;
   UserAgentProvider -> PackageInfo;
-  UserAgentProvider -> ClassLoader;
   UserListFragment -> LogoutService;
   UserListFragment -> BootstrapServiceProvider;
 }

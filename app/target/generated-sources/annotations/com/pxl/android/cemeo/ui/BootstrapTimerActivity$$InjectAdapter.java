@@ -9,25 +9,25 @@ import java.util.Set;
 import javax.inject.Provider;
 
 /**
- * A {@code Binder<BootstrapTimerActivity>} implementation which satisfies
+ * A {@code Binder<CreateMeetingActivity>} implementation which satisfies
  * Dagger's infrastructure requirements including:
  * 
- * Owning the dependency links between {@code BootstrapTimerActivity} and its
+ * Owning the dependency links between {@code CreateMeetingActivity} and its
  * dependencies.
  * 
- * Being a {@code Provider<BootstrapTimerActivity>} and handling creation and
+ * Being a {@code Provider<CreateMeetingActivity>} and handling creation and
  * preparation of object instances.
  * 
- * Being a {@code MembersInjector<BootstrapTimerActivity>} and handling injection
+ * Being a {@code MembersInjector<CreateMeetingActivity>} and handling injection
  * of annotated fields.
  */
-public final class BootstrapTimerActivity$$InjectAdapter extends Binding<BootstrapTimerActivity>
-    implements Provider<BootstrapTimerActivity>, MembersInjector<BootstrapTimerActivity> {
+public final class BootstrapTimerActivity$$InjectAdapter extends Binding<CreateMeetingActivity>
+    implements Provider<CreateMeetingActivity>, MembersInjector<CreateMeetingActivity> {
   private Binding<com.squareup.otto.Bus> BUS;
   private Binding<BootstrapFragmentActivity> supertype;
 
   public BootstrapTimerActivity$$InjectAdapter() {
-    super("com.pxl.android.cemeo.ui.BootstrapTimerActivity", "members/com.pxl.android.cemeo.ui.BootstrapTimerActivity", NOT_SINGLETON, BootstrapTimerActivity.class);
+    super("com.pxl.android.cemeo.ui.CreateMeetingActivity", "members/com.pxl.android.cemeo.ui.CreateMeetingActivity", NOT_SINGLETON, CreateMeetingActivity.class);
   }
 
   /**
@@ -37,8 +37,8 @@ public final class BootstrapTimerActivity$$InjectAdapter extends Binding<Bootstr
   @Override
   @SuppressWarnings("unchecked")
   public void attach(Linker linker) {
-    BUS = (Binding<com.squareup.otto.Bus>) linker.requestBinding("com.squareup.otto.Bus", BootstrapTimerActivity.class);
-    supertype = (Binding<BootstrapFragmentActivity>) linker.requestBinding("members/com.pxl.android.cemeo.ui.BootstrapFragmentActivity", BootstrapTimerActivity.class, false, true);
+    BUS = (Binding<com.squareup.otto.Bus>) linker.requestBinding("com.squareup.otto.Bus", CreateMeetingActivity.class);
+    supertype = (Binding<BootstrapFragmentActivity>) linker.requestBinding("members/com.pxl.android.cemeo.ui.BootstrapFragmentActivity", CreateMeetingActivity.class, false, true);
   }
 
   /**
@@ -53,21 +53,21 @@ public final class BootstrapTimerActivity$$InjectAdapter extends Binding<Bootstr
 
   /**
    * Returns the fully provisioned instance satisfying the contract for
-   * {@code Provider<BootstrapTimerActivity>}.
+   * {@code Provider<CreateMeetingActivity>}.
    */
   @Override
-  public BootstrapTimerActivity get() {
-    BootstrapTimerActivity result = new BootstrapTimerActivity();
+  public CreateMeetingActivity get() {
+    CreateMeetingActivity result = new CreateMeetingActivity();
     injectMembers(result);
     return result;
   }
 
   /**
    * Injects any {@code @Inject} annotated fields in the given instance,
-   * satisfying the contract for {@code Provider<BootstrapTimerActivity>}.
+   * satisfying the contract for {@code Provider<CreateMeetingActivity>}.
    */
   @Override
-  public void injectMembers(BootstrapTimerActivity object) {
+  public void injectMembers(CreateMeetingActivity object) {
     object.BUS = BUS.get();
     supertype.injectMembers(object);
   }

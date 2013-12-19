@@ -8,9 +8,20 @@
         <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>        
     </style>
 
+    <style name="Theme.Bootstrap.Light" parent="@style/Theme.Sherlock.Light">
+        <item name="android:windowBackground">@color/pager_background</item>
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar.Light</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar.Light</item>
+    </style>
+
     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.ActionBar.Solid">
         <item name="background">@drawable/actionbar_background</item>
         <item name="android:background">@drawable/actionbar_background</item>
+    </style>
+
+    <style name="Widget.Styled.ActionBar.Light" parent="Widget.Sherlock.ActionBar.Solid">
+        <item name="background">@drawable/balk</item>
+        <item name="android:background">@drawable/balk</item>
     </style>
 
 </resources>

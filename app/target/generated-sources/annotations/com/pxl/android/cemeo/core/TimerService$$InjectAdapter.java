@@ -9,25 +9,25 @@ import java.util.Set;
 import javax.inject.Provider;
 
 /**
- * A {@code Binder<TimerService>} implementation which satisfies
+ * A {@code Binder<CreateMeeting>} implementation which satisfies
  * Dagger's infrastructure requirements including:
  * 
- * Owning the dependency links between {@code TimerService} and its
+ * Owning the dependency links between {@code CreateMeeting} and its
  * dependencies.
  * 
- * Being a {@code Provider<TimerService>} and handling creation and
+ * Being a {@code Provider<CreateMeeting>} and handling creation and
  * preparation of object instances.
  * 
- * Being a {@code MembersInjector<TimerService>} and handling injection
+ * Being a {@code MembersInjector<CreateMeeting>} and handling injection
  * of annotated fields.
  */
-public final class TimerService$$InjectAdapter extends Binding<TimerService>
-    implements Provider<TimerService>, MembersInjector<TimerService> {
+public final class TimerService$$InjectAdapter extends Binding<CreateMeeting>
+    implements Provider<CreateMeeting>, MembersInjector<CreateMeeting> {
   private Binding<com.squareup.otto.Bus> BUS;
   private Binding<android.app.NotificationManager> notificationManager;
 
   public TimerService$$InjectAdapter() {
-    super("com.pxl.android.cemeo.core.TimerService", "members/com.pxl.android.cemeo.core.TimerService", NOT_SINGLETON, TimerService.class);
+    super("com.pxl.android.cemeo.core.CreateMeeting", "members/com.pxl.android.cemeo.core.CreateMeeting", NOT_SINGLETON, CreateMeeting.class);
   }
 
   /**
@@ -37,8 +37,8 @@ public final class TimerService$$InjectAdapter extends Binding<TimerService>
   @Override
   @SuppressWarnings("unchecked")
   public void attach(Linker linker) {
-    BUS = (Binding<com.squareup.otto.Bus>) linker.requestBinding("com.squareup.otto.Bus", TimerService.class);
-    notificationManager = (Binding<android.app.NotificationManager>) linker.requestBinding("android.app.NotificationManager", TimerService.class);
+    BUS = (Binding<com.squareup.otto.Bus>) linker.requestBinding("com.squareup.otto.Bus", CreateMeeting.class);
+    notificationManager = (Binding<android.app.NotificationManager>) linker.requestBinding("android.app.NotificationManager", CreateMeeting.class);
   }
 
   /**
@@ -53,21 +53,21 @@ public final class TimerService$$InjectAdapter extends Binding<TimerService>
 
   /**
    * Returns the fully provisioned instance satisfying the contract for
-   * {@code Provider<TimerService>}.
+   * {@code Provider<CreateMeeting>}.
    */
   @Override
-  public TimerService get() {
-    TimerService result = new TimerService();
+  public CreateMeeting get() {
+    CreateMeeting result = new CreateMeeting();
     injectMembers(result);
     return result;
   }
 
   /**
    * Injects any {@code @Inject} annotated fields in the given instance,
-   * satisfying the contract for {@code Provider<TimerService>}.
+   * satisfying the contract for {@code Provider<CreateMeeting>}.
    */
   @Override
-  public void injectMembers(TimerService object) {
+  public void injectMembers(CreateMeeting object) {
     object.BUS = BUS.get();
     object.notificationManager = notificationManager.get();
   }
