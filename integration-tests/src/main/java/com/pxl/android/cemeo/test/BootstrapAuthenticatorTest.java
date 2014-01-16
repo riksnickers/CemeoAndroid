@@ -6,8 +6,8 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.Button;
 
-import com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity;
 import com.pxl.android.cemeo.R;
+import com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity;
 
 
 /**

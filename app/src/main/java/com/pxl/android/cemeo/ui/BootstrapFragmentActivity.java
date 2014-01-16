@@ -3,7 +3,6 @@ package com.pxl.android.cemeo.ui;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.pxl.android.cemeo.BootstrapApplication;
 import com.pxl.android.cemeo.Injector;
 
 import butterknife.Views;

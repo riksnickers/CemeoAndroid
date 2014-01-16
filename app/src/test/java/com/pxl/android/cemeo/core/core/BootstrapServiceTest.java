@@ -2,16 +2,18 @@
 
 package com.pxl.android.cemeo.core.core;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.doReturn;
-
+import com.github.kevinsawicki.http.HttpRequest;
 import com.pxl.android.cemeo.core.BootstrapService;
 import com.pxl.android.cemeo.core.CheckIn;
-import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.core.News;
+import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.core.UserAgentProvider;
-import com.github.kevinsawicki.http.HttpRequest;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -19,11 +21,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.doReturn;
 
 /**
  * Unit tests of {@link com.pxl.android.cemeo.core.BootstrapService}

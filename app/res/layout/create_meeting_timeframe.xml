@@ -1,59 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@drawable/map_header_background"
-android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map_header_background"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="15dp" >
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
 
         <TextView
             style="@style/ShadowText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="25dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="@string/create_meeting_add"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="10dp"
+            android:text="@string/create_meeting_timeframe"
+            android:textSize="40sp" />
+
+        <TextView
+            style="@style/ShadowText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/label_when"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="?android:attr/textColorPrimary" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-
-            <ExpandableListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/expandableListView" />
-        </ScrollView>
-
-        <Button
-            android:id="@+id/timeframebtn"
-            style="@style/ShadowText"
-            android:layout_width="match_parent"
+        <Spinner
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_background_states"
-            android:gravity="center"
-            android:onClick="handleLogin"
-            android:padding="10dp"
-            android:text="@string/create_meeting_next"
-            android:textColor="@color/text"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textAlignment="center"
+            android:id="@+id/spinner_date"
+            android:singleLine="true"
+            android:layout_marginBottom="50dp"
+            />
+
+        <TextView
+            style="@style/ShadowText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/label_between"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorPrimary" />
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/spinner_time"
+            android:singleLine="true"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            style="@style/ShadowText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/label_duration"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/spinner_duration"
+            android:singleLine="true"
+            android:layout_marginBottom="20dp"
+            />
+
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/timeframebtn"
+        style="@style/ShadowText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_states"
+        android:padding="10dp"
+        android:text="@string/create_meeting_next_timeframe"
+        android:textColor="@color/text"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:onClick="nextFragment"
+        android:layout_alignParentBottom="true"/>
 
-</LinearLayout>
+
+</RelativeLayout>

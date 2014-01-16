@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerFuture;
 import android.content.Context;
+
 import com.pxl.android.cemeo.core.Constants;
 import com.pxl.android.cemeo.util.Ln;
 import com.pxl.android.cemeo.util.SafeAsyncTask;
@@ -44,10 +45,10 @@ public class LogoutService {
         public Boolean call() throws Exception {
 
             final Account[] accounts = AccountManager.get(context).getAccountsByType(Constants.Auth.BOOTSTRAP_ACCOUNT_TYPE);
-            if(accounts.length > 0) {
+            if (accounts.length > 0) {
                 AccountManagerFuture<Boolean> removeAccountFuture = AccountManager.get(context).removeAccount
                         (accounts[0], null, null);
-                if(removeAccountFuture.getResult() == true) {
+                if (removeAccountFuture.getResult() == true) {
                     return true;
                 } else {
                     return false;

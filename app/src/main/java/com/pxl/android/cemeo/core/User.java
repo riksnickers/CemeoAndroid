@@ -1,12 +1,69 @@
 package com.pxl.android.cemeo.core;
 
-import android.text.TextUtils;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 public class User implements Serializable {
 
+    private static final long serialVersionUID = -7495897652017488896L;
 
+
+    protected String id;
+    protected String FirstName;
+    protected String LastName;
+
+    @SerializedName("access_token")
+    protected String sessionToken;
+
+    //protected String objectId;
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+
+    public String getSessionToken() {
+        return sessionToken;
+    }
+
+    public void setSessionToken(String sessionToken) {
+        this.sessionToken = sessionToken;
+    }
+
+    /*
+
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+    */
+
+/*
     private static final long serialVersionUID = -7495897652017488896L;
 
     protected String firstName;
@@ -17,6 +74,7 @@ public class User implements Serializable {
     protected String sessionToken;
     protected String gravatarId;
     protected String avatarUrl;
+
 
 
     public String getUsername() {
@@ -87,4 +145,6 @@ public class User implements Serializable {
         else
             return null;
     }
+
+    */
 }

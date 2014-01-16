@@ -2,12 +2,13 @@
 
 package com.pxl.android.cemeo.test;
 
-import static com.pxl.android.cemeo.core.Constants.Extra.NEWS_ITEM;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.pxl.android.cemeo.core.News;
 import com.pxl.android.cemeo.ui.CarouselActivity;
+
+import static com.pxl.android.cemeo.core.Constants.Extra.NEWS_ITEM;
 
 
 /**

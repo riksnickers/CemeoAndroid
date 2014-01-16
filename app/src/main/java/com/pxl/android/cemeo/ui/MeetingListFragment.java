@@ -20,12 +20,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import static com.pxl.android.cemeo.core.Constants.Extra.MEETING_ITEM;
+import static com.pxl.android.cemeo.core.Constants.Extra.MEETING;
 
 public class MeetingListFragment extends ItemListFragment<Meeting> {
 
-    @Inject protected BootstrapServiceProvider serviceProvider;
-    @Inject protected LogoutService logoutService;
+    @Inject
+    protected BootstrapServiceProvider serviceProvider;
+    @Inject
+    protected LogoutService logoutService;
 
 
     @Override
@@ -75,7 +77,7 @@ public class MeetingListFragment extends ItemListFragment<Meeting> {
             @Override
             public List<Meeting> loadData() throws Exception {
                 try {
-                    if(getActivity() != null) {
+                    if (getActivity() != null) {
                         return serviceProvider.getService(getActivity()).getMeetings();
                     } else {
                         return Collections.emptyList();
@@ -99,7 +101,7 @@ public class MeetingListFragment extends ItemListFragment<Meeting> {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Meeting meeting = ((Meeting) l.getItemAtPosition(position));
 
-        startActivity(new Intent(getActivity(), MeetingActivity.class).putExtra(MEETING_ITEM, meeting));
+        startActivity(new Intent(getActivity(), MeetingActivity.class).putExtra(MEETING, meeting));
     }
 
     @Override

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Meeting implements Serializable {
 
-    //private static final long serialVersionUID = -6641292855569752036L;
+    private static final long serialVersionUID = -6641292855569752036L;
 
     private int meetingID;
     private String creator;

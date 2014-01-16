@@ -14,7 +14,7 @@ import javax.inject.Provider;
  * instance provision of types served by {@code @Provides} methods.
  */
 public final class BootstrapModule$$ModuleAdapter extends ModuleAdapter<BootstrapModule> {
-  private static final String[] INJECTS = { "members/com.pxl.android.cemeo.BootstrapApplication", "members/com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity", "members/com.pxl.android.cemeo.ui.CarouselActivity", "members/com.pxl.android.cemeo.ui.CreateMeetingActivity", "members/com.pxl.android.cemeo.ui.CreateMeetingTimeFrameActivity", "members/com.pxl.android.cemeo.ui.CheckInsListFragment", "members/com.pxl.android.cemeo.ui.NewsActivity", "members/com.pxl.android.cemeo.ui.NewsListFragment", "members/com.pxl.android.cemeo.ui.MeetingActivity", "members/com.pxl.android.cemeo.ui.MeetingListFragment", "members/com.pxl.android.cemeo.ui.UserActivity", "members/com.pxl.android.cemeo.ui.UserListFragment", "members/com.pxl.android.cemeo.core.CreateMeeting", };
+  private static final String[] INJECTS = { "members/com.pxl.android.cemeo.BootstrapApplication", "members/com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity", "members/com.pxl.android.cemeo.ui.CarouselActivity", "members/com.pxl.android.cemeo.ui.CheckInsListFragment", "members/com.pxl.android.cemeo.ui.MeetingActivity", "members/com.pxl.android.cemeo.ui.MeetingListFragment", "members/com.pxl.android.cemeo.ui.CreateMeetingAddContactActivity", "members/com.pxl.android.cemeo.ui.ContactActivity", "members/com.pxl.android.cemeo.ui.ContactListFragment", "members/com.pxl.android.cemeo.ui.UserActivity", "members/com.pxl.android.cemeo.ui.UserListFragment", };
   private static final Class<?>[] STATIC_INJECTIONS = { };
   private static final Class<?>[] INCLUDES = { };
 
@@ -33,35 +33,7 @@ public final class BootstrapModule$$ModuleAdapter extends ModuleAdapter<Bootstra
    */
   @Override
   public void getBindings(Map<String, Binding<?>> map) {
-    map.put("com.squareup.otto.Bus", new ProvideOttoBusProvidesAdapter(module));
     map.put("com.pxl.android.cemeo.authenticator.LogoutService", new ProvideLogoutServiceProvidesAdapter(module));
-  }
-
-  /**
-   * A {@code Binder<com.squareup.otto.Bus>} implementation which satisfies
-   * Dagger's infrastructure requirements including:
-   * 
-   * Being a {@code Provider<com.squareup.otto.Bus>} and handling creation and
-   * preparation of object instances.
-   */
-  public static final class ProvideOttoBusProvidesAdapter extends Binding<com.squareup.otto.Bus>
-      implements Provider<com.squareup.otto.Bus> {
-    private final BootstrapModule module;
-
-    public ProvideOttoBusProvidesAdapter(BootstrapModule module) {
-      super("com.squareup.otto.Bus", null, IS_SINGLETON, "com.pxl.android.cemeo.BootstrapModule.provideOttoBus()");
-      this.module = module;
-      setLibrary(false);
-    }
-
-    /**
-     * Returns the fully provisioned instance satisfying the contract for
-     * {@code Provider<com.squareup.otto.Bus>}.
-     */
-    @Override
-    public com.squareup.otto.Bus get() {
-      return module.provideOttoBus();
-    }
   }
 
   /**

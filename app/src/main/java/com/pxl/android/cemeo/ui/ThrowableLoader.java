@@ -2,7 +2,6 @@
 package com.pxl.android.cemeo.ui;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.pxl.android.cemeo.util.Ln;
 

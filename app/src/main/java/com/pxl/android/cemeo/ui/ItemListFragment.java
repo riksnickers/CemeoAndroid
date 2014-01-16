@@ -20,17 +20,16 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
+import com.github.kevinsawicki.wishlist.Toaster;
+import com.github.kevinsawicki.wishlist.ViewUtils;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.R.id;
 import com.pxl.android.cemeo.R.layout;
 import com.pxl.android.cemeo.authenticator.LogoutService;
-import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
-import com.github.kevinsawicki.wishlist.Toaster;
-import com.github.kevinsawicki.wishlist.ViewUtils;
 
 import java.util.Collections;
 import java.util.List;
-
 
 
 /**
@@ -45,10 +44,9 @@ public abstract class ItemListFragment<E> extends SherlockFragment
     private static final String FORCE_REFRESH = "forceRefresh";
 
     /**
-     * @param args
-     *            bundle passed to the loader by the LoaderManager
+     * @param args bundle passed to the loader by the LoaderManager
      * @return true if the bundle indicates a requested forced refresh of the
-     *         items
+     * items
      */
     protected static boolean isForceRefresh(Bundle args) {
         return args != null && args.getBoolean(FORCE_REFRESH, false);
@@ -91,7 +89,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         return inflater.inflate(layout.item_list, null);
     }
 
@@ -117,7 +115,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                    int position, long id) {
+                                    int position, long id) {
                 onListItemClick((ListView) parent, view, position, id);
             }
         });
@@ -155,14 +153,14 @@ public abstract class ItemListFragment<E> extends SherlockFragment
         if (!isUsable())
             return false;
         switch (item.getItemId()) {
-        case id.refresh:
-            forceRefresh();
-            return true;
-        case R.id.logout:
-            logout();
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
+            case id.refresh:
+                forceRefresh();
+                return true;
+            case R.id.logout:
+                logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -364,7 +362,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
      * @return this fragment
      */
     public ItemListFragment<E> setListShown(final boolean shown,
-            final boolean animate) {
+                                            final boolean animate) {
         if (!isUsable())
             return this;
 

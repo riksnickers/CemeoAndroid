@@ -3,8 +3,8 @@ package com.pxl.android.cemeo.ui;
 
 import android.view.LayoutInflater;
 
-import com.pxl.android.cemeo.R;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
+import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.R.drawable;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public abstract class AlternatingColorListAdapter<V> extends
      * @param items
      */
     public AlternatingColorListAdapter(final int layoutId,
-            final LayoutInflater inflater, final List<V> items) {
+                                       final LayoutInflater inflater, final List<V> items) {
         this(layoutId, inflater, items, true);
     }
 
@@ -42,7 +42,7 @@ public abstract class AlternatingColorListAdapter<V> extends
      * @param selectable
      */
     public AlternatingColorListAdapter(final int layoutId,
-            LayoutInflater inflater, final List<V> items, boolean selectable) {
+                                       LayoutInflater inflater, final List<V> items, boolean selectable) {
         super(inflater, layoutId);
 
         if (selectable) {

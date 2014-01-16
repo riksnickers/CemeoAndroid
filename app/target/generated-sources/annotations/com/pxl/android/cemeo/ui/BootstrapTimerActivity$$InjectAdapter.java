@@ -2,73 +2,75 @@
 package com.pxl.android.cemeo.ui;
 
 
+import java.util.Set;
+
+import javax.inject.Provider;
+
 import dagger.MembersInjector;
 import dagger.internal.Binding;
 import dagger.internal.Linker;
-import java.util.Set;
-import javax.inject.Provider;
 
 /**
  * A {@code Binder<CreateMeetingActivity>} implementation which satisfies
  * Dagger's infrastructure requirements including:
- * 
+ * <p/>
  * Owning the dependency links between {@code CreateMeetingActivity} and its
  * dependencies.
- * 
+ * <p/>
  * Being a {@code Provider<CreateMeetingActivity>} and handling creation and
  * preparation of object instances.
- * 
+ * <p/>
  * Being a {@code MembersInjector<CreateMeetingActivity>} and handling injection
  * of annotated fields.
  */
 public final class BootstrapTimerActivity$$InjectAdapter extends Binding<CreateMeetingActivity>
-    implements Provider<CreateMeetingActivity>, MembersInjector<CreateMeetingActivity> {
-  private Binding<com.squareup.otto.Bus> BUS;
-  private Binding<BootstrapFragmentActivity> supertype;
+        implements Provider<CreateMeetingActivity>, MembersInjector<CreateMeetingActivity> {
+    private Binding<com.squareup.otto.Bus> BUS;
+    private Binding<BootstrapFragmentActivity> supertype;
 
-  public BootstrapTimerActivity$$InjectAdapter() {
-    super("com.pxl.android.cemeo.ui.CreateMeetingActivity", "members/com.pxl.android.cemeo.ui.CreateMeetingActivity", NOT_SINGLETON, CreateMeetingActivity.class);
-  }
+    public BootstrapTimerActivity$$InjectAdapter() {
+        super("com.pxl.android.cemeo.ui.CreateMeetingActivity", "members/com.pxl.android.cemeo.ui.CreateMeetingActivity", NOT_SINGLETON, CreateMeetingActivity.class);
+    }
 
-  /**
-   * Used internally to link bindings/providers together at run time
-   * according to their dependency graph.
-   */
-  @Override
-  @SuppressWarnings("unchecked")
-  public void attach(Linker linker) {
-    BUS = (Binding<com.squareup.otto.Bus>) linker.requestBinding("com.squareup.otto.Bus", CreateMeetingActivity.class);
-    supertype = (Binding<BootstrapFragmentActivity>) linker.requestBinding("members/com.pxl.android.cemeo.ui.BootstrapFragmentActivity", CreateMeetingActivity.class, false, true);
-  }
+    /**
+     * Used internally to link bindings/providers together at run time
+     * according to their dependency graph.
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public void attach(Linker linker) {
+        BUS = (Binding<com.squareup.otto.Bus>) linker.requestBinding("com.squareup.otto.Bus", CreateMeetingActivity.class);
+        supertype = (Binding<BootstrapFragmentActivity>) linker.requestBinding("members/com.pxl.android.cemeo.ui.BootstrapFragmentActivity", CreateMeetingActivity.class, false, true);
+    }
 
-  /**
-   * Used internally obtain dependency information, such as for cyclical
-   * graph detection.
-   */
-  @Override
-  public void getDependencies(Set<Binding<?>> getBindings, Set<Binding<?>> injectMembersBindings) {
-    injectMembersBindings.add(BUS);
-    injectMembersBindings.add(supertype);
-  }
+    /**
+     * Used internally obtain dependency information, such as for cyclical
+     * graph detection.
+     */
+    @Override
+    public void getDependencies(Set<Binding<?>> getBindings, Set<Binding<?>> injectMembersBindings) {
+        injectMembersBindings.add(BUS);
+        injectMembersBindings.add(supertype);
+    }
 
-  /**
-   * Returns the fully provisioned instance satisfying the contract for
-   * {@code Provider<CreateMeetingActivity>}.
-   */
-  @Override
-  public CreateMeetingActivity get() {
-    CreateMeetingActivity result = new CreateMeetingActivity();
-    injectMembers(result);
-    return result;
-  }
+    /**
+     * Returns the fully provisioned instance satisfying the contract for
+     * {@code Provider<CreateMeetingActivity>}.
+     */
+    @Override
+    public CreateMeetingActivity get() {
+        CreateMeetingActivity result = new CreateMeetingActivity();
+        injectMembers(result);
+        return result;
+    }
 
-  /**
-   * Injects any {@code @Inject} annotated fields in the given instance,
-   * satisfying the contract for {@code Provider<CreateMeetingActivity>}.
-   */
-  @Override
-  public void injectMembers(CreateMeetingActivity object) {
-    object.BUS = BUS.get();
-    supertype.injectMembers(object);
-  }
+    /**
+     * Injects any {@code @Inject} annotated fields in the given instance,
+     * satisfying the contract for {@code Provider<CreateMeetingActivity>}.
+     */
+    @Override
+    public void injectMembers(CreateMeetingActivity object) {
+        object.BUS = BUS.get();
+        supertype.injectMembers(object);
+    }
 }

@@ -6,8 +6,6 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.Button;
 
-import com.pxl.android.cemeo.util.Strings;
-
 import java.util.Locale;
 
 /**
@@ -20,19 +18,19 @@ public class CapitalizedTextView extends Button {
     private static final boolean IS_GINGERBREAD = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD;
 
     public CapitalizedTextView(Context context) {
-        super( context );
+        super(context);
 
-        setTF( context );
+        setTF(context);
     }
 
     public CapitalizedTextView(Context context, AttributeSet attrs) {
-        super( context, attrs );
+        super(context, attrs);
 
         setTF(context);
     }
 
     public CapitalizedTextView(Context context, AttributeSet attrs, int defStyle) {
-        super( context, attrs, defStyle );
+        super(context, attrs, defStyle);
 
         setTF(context);
 
@@ -53,7 +51,7 @@ public class CapitalizedTextView extends Button {
     }
 
     private void setTF(Context context) {
-        setTypeface( Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Regular.ttf") );
+        setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Regular.ttf"));
     }
 
 

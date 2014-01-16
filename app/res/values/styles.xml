@@ -23,6 +23,16 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
+    <style name="AvatarExtraExtraLarge">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+    </style>
+
+    <style name="AvatarExtraLarge">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+    </style>
+
     <style name="AvatarLarge">
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>

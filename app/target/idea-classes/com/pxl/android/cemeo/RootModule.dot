@@ -10,20 +10,16 @@ digraph G1 {
   CheckInsListFragment -> BootstrapServiceProvider;
   ClassLoader -> Context;
   InputMethodManager -> Context;
-  LogoutService -> AccountManager;
   LogoutService -> Context;
-  MeetingListFragment -> LogoutService;
-  MeetingListFragment -> BootstrapServiceProvider;
-  NewsListFragment -> LogoutService;
-  NewsListFragment -> BootstrapServiceProvider;
+  LogoutService -> AccountManager;
   NotificationManager -> Context;
   PackageInfo -> Context;
   SharedPreferences -> Context;
   TelephonyManager -> Context;
-  UserAgentProvider -> TelephonyManager;
-  UserAgentProvider -> ClassLoader;
   UserAgentProvider -> ApplicationInfo;
   UserAgentProvider -> PackageInfo;
+  UserAgentProvider -> ClassLoader;
+  UserAgentProvider -> TelephonyManager;
   UserListFragment -> LogoutService;
   UserListFragment -> BootstrapServiceProvider;
 }

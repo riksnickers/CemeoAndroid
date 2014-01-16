@@ -1,17 +1,6 @@
 
 package com.pxl.android.cemeo.authenticator;
 
-import static android.R.layout.simple_dropdown_item_1line;
-import static android.accounts.AccountManager.KEY_ACCOUNT_NAME;
-import static android.accounts.AccountManager.KEY_ACCOUNT_TYPE;
-import static android.accounts.AccountManager.KEY_AUTHTOKEN;
-import static android.accounts.AccountManager.KEY_BOOLEAN_RESULT;
-import static android.view.KeyEvent.ACTION_DOWN;
-import static android.view.KeyEvent.KEYCODE_ENTER;
-import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
-import static com.pxl.android.cemeo.core.Constants.Http.URL_AUTH;
-import static com.github.kevinsawicki.http.HttpRequest.get;
-import static com.github.kevinsawicki.http.HttpRequest.post;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Dialog;
@@ -31,18 +20,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.pxl.android.cemeo.core.Constants;
-import com.pxl.android.cemeo.core.User;
-import com.pxl.android.cemeo.util.Ln;
-import com.pxl.android.cemeo.util.SafeAsyncTask;
-import com.pxl.android.cemeo.util.Strings;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.wishlist.Toaster;
+import com.google.gson.Gson;
 import com.pxl.android.cemeo.R.id;
 import com.pxl.android.cemeo.R.layout;
 import com.pxl.android.cemeo.R.string;
+import com.pxl.android.cemeo.core.Constants;
+import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.ui.TextWatcherAdapter;
-import com.google.gson.Gson;
+import com.pxl.android.cemeo.util.Ln;
+import com.pxl.android.cemeo.util.SafeAsyncTask;
+import com.pxl.android.cemeo.util.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +39,19 @@ import java.util.List;
 import butterknife.InjectView;
 import butterknife.Views;
 
+import static android.R.layout.simple_dropdown_item_1line;
+import static android.accounts.AccountManager.KEY_ACCOUNT_NAME;
+import static android.accounts.AccountManager.KEY_ACCOUNT_TYPE;
+import static android.accounts.AccountManager.KEY_AUTHTOKEN;
+import static android.accounts.AccountManager.KEY_BOOLEAN_RESULT;
+import static android.view.KeyEvent.ACTION_DOWN;
+import static android.view.KeyEvent.KEYCODE_ENTER;
+import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
+import static com.github.kevinsawicki.http.HttpRequest.post;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_AUTH;
+
 /**
- * Activity to authenticate the user against an API (example API on Parse.com)
+ * Activity to authenticate the user against the api
  */
 public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticatorActivity {
 
@@ -73,14 +73,17 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
     /**
      * PARAM_AUTHTOKEN_TYPE
      */
-    public static final String PARAM_AUTHTOKEN_TYPE = "authtokenType";
+    public static final String PARAM_AUTHTOKEN_TYPE = "bearer";
 
 
     private AccountManager accountManager;
 
-    @InjectView(id.et_email) AutoCompleteTextView emailText;
-    @InjectView(id.et_password) EditText passwordText;
-    @InjectView(id.b_signin) Button signinButton;
+    @InjectView(id.et_email)
+    AutoCompleteTextView emailText;
+    @InjectView(id.et_password)
+    EditText passwordText;
+    @InjectView(id.b_signin)
+    Button signinButton;
 
     private TextWatcher watcher = validationTextWatcher();
 
@@ -100,9 +103,7 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
 
 
     /**
-     * In this instance the token is simply the sessionId returned from Parse.com. This could be a
-     * oauth token or some other type of timed token that expires/etc. We're just using the parse.com
-     * sessionId to prove the example of how to utilize a token.
+     * De bearer token die we van de api krijgen na het inloggen
      */
     private String token;
 
@@ -120,7 +121,7 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
         email = intent.getStringExtra(PARAM_USERNAME);
         authTokenType = intent.getStringExtra(PARAM_AUTHTOKEN_TYPE);
         requestNewAccount = email == null;
-        confirmCredentials = intent.getBooleanExtra(PARAM_CONFIRMCREDENTIALS,false);
+        confirmCredentials = intent.getBooleanExtra(PARAM_CONFIRMCREDENTIALS, false);
 
         setContentView(layout.login_activity);
 
@@ -144,7 +145,7 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
         passwordText.setOnEditorActionListener(new OnEditorActionListener() {
 
             public boolean onEditorAction(TextView v, int actionId,
-                    KeyEvent event) {
+                                          KeyEvent event) {
                 if (actionId == IME_ACTION_DONE && signinButton.isEnabled()) {
                     handleLogin(signinButton);
                     return true;
@@ -209,9 +210,7 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
     }
 
     /**
-     * Handles onClick event on the Submit button. Sends username/password to
-     * the server for authentication.
-     * <p/>
+     * Sends username/password to the server for authentication.
      * Specified by android:onClick="handleLogin" in the layout xml
      *
      * @param view
@@ -225,23 +224,24 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
             password = passwordText.getText().toString();
             showProgress();
 
-        authenticationTask = new SafeAsyncTask<Boolean>() {
+            authenticationTask = new SafeAsyncTask<Boolean>() {
+
             public Boolean call() throws Exception {
 
+                //Post met user & passw
                 final String query = String.format("grant_type=password&%s=%s&%s=%s", PARAM_USERNAME, email, PARAM_PASSWORD, password);
 
-                HttpRequest request = post(URL_AUTH).send(query);
+                HttpRequest request = post(URL_AUTH).contentType("application/x-www-form-urlencoded").send(query);
 
-                        //.header(HEADER_PARSE_APP_ID, PARSE_APP_ID)
-                        //.header(HEADER_PARSE_REST_API_KEY, PARSE_REST_API_KEY);
+                Ln.d("statuslog: response = %s", request.code());
 
+                if (request.ok()) {
 
-                Ln.d("statuslog : %s", request);
-                Ln.d("statuslog =%s", request.code());
-
-                if(request.ok()) {
+                    //Request in json met token --> user obj
                     final User model = new Gson().fromJson(Strings.toString(request.buffer()), User.class);
+
                     token = model.getSessionToken();
+                    Ln.d("statuslog: token = %s", model.getSessionToken());
                 }
 
                 return request.ok();
@@ -252,11 +252,9 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
                 Throwable cause = e.getCause() != null ? e.getCause() : e;
 
                 String message;
-                // A 404 is returned as an Exception with this message
-                if ("Received authentication challenge is null".equals(cause
-                        .getMessage()))
-                    message = getResources().getString(
-                            string.message_bad_credentials);
+                // 404 --> Foutmelding
+                if ("Received authentication challenge is null".equals(cause.getMessage()))
+                    message = getResources().getString(string.message_bad_credentials);
                 else
                     message = cause.getMessage();
 
@@ -313,9 +311,10 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
         authToken = token;
         intent.putExtra(KEY_ACCOUNT_NAME, email);
         intent.putExtra(KEY_ACCOUNT_TYPE, Constants.Auth.BOOTSTRAP_ACCOUNT_TYPE);
-        if (authTokenType != null
-                && authTokenType.equals(Constants.Auth.AUTHTOKEN_TYPE))
+        if (authTokenType != null && authTokenType.equals(Constants.Auth.AUTHTOKEN_TYPE))
             intent.putExtra(KEY_AUTHTOKEN, authToken);
+            accountManager.setAuthToken(account, authTokenType, authToken);
+            Ln.d("statuslog account : account token toegevoegd");
         setAccountAuthenticatorResult(intent.getExtras());
         setResult(RESULT_OK, intent);
         finish();
@@ -349,17 +348,12 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
             else
                 finishConfirmCredentials(true);
         else {
-            Ln.d("onAuthenticationResult: failed to authenticate");
+
             if (requestNewAccount)
-                Toaster.showLong(BootstrapAuthenticatorActivity.this,
-                        string.message_auth_failed_new_account);
+                Toaster.showLong(BootstrapAuthenticatorActivity.this,string.message_auth_failed_new_account);
             else
-                Toaster.showLong(BootstrapAuthenticatorActivity.this,
-                        string.message_auth_failed);
+                Toaster.showLong(BootstrapAuthenticatorActivity.this, string.message_auth_failed);
 
-
-                        //toch inloggen bij foute credentials
-                        //finishLogin();
         }
     }
 }

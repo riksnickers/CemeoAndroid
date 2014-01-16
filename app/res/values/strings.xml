@@ -9,7 +9,9 @@
     <string name="logout_action">Logout</string>
     <string name="page_news">News</string>
     <string name="page_meetings">Meetings</string>
+    <string name="page_timeframe">Timeframe</string>
     <string name="page_users">Users</string>
+    <string name="page_contacts">Users</string>
     <string name="page_checkins">Check In\'s</string>
     <string name="title_column">Title</string>
     <string name="meeting_location_column">Location</string>
@@ -18,14 +20,17 @@
     <string name="meeting_state_column">State</string>
     <string name="location_column">Location</string>
     <string name="user_column">User</string>
+    <string name="select_column">Select users</string>
     <string name="date_column">Date</string>
-    <string name="error_loading_users">Loading users failed</string>
-    <string name="error_loading_news">Loading news failed</string>
-    <string name="error_loading_checkins">Loading check-ins failed</string>
-    <string name="error_loading_meetings">Loading meetings failed</string>
-    <string name="no_users">No Users</string>
-    <string name="no_news">No News</string>
-    <string name="no_meetings">No Meetings</string>
+    <string name="error_loading_users">Loading user list failed !</string>
+    <string name="error_loading_news">Loading news failed!</string>
+    <string name="error_loading_checkins">Loading check-ins failed!</string>
+    <string name="error_loading_meetings">Loading meetings failed!</string>
+    <string name="error_loading_contacts">Loading contacts failed!</string>
+    <string name="no_users">No Users Available</string>
+    <string name="no_news">No News Available</string>
+    <string name="no_meetings">No Meetings Available</string>
+    <string name="no_contacts">No Contacts Available</string>
     <string name="avatar">Avatar</string>
     <string name="choose">Choose</string>
 
@@ -47,9 +52,50 @@
     <string name="timer">Timer</string>
     <string name="create_meeting">Create Meeting</string>
     <string name="create_meeting_add">Add Contacts</string>
-    <string name="create_meeting_timeframe">TimeFrame</string>
-    <string name="create_meeting_next">Next</string>
-    <string name="home">Home</string><string name="label_welcome_text">Welcome , Please sign in</string><string name="label_cegeka">Cegeka</string>
+    <string name="create_meeting_timeframe">Time Frame</string>
+    <string name="create_meeting_location">Location</string>
+    <string name="create_meeting_next_addcontacts">Next</string>
+    <string name="create_meeting_next_timeframe">Next</string>
+    <string name="settings_menu">Settings</string>
+    <string name="home">Home</string>
+    <string name="label_welcome_text">Welcome , Please sign in</string>
+    <string name="label_cegeka">Cegeka</string>
 
+
+    <!-- Create meeting -->
+
+    <string name="label_between">Between?</string>
+    <string name="label_when">When?</string>
+    <string name="label_duration">Duration?</string>
+
+
+    <string-array name="date_array">
+        <item>Today</item>
+        <item>Within 2 days</item>
+        <item>Within 3 days</item>
+        <item>Within a week</item>
+        <item>Within 2 weeks</item>
+        <item>Within a month</item>
+        <item>Specific day</item>
+    </string-array>
+
+    <string-array name="time_array">
+        <item>8:00 - 10:00</item>
+        <item>10:00 - 12:00</item>
+        <item>12:00 - 14:00</item>
+        <item>14:00 - 16:00</item>
+        <item>16:00 - 18:00</item>
+        <item>18:00 - 20:00</item>
+        <item>No preference</item>
+    </string-array>
+
+    <string-array name="duration_array">
+        <item>30 min</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>Unknown</item>
+        <item>All day</item>
+    </string-array>
 
 </resources>

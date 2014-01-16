@@ -1,5 +1,4 @@
 
-
 package com.pxl.android.cemeo.ui;
 
 import android.accounts.OperationCanceledException;
@@ -13,14 +12,16 @@ import com.actionbarsherlock.view.Window;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.BootstrapService;
+import com.pxl.android.cemeo.util.Ln;
 import com.pxl.android.cemeo.util.SafeAsyncTask;
 import com.viewpagerindicator.TitlePageIndicator;
+
+import net.simonvt.menudrawer.MenuDrawer;
 
 import javax.inject.Inject;
 
 import butterknife.InjectView;
 import butterknife.Views;
-import net.simonvt.menudrawer.MenuDrawer;
 
 
 /**
@@ -28,10 +29,13 @@ import net.simonvt.menudrawer.MenuDrawer;
  */
 public class CarouselActivity extends BootstrapFragmentActivity {
 
-    @InjectView(R.id.tpi_header) TitlePageIndicator indicator;
-    @InjectView(R.id.vp_pages) ViewPager pager;
+    @InjectView(R.id.tpi_header)
+    TitlePageIndicator indicator;
+    @InjectView(R.id.vp_pages)
+    ViewPager pager;
 
-    @Inject BootstrapServiceProvider serviceProvider;
+    @Inject
+    BootstrapServiceProvider serviceProvider;
 
     private MenuDrawer menuDrawer;
 
@@ -44,7 +48,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-        // Set up navigation drawer
+        //navigation drawer
         menuDrawer = MenuDrawer.attach(this);
         menuDrawer.setMenuView(R.layout.navigation_drawer);
         menuDrawer.setContentView(R.layout.carousel_view);
@@ -58,7 +62,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
     }
 
     private void initScreen() {
-        if(userHasAuthenticated) {
+        if (userHasAuthenticated) {
             pager.setAdapter(new BootstrapPagerAdapter(getResources(), getSupportFragmentManager()));
 
             indicator.setViewPager(pager);
@@ -74,15 +78,16 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
             @Override
             public Boolean call() throws Exception {
-                    final BootstrapService svc = serviceProvider.getService(CarouselActivity.this);
-                    return svc != null;
+                final BootstrapService svc = serviceProvider.getService(CarouselActivity.this);
+
+                return svc != null;
 
             }
 
             @Override
             protected void onException(Exception e) throws RuntimeException {
                 super.onException(e);
-                if(e instanceof OperationCanceledException) {
+                if (e instanceof OperationCanceledException) {
                     // User cancelled the authentication process (back button, etc).
                     // Since auth could not take place, lets finish this activity.
                     finish();
@@ -120,7 +125,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 menuDrawer.toggleMenu();
                 return true;
@@ -132,9 +137,11 @@ public class CarouselActivity extends BootstrapFragmentActivity {
         }
     }
 
+
     private void navigateToCreateMeeting() {
-        final Intent i = new Intent(this, CreateMeetingActivity.class);
+        final Intent i = new Intent(this, CreateMeetingAddContactActivity.class);
         startActivity(i);
     }
+
 
 }

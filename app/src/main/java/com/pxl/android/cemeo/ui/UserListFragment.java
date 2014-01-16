@@ -1,6 +1,5 @@
 package com.pxl.android.cemeo.ui;
 
-import static com.pxl.android.cemeo.core.Constants.Extra.USER;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,21 +8,26 @@ import android.support.v4.content.Loader;
 import android.view.View;
 import android.widget.ListView;
 
+import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.Injector;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.authenticator.LogoutService;
 import com.pxl.android.cemeo.core.User;
-import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 
-import javax.inject.Inject;
 import java.util.Collections;
 import java.util.List;
 
-public class UserListFragment  extends ItemListFragment<User> {
+import javax.inject.Inject;
 
-    @Inject BootstrapServiceProvider serviceProvider;
-    @Inject LogoutService logoutService;
+import static com.pxl.android.cemeo.core.Constants.Extra.USER;
+
+public class UserListFragment extends ItemListFragment<User> {
+
+    @Inject
+    protected BootstrapServiceProvider serviceProvider;
+    @Inject
+    protected LogoutService logoutService;
 
 
     @Override
@@ -48,8 +52,7 @@ public class UserListFragment  extends ItemListFragment<User> {
         listView.setFastScrollEnabled(true);
         listView.setDividerHeight(0);
 
-        getListAdapter().addHeader(activity.getLayoutInflater()
-                        .inflate(R.layout.user_list_item_labels, null));
+        getListAdapter().addHeader(activity.getLayoutInflater().inflate(R.layout.user_list_item_labels, null));
     }
 
     @Override
@@ -68,7 +71,7 @@ public class UserListFragment  extends ItemListFragment<User> {
                 try {
                     List<User> latest = null;
 
-                    if(getActivity() != null)
+                    if (getActivity() != null)
                         latest = serviceProvider.getService(getActivity()).getUsers();
 
                     if (latest != null)
@@ -85,6 +88,7 @@ public class UserListFragment  extends ItemListFragment<User> {
         };
 
     }
+
 
     public void onListItemClick(ListView l, View v, int position, long id) {
         User user = ((User) l.getItemAtPosition(position));

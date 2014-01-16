@@ -6,11 +6,12 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Instrumentation;
 import android.content.Context;
-import android.util.Log;
-import static com.pxl.android.cemeo.core.Constants.Auth.*;
 
 import com.pxl.android.cemeo.tests.R;
 import com.pxl.android.cemeo.util.Ln;
+
+import static com.pxl.android.cemeo.core.Constants.Auth.AUTHTOKEN_TYPE;
+import static com.pxl.android.cemeo.core.Constants.Auth.BOOTSTRAP_ACCOUNT_TYPE;
 
 
 /**
@@ -22,12 +23,11 @@ public class TestUserAccountUtil {
      * Checks the device has a valid Bootstrap (on parse.com via the example API),
      * account, if not, adds one using the test credentials found in system
      * property 'bootstrap.test.api.key'.
-     *
+     * <p/>
      * The credentials can be passed on the command line like this: mvn
      * -bootstrap.test.api.key=0123456789abcdef0123456789abcdef install
      *
-     * @param instrumentation
-     *            taken from the test context
+     * @param instrumentation taken from the test context
      * @return true if valid account credentials are available
      */
     public static boolean ensureValidAccountAvailable(Instrumentation instrumentation) {
@@ -36,7 +36,7 @@ public class TestUserAccountUtil {
 
         for (Account account : accountManager.getAccountsByType(BOOTSTRAP_ACCOUNT_TYPE)) {
             if (accountManager.peekAuthToken(account, AUTHTOKEN_TYPE) != null) {
-                Ln.i( "Using existing account : " + account.name);
+                Ln.i("Using existing account : " + account.name);
                 return true; // we have a valid account that has successfully authenticated
             }
         }

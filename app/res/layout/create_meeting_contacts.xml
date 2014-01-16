@@ -1,62 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@drawable/map_header_background"
-android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map_header_background"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="15dp" >
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp">
 
 
         <TextView
             style="@style/ShadowText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="25dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/create_meeting_add"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40sp"
             android:textColor="?android:attr/textColorPrimary" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/selectcontactlist"
-            android:choiceMode="multipleChoice"
-            android:layout_gravity="center_horizontal" />
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:id="@android:id/list"
+            android:hapticFeedbackEnabled="true"
+            android:choiceMode="multipleChoice"/>
 
-        </ScrollView>
 
         <Button
             android:id="@+id/addcontactsbtn"
             style="@style/ShadowText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/button_background_states"
             android:gravity="center"
-            android:onClick="AddContacts"
+            android:onClick="nextFragment"
             android:padding="10dp"
-            android:text="@string/create_meeting_next"
+            android:text="@string/create_meeting_next_addcontacts"
             android:textColor="@color/text"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@style/ListSpinner"
+        android:layout_centerInParent="true" />
+
+
+</RelativeLayout>

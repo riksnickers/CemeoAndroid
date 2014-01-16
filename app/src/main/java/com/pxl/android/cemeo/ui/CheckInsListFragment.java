@@ -9,23 +9,24 @@ import android.support.v4.content.Loader;
 import android.view.View;
 import android.widget.ListView;
 
-import com.pxl.android.cemeo.BootstrapApplication;
+import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.Injector;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.authenticator.LogoutService;
 import com.pxl.android.cemeo.core.CheckIn;
-import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
-import javax.inject.Inject;
 
-import javax.inject.Inject;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class CheckInsListFragment extends ItemListFragment<CheckIn> {
 
-    @Inject protected BootstrapServiceProvider serviceProvider;
-    @Inject protected LogoutService logoutService;
+    @Inject
+    protected BootstrapServiceProvider serviceProvider;
+    @Inject
+    protected LogoutService logoutService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class CheckInsListFragment extends ItemListFragment<CheckIn> {
             @Override
             public List<CheckIn> loadData() throws Exception {
                 try {
-                    if(getActivity() != null) {
+                    if (getActivity() != null) {
                         return serviceProvider.getService(getActivity()).getCheckIns();
                     } else {
                         return Collections.emptyList();

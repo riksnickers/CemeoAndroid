@@ -28,7 +28,7 @@ public class MeetingListAdapter extends AlternatingColorListAdapter<Meeting> {
 
     @Override
     protected int[] getChildViewIds() {
-        return new int[] { R.id.tv_meeting_date, R.id.tv_meeting_creator,R.id.tv_meeting_location };
+        return new int[]{R.id.tv_meeting_date, R.id.tv_meeting_creator, R.id.tv_meeting_location};
     }
 
     @Override

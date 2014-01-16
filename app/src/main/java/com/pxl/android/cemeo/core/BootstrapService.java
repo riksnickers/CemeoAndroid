@@ -2,22 +2,23 @@
 package com.pxl.android.cemeo.core;
 
 
-import static com.pxl.android.cemeo.core.Constants.Http.URL_CHECKINS;
-import static com.pxl.android.cemeo.core.Constants.Http.URL_MEETING;
-import static com.pxl.android.cemeo.core.Constants.Http.URL_NEWS;
-import static com.pxl.android.cemeo.core.Constants.Http.URL_USERS;
-
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
-
+import com.pxl.android.cemeo.util.Ln;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static com.pxl.android.cemeo.core.Constants.Http.URL_CHECKINS;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_MEETING;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_NEWS;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_USERS;
 
 /**
  * Bootstrap API service
@@ -43,14 +44,19 @@ public class BootstrapService {
 
 
     /**
-     * Read and connect timeout in milliseconds
+     * Read and connect timeout
      */
-    private static final int TIMEOUT = 30 * 1000;
+    private static final int TIMEOUT = 10 * 1000;
 
 
     private static class UsersWrapper {
 
         private List<User> results;
+
+        public List<User> getUsers() {
+            return results;
+        }
+
     }
 
     private static class NewsWrapper {
@@ -68,7 +74,6 @@ public class BootstrapService {
         private List<CheckIn> results;
 
     }
-
 
 
     private static class JsonException extends IOException {
@@ -131,23 +136,23 @@ public class BootstrapService {
 
     private HttpRequest configure(final HttpRequest request) {
         request.connectTimeout(TIMEOUT).readTimeout(TIMEOUT);
-        request.userAgent(userAgentProvider.get());
+        //request.userAgent(userAgentProvider.get());
 
-        if(isPostOrPut(request))
-            request.contentType(Constants.Http.CONTENT_TYPE_JSON); // All PUT & POST requests to api must be in JSON
+        if (isPostOrPut(request))
+            request.contentType(Constants.Http.CONTENT_TYPE_JSON); // Alle PUT & POST requests naar de api in JSON formaat
+
 
         return addCredentialsTo(request);
     }
 
     private boolean isPostOrPut(HttpRequest request) {
         return request.getConnection().getRequestMethod().equals(HttpRequest.METHOD_POST)
-               || request.getConnection().getRequestMethod().equals(HttpRequest.METHOD_PUT);
+                || request.getConnection().getRequestMethod().equals(HttpRequest.METHOD_PUT);
 
     }
 
     private HttpRequest addCredentialsTo(HttpRequest request) {
 
-        // Required params for
         //request.header(HEADER_PARSE_REST_API_KEY, PARSE_REST_API_KEY );
         //request.header(HEADER_PARSE_APP_ID, PARSE_APP_ID);
 
@@ -157,7 +162,7 @@ public class BootstrapService {
          * logged in. In the bootstrap sample this is where we are saving the session id as the token.
          * If you actually had received a token you'd take the "apiKey" (aka: token) and add it to the
          * header or form values before you make your requests.
-          */
+         */
 
         /**
          * Add the user name and password to the request here if your service needs username or password for each
@@ -165,12 +170,19 @@ public class BootstrapService {
          * request.basic("myusername", "mypassword");
          */
 
+        Ln.d("statuslog : Authorization : Bearer " + apiKey);
+
+        //Authenticatie token meegeven bij elke request.
+        request.header("Authorization", "Bearer " + apiKey);
+
+
         return request;
     }
 
     private <V> V fromJson(HttpRequest request, Class<V> target) throws IOException {
         Reader reader = request.bufferedReader();
         try {
+            //json van httprequest omzetten naar een lijst
             return GSON.fromJson(reader, target);
         } catch (JsonParseException e) {
             throw new JsonException(e);
@@ -184,19 +196,32 @@ public class BootstrapService {
     }
 
     /**
-     * Get all bootstrap Users
+     * Get all Users / Contacts
      *
-     * @return non-null but possibly empty list of bootstrap
+     * @return non-null but possibly empty list
      * @throws IOException
      */
 
     public List<User> getUsers() throws IOException {
         try {
+            Ln.d("statuslog : 111111111111111");
             HttpRequest request = execute(HttpRequest.get(URL_USERS));
-            UsersWrapper response = fromJson(request, UsersWrapper.class);
-            if (response != null && response.results != null)
-                return response.results;
+            Ln.d("statuslog : 222222222222222");
+            Ln.d("statuslog : request = %s", request);
+
+            User[] users = fromJson(request, User[].class);
+
+            //oude manier
+            //UsersWrapper response = fromJson(request , UsersWrapper.class);
+            //if (response != null && response.results != null)
+
+            if (request != null && users != null) {
+                return Arrays.asList(users);
+                //return response.results;
+            }
+
             return Collections.emptyList();
+
         } catch (HttpRequestException e) {
             throw e.getCause();
         }
@@ -240,7 +265,6 @@ public class BootstrapService {
         } catch (HttpRequestException e) {
             throw e.getCause();
         }
-
 
 
     }
