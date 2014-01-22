@@ -18,22 +18,15 @@
         android:contentDescription="@string/avatar"
         android:layout_weight="0"/>
 
-    <TextView
+    <CheckedTextView
         android:id="@+id/tv_contact_name"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:duplicateParentState="true"
         android:textSize="24sp"
         android:textColor="@color/table_text_selector"
         android:layout_weight="1"/>
-
-
-    <ImageView
-        android:src="?android:listChoiceIndicatorMultiple"
-        android:duplicateParentState="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"/>
 
 
 

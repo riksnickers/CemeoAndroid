@@ -30,7 +30,7 @@ public class CreateMeetingPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -46,9 +46,13 @@ public class CreateMeetingPagerAdapter extends FragmentPagerAdapter {
                 timeFrameFragment.setArguments(bundle);
                 return timeFrameFragment;
             case 2:
-                CheckInsListFragment checkInsFragment = new CheckInsListFragment();
-                checkInsFragment.setArguments(bundle);
-                return checkInsFragment;
+                LocationsListFragment locationsFragment = new LocationsListFragment();
+                locationsFragment.setArguments(bundle);
+                return locationsFragment;
+            case 3:
+                SummaryFragment summaryFragment = new SummaryFragment();
+                summaryFragment.setArguments(bundle);
+                return summaryFragment;
             default:
                 return null;
         }
@@ -62,7 +66,9 @@ public class CreateMeetingPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return resources.getString(R.string.page_timeframe);
             case 2:
-                return resources.getString(R.string.page_checkins);
+                return resources.getString(R.string.page_locations);
+            case 3:
+                return resources.getString(R.string.page_summary);
             default:
                 return null;
         }

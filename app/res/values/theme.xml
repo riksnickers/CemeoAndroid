@@ -20,8 +20,8 @@
     </style>
 
     <style name="Widget.Styled.ActionBar.Light" parent="Widget.Sherlock.ActionBar.Solid">
-        <item name="background">@drawable/balk</item>
-        <item name="android:background">@drawable/balk</item>
+        <item name="background">@drawable/actionbar_bg</item>
+        <item name="android:background">@drawable/actionbar_bg</item>
     </style>
 
 </resources>

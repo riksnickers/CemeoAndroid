@@ -38,22 +38,17 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
         Bundle bundle = new Bundle();
         switch (position) {
             case 0:
-            /*
-            NewsListFragment newsFragment = new NewsListFragment();
-            newsFragment.setArguments(bundle);
-            return newsFragment;
-            */
                 MeetingListFragment meetingFragment = new MeetingListFragment();
                 meetingFragment.setArguments(bundle);
                 return meetingFragment;
             case 1:
-                UserListFragment userListFragment = new UserListFragment();
-                userListFragment.setArguments(bundle);
-                return userListFragment;
+                UserDataFragment userdatafragment = new UserDataFragment();
+                userdatafragment.setArguments(bundle);
+                return userdatafragment;
             case 2:
-                CheckInsListFragment checkInsFragment = new CheckInsListFragment();
-                checkInsFragment.setArguments(bundle);
-                return checkInsFragment;
+                UserDataFragment userdatafragment2 = new UserDataFragment();
+                userdatafragment2.setArguments(bundle);
+                return userdatafragment2;
             default:
                 return null;
         }
@@ -65,7 +60,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return resources.getString(R.string.page_meetings);
             case 1:
-                return resources.getString(R.string.page_users);
+                return resources.getString(R.string.page_user_data);
             case 2:
                 return resources.getString(R.string.page_checkins);
             default:

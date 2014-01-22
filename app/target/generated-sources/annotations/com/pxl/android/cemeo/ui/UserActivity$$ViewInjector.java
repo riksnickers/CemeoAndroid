@@ -7,9 +7,9 @@ import butterknife.Views.Finder;
 public class UserActivity$$ViewInjector {
   public static void inject(Finder finder, com.pxl.android.cemeo.ui.UserActivity target, Object source) {
     View view;
-    view = finder.findById(source, 2131099740);
+    view = finder.findById(source, 2131099744);
     target.avatar = (android.widget.ImageView) view;
-    view = finder.findById(source, 2131099717);
+    view = finder.findById(source, 2131099721);
     target.name = (android.widget.TextView) view;
   }
 }

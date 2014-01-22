@@ -33,7 +33,7 @@
             android:layout_weight="1.0"
             android:id="@android:id/list"
             android:hapticFeedbackEnabled="true"
-            android:choiceMode="multipleChoice"/>
+            android:choiceMode="singleChoice"/>
 
 
         <Button

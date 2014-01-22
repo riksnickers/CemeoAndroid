@@ -97,13 +97,16 @@ public class CheckInsListFragment extends ItemListFragment<CheckIn> {
     public void onListItemClick(ListView l, View v, int position, long id) {
         CheckIn checkIn = ((CheckIn) l.getItemAtPosition(position));
 
+        /*
         String uri = String.format("geo:%s,%s?q=%s",
                 checkIn.getLocation().getLatitude(),
                 checkIn.getLocation().getLongitude(),
                 checkIn.getName());
 
+                */
+
         // Show a chooser that allows the user to decide how to display this data, in this case, map data.
-        startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)), getString(R.string.choose)));
+        //startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)), getString(R.string.choose)));
     }
 
     @Override

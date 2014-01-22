@@ -2,8 +2,11 @@
 package com.pxl.android.cemeo.core;
 
 
+import android.widget.Toast;
+
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
+import com.github.kevinsawicki.wishlist.Toaster;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
@@ -13,15 +16,20 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.pxl.android.cemeo.core.Constants.Http.URL_CHECKINS;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_CONTACTS;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_LOCATIONS;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_MEETING;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_NEWS;
-import static com.pxl.android.cemeo.core.Constants.Http.URL_USERS;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_USER_DATA;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_CREATE_MEETING;
 
 /**
- * Bootstrap API service
+ * Cemeo API service
  */
 public class BootstrapService {
 
@@ -51,9 +59,9 @@ public class BootstrapService {
 
     private static class UsersWrapper {
 
-        private List<User> results;
+        private User[] results;
 
-        public List<User> getUsers() {
+        public User[] getRes(){
             return results;
         }
 
@@ -194,29 +202,68 @@ public class BootstrapService {
             }
         }
     }
+    /**
+     * Create Meeting
+     *
+     * @return result
+     * @throws IOException
+     */
+
+    public Boolean createMeeting(Schedule schedule) throws IOException {
+        try {
+            Gson gson = new Gson();
+            String json = gson.toJson(schedule);
+
+            //Ln.d("statuslog : json = %s", json);
+
+            //HttpRequest request = execute(HttpRequest.post(URL_CREATE_MEETING).send(json));
+
+            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", "Bearer " + apiKey).send(json);
+
+            if(request.ok()){
+                return true;
+            }else{
+                return false;
+            }
+
+
+
+
+
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
 
     /**
-     * Get all Users / Contacts
+     * Get all Contacts
      *
      * @return non-null but possibly empty list
      * @throws IOException
      */
 
-    public List<User> getUsers() throws IOException {
+    public List<Contact> getContacts() throws IOException {
         try {
             Ln.d("statuslog : 111111111111111");
-            HttpRequest request = execute(HttpRequest.get(URL_USERS));
+            HttpRequest request = execute(HttpRequest.get(URL_CONTACTS));
             Ln.d("statuslog : 222222222222222");
             Ln.d("statuslog : request = %s", request);
 
-            User[] users = fromJson(request, User[].class);
+            Contact[] contacts = fromJson(request , Contact[].class);
+            //User[] users = fromJson(request, User[].class);
 
             //oude manier
             //UsersWrapper response = fromJson(request , UsersWrapper.class);
             //if (response != null && response.results != null)
-
+/*
             if (request != null && users != null) {
                 return Arrays.asList(users);
+                //return response.results;
+            }
+*/
+
+            if (request != null && contacts != null) {
+                return Arrays.asList(contacts);
                 //return response.results;
             }
 
@@ -226,6 +273,114 @@ public class BootstrapService {
             throw e.getCause();
         }
     }
+
+    /**
+     * Get all Contacts
+     *
+     * @return non-null but possibly empty list
+     * @throws IOException
+     */
+
+    public List<User> getUsers() throws IOException {
+        try {
+            Ln.d("statuslog : 111111111111111");
+            HttpRequest request = execute(HttpRequest.get(URL_CONTACTS));
+            Ln.d("statuslog : 222222222222222");
+            Ln.d("statuslog : request = %s", request);
+
+            User[] users = fromJson(request, User[].class);
+
+            if (request != null && users != null) {
+                return Arrays.asList(users);
+                //return response.results;
+            }
+
+
+            return Collections.emptyList();
+
+            //oude manier
+            //UsersWrapper response = fromJson(request , UsersWrapper.class);
+            //if (response != null && response.results != null)
+
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
+
+    /**
+     * Get all Contacts
+     *
+     * @return non-null but possibly empty list
+     * @throws IOException
+     */
+
+    public User getUserData() throws IOException {
+        try {
+            Ln.d("statuslog : 111111111111111");
+            HttpRequest request = execute(HttpRequest.get(URL_USER_DATA));
+
+            User user = fromJson(request, User.class);
+
+            User[] lijstje = null;
+
+            if (request != null && user != null) {
+                Ln.d("statuslog : IK BEN NIET NULL");
+                //return Arrays.asList(lijstje);
+                return user;
+
+            }
+
+            Ln.d("statuslog : 222222222222222");
+            Ln.d("statuslog : request = %s", request);
+
+            //return Collections.emptyList();
+            return null;
+
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
+
+
+    /**
+     * Get all Contacts
+     *
+     * @return non-null but possibly empty list
+     * @throws IOException
+     */
+
+    public List<Location> getLocations() throws IOException {
+        try {
+            Ln.d("statuslog : 111111111111111");
+            HttpRequest request = execute(HttpRequest.get(URL_LOCATIONS));
+            Ln.d("statuslog : 222222222222222");
+            Ln.d("statuslog : request = %s", request);
+
+            Location[] locations = fromJson(request , Location[].class);
+            //User[] users = fromJson(request, User[].class);
+
+            //oude manier
+            //UsersWrapper response = fromJson(request , UsersWrapper.class);
+            //if (response != null && response.results != null)
+/*
+            if (request != null && users != null) {
+                return Arrays.asList(users);
+                //return response.results;
+            }
+*/
+
+            if (request != null && locations != null) {
+                return Arrays.asList(locations);
+                //return response.results;
+            }
+
+            return Collections.emptyList();
+
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
+
 
 
     /**
@@ -258,10 +413,25 @@ public class BootstrapService {
 
         try {
             HttpRequest request = execute(HttpRequest.get(URL_MEETING));
+
+            Meeting[] meetings = fromJson(request, Meeting[].class);
+
+            if (request != null && meetings != null) {
+                return Arrays.asList(meetings);
+                //return response.results;
+            }
+
+
+            return Collections.emptyList();
+/*
+
             MeetingWrapper response = fromJson(request, MeetingWrapper.class);
+
             if (response != null && response.results != null)
                 return response.results;
             return Collections.emptyList();
+
+*/
         } catch (HttpRequestException e) {
             throw e.getCause();
         }

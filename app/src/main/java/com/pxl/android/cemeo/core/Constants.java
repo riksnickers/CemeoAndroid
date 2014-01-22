@@ -41,10 +41,13 @@ public class Constants {
          * Base URL for all requests
          */
         //hotspot
-        public static final String URL_BASE = "http://192.168.43.72:12429";
+        //public static final String URL_BASE = "http://192.168.43.72:12429";
 
         //thuis
         //public static final String URL_BASE = "http://192.168.0.101:12429";
+
+        //azure
+        public static final String URL_BASE = "http://cemeo.azurewebsites.net";
 
         /**
          * Authentication URL
@@ -52,14 +55,25 @@ public class Constants {
         public static final String URL_AUTH = URL_BASE + "/token";
 
         /**
-         * List Users URL
+         * List Contacts URL
          */
-        public static final String URL_USERS = URL_BASE + "/api/Meeting/Contacts";
+        public static final String URL_CONTACTS = URL_BASE + "/api/Contact/Compact";
+
+        /**
+         * List User data URL
+         */
+        public static final String URL_USER_DATA = URL_BASE + "/api/Account/Profile";
+
+
+        /**
+         * List Locations URL
+         */
+        public static final String URL_LOCATIONS = URL_BASE + "/api/Location";
 
         /**
          * List News URL
          */
-        public static final String URL_NEWS = URL_BASE + "/api/Meeting/Contacts";
+        public static final String URL_NEWS = URL_BASE + "/api/Contact/Compact";
 
         /**
          * List Upcoming meetings URL
@@ -75,7 +89,7 @@ public class Constants {
         /**
          * List Checkin's URL
          */
-        public static final String URL_CHECKINS = URL_BASE + "/api/Meeting/Contacts";
+        public static final String URL_CHECKINS = URL_BASE + "/api/Contact/Compact";
 
         //public static final String PARSE_APP_ID = "zHb2bVia6kgilYRWWdmTiEJooYA17NnkBSUVsr4H";
         //public static final String PARSE_REST_API_KEY = "N2kCY1T3t3Jfhf9zpJ5MCURn3b25UpACILhnf5u9";
@@ -100,7 +114,11 @@ public class Constants {
 
         public static final String USER = "user";
 
+        public static final String CONTACT = "contact";
+
         public static final String CONTACTS_SELECTED = "contacts";
+
+        public static final String LOCATION = "location";
 
     }
 

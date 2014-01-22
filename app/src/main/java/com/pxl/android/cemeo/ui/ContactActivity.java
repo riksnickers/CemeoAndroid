@@ -8,12 +8,14 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.pxl.android.cemeo.R;
+import com.pxl.android.cemeo.core.Contact;
 import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.util.Ln;
 import com.squareup.picasso.Picasso;
 
 import butterknife.InjectView;
 
+import static com.pxl.android.cemeo.core.Constants.Extra.CONTACT;
 import static com.pxl.android.cemeo.core.Constants.Extra.USER;
 
 public class ContactActivity extends BootstrapActivity {
@@ -23,7 +25,7 @@ public class ContactActivity extends BootstrapActivity {
     @InjectView(R.id.tv_contact_name)
     protected TextView name;
 
-    protected User user;
+    protected Contact contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +34,16 @@ public class ContactActivity extends BootstrapActivity {
         setContentView(R.layout.add_contact_view);
 
         if (getIntent() != null && getIntent().getExtras() != null) {
-            user = (User) getIntent().getExtras().getSerializable(USER);
+            contact = (Contact) getIntent().getExtras().getSerializable(CONTACT);
         }
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setHomeButtonEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Picasso.with(this).load(user.getAvatarUrl()).placeholder(R.drawable.gravatar_icon).into(avatar);
         Picasso.with(this).load(R.drawable.gravatar_icon).placeholder(R.drawable.gravatar_icon).into(avatar);
 
-        Ln.d("statuslog : detail view  : %s", user.getFirstName());
-        name.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
+        name.setText(String.format("%s %s", contact.getFirstName(), contact.getLastName()));
 
 
     }

@@ -7,16 +7,19 @@ import android.view.LayoutInflater;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.pxl.android.cemeo.BootstrapApplication;
 import com.pxl.android.cemeo.R;
+import com.pxl.android.cemeo.core.Contact;
 import com.pxl.android.cemeo.core.User;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Adapter to display a list of traffic items
  */
-public class ContactListAdapter extends SingleTypeAdapter<User> {
+public class ContactListAdapter extends SingleTypeAdapter<Contact> {
+
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MMMM dd");
 
@@ -24,7 +27,7 @@ public class ContactListAdapter extends SingleTypeAdapter<User> {
      * @param inflater
      * @param items
      */
-    public ContactListAdapter(LayoutInflater inflater, List<User> items) {
+    public ContactListAdapter(LayoutInflater inflater, List<Contact> items) {
         super(inflater, R.layout.add_contact_list_item);
 
         setItems(items);
@@ -51,7 +54,7 @@ public class ContactListAdapter extends SingleTypeAdapter<User> {
 
 
     @Override
-    protected void update(int position, User user) {
+    protected void update(int position, Contact contact) {
 
         Picasso.with(BootstrapApplication.getInstance())
                 //.load(user.getAvatarUrl()) --> afb van de spectifieke gebruiker laden
@@ -59,7 +62,7 @@ public class ContactListAdapter extends SingleTypeAdapter<User> {
                 .placeholder(R.drawable.gravatar_icon)
                 .into(imageView(0));
 
-        setText(1, String.format("%1$s %2$s", user.getFirstName(), user.getLastName()));
+        setText(1, String.format("%1$s %2$s", contact.getFirstName(), contact.getLastName()));
 
 
     }

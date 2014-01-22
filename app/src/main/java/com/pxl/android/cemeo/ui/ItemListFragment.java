@@ -327,8 +327,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
     private ItemListFragment<E> fadeIn(final View view, final boolean animate) {
         if (view != null)
             if (animate)
-                view.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-                        android.R.anim.fade_in));
+                view.startAnimation(AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_in));
             else
                 view.clearAnimation();
         return this;
@@ -361,8 +360,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
      * @param animate
      * @return this fragment
      */
-    public ItemListFragment<E> setListShown(final boolean shown,
-                                            final boolean animate) {
+    public ItemListFragment<E> setListShown(final boolean shown, final boolean animate) {
         if (!isUsable())
             return this;
 
@@ -381,14 +379,11 @@ public abstract class ItemListFragment<E> extends SherlockFragment
 
         if (shown)
             if (!items.isEmpty())
-                hide(progressBar).hide(emptyView).fadeIn(listView, animate)
-                        .show(listView);
+                hide(progressBar).hide(emptyView).fadeIn(listView, animate).show(listView);
             else
-                hide(progressBar).hide(listView).fadeIn(emptyView, animate)
-                        .show(emptyView);
-        else
-            hide(listView).hide(emptyView).fadeIn(progressBar, animate)
-                    .show(progressBar);
+                hide(progressBar).hide(listView).fadeIn(emptyView, animate).show(emptyView);
+            else
+                hide(listView).hide(emptyView).fadeIn(progressBar, animate).show(progressBar);
 
         return this;
     }

@@ -12,8 +12,12 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -23,29 +27,31 @@ import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.Injector;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.authenticator.LogoutService;
+import com.pxl.android.cemeo.core.Contact;
+import com.pxl.android.cemeo.core.OnDataPass;
 import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.util.Ln;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-
-import static com.pxl.android.cemeo.core.Constants.Extra.CONTACTS_SELECTED;
-import static com.pxl.android.cemeo.core.Constants.Extra.USER;
 
 /**
  * Created by jordy on 12/01/14.
  */
-public class ContactListFragment extends ItemListFragment<User> {
+public class ContactListFragment extends ItemListFragment<Contact> {
 
     @Inject
     protected BootstrapServiceProvider serviceProvider;
     @Inject
     protected LogoutService logoutService;
+
+    protected OnDataPass dataPasser;
+
+    protected List<Contact> selected = new ArrayList<Contact>();
 
 
     @Override
@@ -76,12 +82,37 @@ public class ContactListFragment extends ItemListFragment<User> {
     protected void configureList(Activity activity, ListView listView) {
         super.configureList(activity, listView);
 
-        //listView.callOnClick();
         listView.setFastScrollEnabled(true);
         //listView.setDividerHeight(0);
-
-
         //getListAdapter().addHeader(activity.getLayoutInflater().inflate(R.layout.add_contact_list_item_labels, null));
+
+/*
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Ln.d("statuslog : Selected : %s", "-------------------------------------------------");
+
+
+                //Contact contact = (Contact) parent.getItemAtPosition(position);
+                //Toast.makeText(parent.getContext(), parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
+
+                //Contact contact = (Contact) parent.getSelectedItem();
+                //selected.add(contact);
+
+                //passData(selected);
+
+
+                //Ln.d("statuslog : Selected : %s", contact.getFirstName());
+
+
+
+            }
+        });
+
+*/
     }
 
     @Override
@@ -91,17 +122,17 @@ public class ContactListFragment extends ItemListFragment<User> {
 
 
     @Override
-    public Loader<List<User>> onCreateLoader(int id, Bundle args) {
-        final List<User> initialItems = items;
-        return new ThrowableLoader<List<User>>(getActivity(), items) {
+    public Loader<List<Contact>> onCreateLoader(int id, Bundle args) {
+        final List<Contact> initialItems = items;
+        return new ThrowableLoader<List<Contact>>(getActivity(), items) {
             @Override
-            public List<User> loadData() throws Exception {
+            public List<Contact> loadData() throws Exception {
 
                 try {
-                    List<User> latest = null;
+                    List<Contact> latest = null;
 
                     if (getActivity() != null)
-                        latest = serviceProvider.getService(getActivity()).getUsers();
+                        latest = serviceProvider.getService(getActivity()).getContacts();
 
                     if (latest != null)
                         return latest;
@@ -120,19 +151,42 @@ public class ContactListFragment extends ItemListFragment<User> {
 
 
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //User user = ((User) l.getItemAtPosition(position));
 
-        //Ln.d("statuslog : klik ! --> %s" , user.getId());
+        SparseBooleanArray checked = l.getCheckedItemPositions();
 
 
-        //startActivity(new Intent(getActivity(), ContactActivity.class).putExtra(USER, user));
+        for (int i = 0; i < checked.size(); i++){
+
+
+            if (checked.get(i)){
+                if(!(selected.contains(l.getItemAtPosition(i))) || selected.size() == 0){
+                    //Toast.makeText(l.getContext(), "Checked !", Toast.LENGTH_SHORT).show();
+
+                    selected.add((Contact) l.getItemAtPosition(i));
+                }
+
+            }else{
+
+                if(selected.contains(l.getItemAtPosition(i))){
+                    //Toast.makeText(l.getContext(), "UnChecked !", Toast.LENGTH_SHORT).show();
+                    selected.remove(l.getItemAtPosition(i));
+                }
+            }
+        }
+
+        passData(selected);
+/*
+        for (Contact c : selected){
+            Ln.d("statuslog : --------------- %s - %s - %s -----------------------" , c.getId() , c.getFirstName() , c.getLastName());
+        }
+*/
     }
 
 
 
 
     @Override
-    public void onLoadFinished(Loader<List<User>> loader, List<User> items) {
+    public void onLoadFinished(Loader<List<Contact>> loader, List<Contact> items) {
         super.onLoadFinished(loader, items);
 
     }
@@ -143,9 +197,22 @@ public class ContactListFragment extends ItemListFragment<User> {
     }
 
     @Override
-    protected SingleTypeAdapter<User> createAdapter(List<User> items) {
+    protected SingleTypeAdapter<Contact> createAdapter(List<Contact> items) {
         return new ContactListAdapter(getActivity().getLayoutInflater(), items);
     }
+
+    @Override
+    public void onAttach(Activity a) {
+        super.onAttach(a);
+        dataPasser = (OnDataPass) a;
+    }
+
+
+    public void passData(List<Contact> selected) {
+        dataPasser.onContactsPass(selected);
+    }
+
+
 
 
 }

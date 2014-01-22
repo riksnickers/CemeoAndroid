@@ -48,7 +48,7 @@ public class UserListAdapter extends SingleTypeAdapter<User> {
 */
     @Override
     public long getItemId(final int position) {
-        String id = getItem(position).getId();
+        String id = getItem(position).getUserId();
         return !TextUtils.isEmpty(id) ? id.hashCode() : super.getItemId(position);
     }
 
