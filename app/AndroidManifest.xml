@@ -9,12 +9,29 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="19" />
 
+    <!-- Creates a custom permission so only this app can receive its messages. -->
+    <permission
+        android:name="com.pxl.android.cemeo.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+
+    <uses-permission android:name="com.pxl.android.cemeo.permission.C2D_MESSAGE" />
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    //Status internet verbinding controleren
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    //Account ophalen GCM
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
 
     <application
         android:name=".BootstrapApplication"
@@ -49,6 +66,8 @@
                 android:resource="@xml/authenticator" />
         </service>
 
+        <service android:name=".GCMIntentService" />
+
         <activity
             android:name=".authenticator.BootstrapAuthenticatorActivity"
             android:excludeFromRecents="true">
@@ -67,6 +86,19 @@
 
         <activity android:name=".ui.CreateMeetingAddContactActivity" />
         <activity android:name=".ui.ContactActivity" />
+
+
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.pxl.android.cemeo" />
+            </intent-filter>
+        </receiver>
+
 
     </application>
 

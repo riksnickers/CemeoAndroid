@@ -2,6 +2,7 @@ package com.pxl.android.cemeo.ui;
 
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -201,11 +202,15 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
                 //initScreen();
                 //prog.setVisibility(0);
                 //Toaster.showShort(getParent() , "Meeting Created Successful !");
-                Toast.makeText( getApplicationContext(), "Meeting Created Successful !" , Toast.LENGTH_SHORT).show();
+                if(res == true){
+                    Toast.makeText( getApplicationContext(), "Meeting Created Successful !" , Toast.LENGTH_LONG).show();
+                    finish();
+                }else{
+                    Toast.makeText( getApplicationContext(), "Meeting Creation failed ! !" , Toast.LENGTH_LONG).show();
+                }
                 //Ln.d("statuslog : Meeting Created successful!" );
 
-                show(prog);
-                //finish();
+
 
             }
         }.execute();

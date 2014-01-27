@@ -80,5 +80,15 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>gcmutils-repo-releases</id>
+            <url>http://gcmutils.googlecode.com/svn/trunk/repository/releases</url>
+        </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>gcmutils-pluginrepo-releases</id>
+            <url>http://gcmutils.googlecode.com/svn/trunk/repository/releases</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

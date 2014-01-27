@@ -7,7 +7,7 @@ import butterknife.Views.Finder;
 public class SummaryActivity$$ViewInjector {
   public static void inject(Finder finder, com.pxl.android.cemeo.ui.SummaryActivity target, Object source) {
     View view;
-    view = finder.findById(source, 2131099726);
+    view = finder.findById(source, 2131099729);
     target.summary = (android.widget.TextView) view;
   }
 }

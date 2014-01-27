@@ -162,6 +162,8 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
         //signupText.setText(Html.fromHtml(getString(string.signup_link)));
     }
 
+    //Een lijst met suggesties bij de ingave van een gebruikersnaam (of email)
+
     private List<String> userEmailAccounts() {
         Account[] accounts = accountManager.getAccountsByType("com.google");
         List<String> emailAddresses = new ArrayList<String>(accounts.length);

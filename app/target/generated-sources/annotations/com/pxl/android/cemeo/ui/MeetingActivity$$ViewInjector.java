@@ -7,11 +7,11 @@ import butterknife.Views.Finder;
 public class MeetingActivity$$ViewInjector {
   public static void inject(Finder finder, com.pxl.android.cemeo.ui.MeetingActivity target, Object source) {
     View view;
-    view = finder.findById(source, 2131099735);
+    view = finder.findById(source, 2131099738);
     target.date = (android.widget.TextView) view;
-    view = finder.findById(source, 2131099736);
+    view = finder.findById(source, 2131099739);
     target.creator = (android.widget.TextView) view;
-    view = finder.findById(source, 2131099737);
+    view = finder.findById(source, 2131099740);
     target.location = (android.widget.TextView) view;
   }
 }

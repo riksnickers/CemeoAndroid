@@ -1,7 +1,10 @@
 
 package com.pxl.android.cemeo.ui;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.accounts.OperationCanceledException;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -9,6 +12,7 @@ import android.view.View;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
+import com.google.android.gcm.GCMRegistrar;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.BootstrapService;
@@ -16,7 +20,10 @@ import com.pxl.android.cemeo.util.Ln;
 import com.pxl.android.cemeo.util.SafeAsyncTask;
 import com.viewpagerindicator.TitlePageIndicator;
 
+import net.jarlehansen.android.gcm.client.GCMUtils;
 import net.simonvt.menudrawer.MenuDrawer;
+
+import java.net.SocketTimeoutException;
 
 import javax.inject.Inject;
 
@@ -48,6 +55,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
         super.onCreate(savedInstanceState);
 
+
         //navigation drawer
         menuDrawer = MenuDrawer.attach(this);
         menuDrawer.setMenuView(R.layout.navigation_drawer);
@@ -58,6 +66,11 @@ public class CarouselActivity extends BootstrapFragmentActivity {
         Views.inject(this);
 
         checkAuth();
+
+
+        notifyMe();
+
+
 
     }
 
@@ -103,6 +116,24 @@ public class CarouselActivity extends BootstrapFragmentActivity {
         }.execute();
     }
 
+    private void notifyMe() {
+        new SafeAsyncTask<Boolean>() {
+
+            @Override
+            public Boolean call() {
+
+                GCMRegistrar.checkDevice(getApplicationContext());
+                GCMUtils.checkExtended(getApplicationContext());
+                GCMUtils.getAndSendRegId(getApplicationContext());
+
+                return true;
+
+
+            }
+
+        }.execute();
+    }
+
 
     private void setNavListeners() {
 
@@ -142,6 +173,8 @@ public class CarouselActivity extends BootstrapFragmentActivity {
         final Intent i = new Intent(this, CreateMeetingAddContactActivity.class);
         startActivity(i);
     }
+
+
 
 
 }

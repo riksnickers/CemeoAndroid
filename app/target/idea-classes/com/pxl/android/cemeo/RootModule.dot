@@ -3,8 +3,8 @@ digraph G1 {
   AccountManager -> Context;
   ApiKeyProvider -> AccountManager;
   ApplicationInfo -> Context;
-  BootstrapServiceProvider -> UserAgentProvider;
   BootstrapServiceProvider -> ApiKeyProvider;
+  BootstrapServiceProvider -> UserAgentProvider;
   CarouselActivity -> BootstrapServiceProvider;
   ClassLoader -> Context;
   ContactListFragment -> BootstrapServiceProvider;
@@ -13,8 +13,8 @@ digraph G1 {
   InputMethodManager -> Context;
   LocationsListFragment -> BootstrapServiceProvider;
   LocationsListFragment -> LogoutService;
-  LogoutService -> Context;
   LogoutService -> AccountManager;
+  LogoutService -> Context;
   MeetingListFragment -> BootstrapServiceProvider;
   MeetingListFragment -> LogoutService;
   NotificationManager -> Context;
@@ -23,10 +23,10 @@ digraph G1 {
   SummaryFragment -> BootstrapServiceProvider;
   SummaryFragment -> LogoutService;
   TelephonyManager -> Context;
-  UserAgentProvider -> ApplicationInfo;
-  UserAgentProvider -> PackageInfo;
-  UserAgentProvider -> TelephonyManager;
   UserAgentProvider -> ClassLoader;
+  UserAgentProvider -> TelephonyManager;
+  UserAgentProvider -> PackageInfo;
+  UserAgentProvider -> ApplicationInfo;
   UserDataFragment -> BootstrapServiceProvider;
   UserDataFragment -> LogoutService;
   UserListFragment -> BootstrapServiceProvider;
