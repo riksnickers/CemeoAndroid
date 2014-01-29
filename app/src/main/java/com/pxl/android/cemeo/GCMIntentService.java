@@ -8,10 +8,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 
+
 import com.pxl.android.cemeo.ui.CarouselActivity;
 import com.pxl.android.cemeo.util.Ln;
 
+
+import net.jarlehansen.android.gcm.client.GCMUtils;
 import net.jarlehansen.android.gcm.client.GCMUtilsBaseIntentService;
+import net.jarlehansen.android.gcm.client.log.GCMUtilsLog;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,13 +51,14 @@ public class GCMIntentService extends GCMUtilsBaseIntentService {
 
     }
 
+
+
     @Override
     protected void onError(Context context, String error) {
 
         Ln.d("statuslog: Error : %s", error);
 
     }
-
 
 
     protected String get(String urlapi) throws IOException {
@@ -70,7 +75,7 @@ public class GCMIntentService extends GCMUtilsBaseIntentService {
         try {
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
-            conn.setRequestProperty("Authorization","Bearer Pzm0F8SYNw7B30jE1_wGLY1xIjL9cZC1ac6LFUuDLfTj7t8knoro0WnaGd21O3LFnhHedFK3PxudZ578VdrlDGCpyWuqL_afCJyghuuOkhvIs_IjHvKhcTq_ThT7k7QTEqZQacPV17J8nrHOxGRBdVMjAaESWNNprK0qsIN409Bx689dGLOCfN6VwQrfc0ItGA9CseduMnMQyykyVMTAON5JrVkkPCUtT-jZ89pUbtZjqCaJO7Q0TMAqjMpAFA0B8D30feyAvQ9VyJ5xclNM9PjDifzLzovXAq7HlCyR9EQQcB9rQSKaRD-6b2rmdJihAFAr6xlQHkXqPRtJgvMrehh5t4aQ2zBUrjowgND5ag_nYuFA6dGDHE2TDWSNX_6HTzau0LCTdo7PYS86sqPLHNwwrcwNQS3i7V0L1rNbutA");
+            conn.setRequestProperty("Authorization","");
 
             // get the request
             conn.connect();

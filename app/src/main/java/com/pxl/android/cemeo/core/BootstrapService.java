@@ -25,6 +25,7 @@ import static com.pxl.android.cemeo.core.Constants.Http.URL_CONTACTS;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_LOCATIONS;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_MEETING;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_NEWS;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_PROPOSITION;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_USER_DATA;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_CREATE_MEETING;
 
@@ -127,6 +128,11 @@ public class BootstrapService {
         this.username = null;
         this.password = null;
         this.apiKey = apiKey;
+    }
+
+
+    public String getApiKey() {
+        return this.apiKey;
     }
 
     /**
@@ -321,10 +327,9 @@ public class BootstrapService {
 
             User user = fromJson(request, User.class);
 
-            User[] lijstje = null;
 
             if (request != null && user != null) {
-                Ln.d("statuslog : IK BEN NIET NULL");
+
                 //return Arrays.asList(lijstje);
                 return user;
 
@@ -418,6 +423,43 @@ public class BootstrapService {
 
             if (request != null && meetings != null) {
                 return Arrays.asList(meetings);
+                //return response.results;
+            }
+
+
+            return Collections.emptyList();
+/*
+
+            MeetingWrapper response = fromJson(request, MeetingWrapper.class);
+
+            if (response != null && response.results != null)
+                return response.results;
+            return Collections.emptyList();
+
+*/
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+
+
+    }
+
+    /**
+     * Get all propositions
+     *
+     * @return non-null but possibly empty list of meetings
+     * @throws IOException
+     */
+
+    public List<MeetingProposition> getPropositions() throws IOException {
+
+        try {
+            HttpRequest request = execute(HttpRequest.get(URL_PROPOSITION));
+
+            MeetingProposition[] meetingprop = fromJson(request, MeetingProposition[].class);
+
+            if (request != null && meetingprop != null) {
+                return Arrays.asList(meetingprop);
                 //return response.results;
             }
 

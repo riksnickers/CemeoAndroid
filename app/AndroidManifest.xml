@@ -86,6 +86,10 @@
 
         <activity android:name=".ui.CreateMeetingAddContactActivity" />
         <activity android:name=".ui.ContactActivity" />
+        <activity android:name=".ui.PropositionActivity" />
+        <activity android:name=".ui.SelectFavLocationActivity" />
+
+
 
 
         <receiver

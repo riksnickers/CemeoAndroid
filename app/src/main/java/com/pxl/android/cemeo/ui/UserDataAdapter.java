@@ -50,12 +50,13 @@ public class UserDataAdapter extends SingleTypeAdapter<User> {
 
     @Override
     protected int[] getChildViewIds() {
-        return new int[]{R.id.iv_avatar, R.id.tv_name};
+        return new int[]{R.id.iv_avatar, R.id.tv_email , R.id.tv_firstname , R.id.tv_lastname , R.id.tv_location_n , R.id.tv_location_s,R.id.tv_location_ci , R.id.tv_location_co , R.id.tv_username };
     }
 
 
     @Override
     protected void update(int position, User user) {
+
 
         Picasso.with(BootstrapApplication.getInstance())
                 //.load(user.getAvatarUrl()) --> afb van de spectifieke gebruiker laden
@@ -63,9 +64,14 @@ public class UserDataAdapter extends SingleTypeAdapter<User> {
                 .placeholder(R.drawable.gravatar_icon)
                 .into(imageView(0));
 
-        setText(1, String.format("%1$s %2$s", user.getFirstName(), user.getLastName()));
-
-
+        setText(8, String.format("%s", user.getUserName()));
+        setText(1, String.format("%s", user.getEMail()));
+        setText(2, String.format("%s", user.getFirstName()));
+        setText(3, String.format("%s", user.getLastName()));
+        setText(4, String.format("%s", user.getPreferedLocation().getName()));
+        setText(5, String.format("%s", user.getPreferedLocation().getStreet()));
+        setText(6, String.format("%s", user.getPreferedLocation().getCity()));
+        setText(7, String.format("%s", user.getPreferedLocation().getCountry()));
     }
 
 

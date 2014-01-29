@@ -16,6 +16,7 @@ import com.pxl.android.cemeo.authenticator.LogoutService;
 import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.util.Ln;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,14 +39,16 @@ public class UserDataFragment extends ItemListFragment<User> {
         Injector.inject(this);
     }
 
+
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         setEmptyText(R.string.no_user_info);
 
-
     }
+
 
     @Override
     protected void configureList(Activity activity, ListView listView) {
@@ -71,15 +74,15 @@ public class UserDataFragment extends ItemListFragment<User> {
             public List<User> loadData() throws Exception {
 
                 try {
-                    List latest = null;
+                    List<User> latest = new ArrayList<User>();
+
 
 
                     if (getActivity() != null)
-                        //latest = serviceProvider.getService(getActivity()).getUserData();
+
                         user = serviceProvider.getService(getActivity()).getUserData();
 
                     if (user != null){
-                        Ln.d("statuslog : ---> : %s", user.getEMail());
                         latest.add(user);
                         return latest;
                     }
@@ -109,6 +112,7 @@ public class UserDataFragment extends ItemListFragment<User> {
         super.onLoadFinished(loader, items);
 
     }
+
 
     @Override
     protected int getErrorMessage(Exception exception) {

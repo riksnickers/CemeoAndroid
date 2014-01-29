@@ -14,6 +14,9 @@ import com.pxl.android.cemeo.ui.LocationsActivity;
 import com.pxl.android.cemeo.ui.LocationsListFragment;
 import com.pxl.android.cemeo.ui.MeetingActivity;
 import com.pxl.android.cemeo.ui.MeetingListFragment;
+import com.pxl.android.cemeo.ui.PropositionActivity;
+import com.pxl.android.cemeo.ui.PropositionListFragment;
+import com.pxl.android.cemeo.ui.SelectFavLocationActivity;
 import com.pxl.android.cemeo.ui.SummaryActivity;
 import com.pxl.android.cemeo.ui.SummaryFragment;
 import com.pxl.android.cemeo.ui.UserActivity;
@@ -46,6 +49,8 @@ import dagger.Provides;
                         //CheckInsListFragment.class,
                         //NewsActivity.class,
                         //NewsListFragment.class,
+                        PropositionActivity.class,
+                        PropositionListFragment.class,
                         MeetingActivity.class,
                         MeetingListFragment.class,
                         CreateMeetingAddContactActivity.class,
@@ -56,7 +61,8 @@ import dagger.Provides;
                         SummaryFragment.class,
                         SummaryActivity.class,
                         UserActivity.class,
-                        UserListFragment.class
+                        UserListFragment.class,
+                        SelectFavLocationActivity.class
 
                 }
 

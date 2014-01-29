@@ -14,6 +14,7 @@
     <string name="page_user_data">User Information</string>
     <string name="page_contacts">Contacts</string>
     <string name="page_checkins">Check In\'s</string>
+    <string name="page_propositions">Propositions</string>
     <string name="page_locations">Locations</string>
     <string name="page_summary">Summary</string>
     <string name="title_column">Title</string>
@@ -31,11 +32,13 @@
     <string name="error_loading_news">Loading news failed!</string>
     <string name="error_loading_checkins">Loading check-ins failed!</string>
     <string name="error_loading_meetings">Loading meetings failed!</string>
+    <string name="error_loading_propositions">Loading propositions failed!</string>
     <string name="error_loading_contacts">Loading contacts failed!</string>
     <string name="error_loading_locations">Loading locations failed!</string>
     <string name="no_users">No Users Available</string>
     <string name="no_news">No News Available</string>
     <string name="no_meetings">No Meetings Available</string>
+    <string name="no_propositions">No Propositions Available</string>
     <string name="no_contacts">No Contacts Available</string>
     <string name="no_locations">No Locations Available</string>
     <string name="no_user_info">No User Information Available</string>
@@ -86,7 +89,10 @@
     <string name="create_meeting_location">Location</string>
     <string name="create_meeting_summary">Summary</string>
     <string name="create_meeting_next_addcontacts">Next</string>
+    <string name="change_location_btn">Change location</string>
     <string name="create_meeting_next_timeframe">Next</string>
+    <string name="label_btn_accept">Accept</string>
+    <string name="label_btn_reject">Reject</string>
     <string name="create_meeting_next_create">Create Meeting!</string>
     <string name="settings_menu">Settings</string>
     <string name="home">Home</string>
@@ -97,13 +103,19 @@
     <!-- Show Userinfo -->
 
     <string name="label_user_info">User Information</string>
-    <string name="label_info_email">E-mail :</string>
-    <string name="label_info_firstname">Firstname :</string>
-    <string name="label_info_lastname">Lastname :</string>
-    <string name="label_info_location">Location :</string>
-    <string name="label_info_userid">User id :</string>
-    <string name="label_info_username">Username :</string>
+    <string name="label_info_email">E-mail</string>
+    <string name="label_info_firstname">Firstname</string>
+    <string name="label_info_lastname">Lastname</string>
+    <string name="label_info_location">Favorite Location</string>
+    <string name="label_info_userid">User id</string>
+    <string name="label_info_username">Username</string>
 
+    <string name="label_info_loc_name">Name</string>
+    <string name="label_info_loc_city">City</string>
+    <string name="label_info_loc_street">Street</string>
+    <string name="label_info_loc_country">Country</string>
+
+    <string name="label_info_loc_changebtn">Change location</string>
 
     <!-- Create meeting -->
 

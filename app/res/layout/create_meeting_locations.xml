@@ -37,16 +37,16 @@
 
 
         <Button
-            android:id="@+id/locationbtn"
+            android:id="@+id/sendlocationbtn"
             style="@style/ShadowText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_background_states"
             android:gravity="center"
-            android:onClick="nextFragment"
+            android:onClick="sendLocation"
             android:padding="10dp"
-            android:text="@string/create_meeting_next_addcontacts"
+            android:text="@string/change_location_btn"
             android:textColor="@color/text"
             android:textSize="26sp"
             android:textStyle="bold" />

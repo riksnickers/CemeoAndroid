@@ -13,7 +13,7 @@ public class User implements Serializable {
     protected String FirstName;
     protected String aspUser;
     protected String LastName;
-    protected String PreferedLocation;
+    protected Location PreferedLocation;
     protected String UserId;
     protected String UserName;
 
@@ -42,7 +42,7 @@ public class User implements Serializable {
         return EMail;
     }
 
-    public String getPreferedLocation() {
+    public Location getPreferedLocation() {
         return PreferedLocation;
     }
 

@@ -41,8 +41,10 @@ public class LocationsListAdapter extends SingleTypeAdapter<Location> {
 
     @Override
     public long getItemId(final int position) {
-        String id = getItem(position).getLocationID();
-        return !TextUtils.isEmpty(id) ? id.hashCode() : super.getItemId(position);
+        int id = getItem(position).getLocationID();
+        //slechte code
+        String id2 = Integer.toString(id);
+        return !TextUtils.isEmpty(id2) ? id2.hashCode() : super.getItemId(position);
     }
 
     @Override

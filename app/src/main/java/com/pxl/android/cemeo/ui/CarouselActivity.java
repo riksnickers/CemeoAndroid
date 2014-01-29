@@ -3,10 +3,12 @@ package com.pxl.android.cemeo.ui;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.accounts.AccountsException;
 import android.accounts.OperationCanceledException;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
@@ -16,19 +18,22 @@ import com.google.android.gcm.GCMRegistrar;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.BootstrapService;
+import com.pxl.android.cemeo.gcm.GCMUtils;
 import com.pxl.android.cemeo.util.Ln;
 import com.pxl.android.cemeo.util.SafeAsyncTask;
 import com.viewpagerindicator.TitlePageIndicator;
 
-import net.jarlehansen.android.gcm.client.GCMUtils;
 import net.simonvt.menudrawer.MenuDrawer;
 
+import java.io.IOException;
 import java.net.SocketTimeoutException;
 
 import javax.inject.Inject;
 
 import butterknife.InjectView;
 import butterknife.Views;
+
+import static com.pxl.android.cemeo.core.Constants.Extra.USER;
 
 
 /**
@@ -122,14 +127,38 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             @Override
             public Boolean call() {
 
+
+                try {
+                    String authkey = serviceProvider.getService(getParent()).getApiKey();
+                    GCMUtils.setAuthKey(authkey);
+                    Ln.d("statuslog : test ********" + GCMUtils.getAuthKey());
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (AccountsException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                //dev only
+                //GCMRegistrar.checkDevice(getApplicationContext());
+                //GCMUtils.checkExtended(getApplicationContext());
+
                 GCMRegistrar.checkDevice(getApplicationContext());
                 GCMUtils.checkExtended(getApplicationContext());
                 GCMUtils.getAndSendRegId(getApplicationContext());
+
+
+
+                //GCMUtils.getAndSendRegId(getApplicationContext());
 
                 return true;
 
 
             }
+
+
 
         }.execute();
     }
@@ -172,6 +201,15 @@ public class CarouselActivity extends BootstrapFragmentActivity {
     private void navigateToCreateMeeting() {
         final Intent i = new Intent(this, CreateMeetingAddContactActivity.class);
         startActivity(i);
+    }
+
+    public void changeLocation(View view){
+
+        Ln.d("statuslog : change location !");
+        startActivity(new Intent(this, SelectFavLocationActivity.class));
+
+
+
     }
 
 

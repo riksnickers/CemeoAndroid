@@ -55,7 +55,7 @@ public class UserDataActivity extends BootstrapActivity {
         email.setText(user.getEMail());
         firstname.setText(user.getFirstName());
         lastname.setText(user.getLastName());
-        location.setText(user.getPreferedLocation());
+        location.setText(user.getPreferedLocation().getName());
         userid.setText(user.getUserId());
         username.setText(user.getUserName());
 

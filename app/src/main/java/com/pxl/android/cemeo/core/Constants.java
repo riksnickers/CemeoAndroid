@@ -81,9 +81,19 @@ public class Constants {
         public static final String URL_MEETING = URL_BASE + "/api/Meeting/Upcomming?latest=10";
 
         /**
+         * List Propositions URL
+         */
+        public static final String URL_PROPOSITION = URL_BASE + "/api/Proposition/All";
+
+        /**
          * Create Meetings URL
          */
         public static final String URL_CREATE_MEETING = URL_BASE + "/api/Meeting/Schedule";
+
+        /**
+         * Set Location URL
+         */
+        public static final String URL_SET_LOCATION = URL_BASE + "/api/Account/SetLocation";
 
 
         /**
@@ -111,6 +121,8 @@ public class Constants {
         public static final String NEWS_ITEM = "news_item";
 
         public static final String MEETING = "meeting";
+
+        public static final String PROPOSITION = "proposition";
 
         public static final String USER = "user";
 

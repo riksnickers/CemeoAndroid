@@ -7,7 +7,7 @@ public class Location implements Serializable {
 
     //private static final long serialVersionUID = -7495897652017488196L;
 
-    protected String LocationID;
+    protected int LocationID;
     protected String Name;
     protected String Street;
     protected String Number;
@@ -18,11 +18,11 @@ public class Location implements Serializable {
     protected String Addition;
 
 
-    public String getLocationID() {
+    public int getLocationID() {
         return LocationID;
     }
 
-    public void setLocationID(String locationID) {
+    public void setLocationID(int locationID) {
         LocationID = locationID;
     }
 

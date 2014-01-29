@@ -1,5 +1,6 @@
 package com.pxl.android.cemeo.ui;
 
+import android.accounts.AccountsException;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.github.kevinsawicki.wishlist.Toaster;
+import com.google.android.gcm.GCMRegistrar;
+import com.google.gson.Gson;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.Injector;
 import com.pxl.android.cemeo.R;
@@ -20,13 +24,21 @@ import com.pxl.android.cemeo.authenticator.LogoutService;
 import com.pxl.android.cemeo.core.Contact;
 import com.pxl.android.cemeo.core.Location;
 import com.pxl.android.cemeo.core.OnDataPass;
+import com.pxl.android.cemeo.gcm.GCMUtils;
+import com.pxl.android.cemeo.gcm.log.GCMUtilsLog;
 import com.pxl.android.cemeo.util.Ln;
+import com.pxl.android.cemeo.util.SafeAsyncTask;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import static com.pxl.android.cemeo.core.Constants.Http.URL_CREATE_MEETING;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_MEETING;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_SET_LOCATION;
 
 /**
  * Created by jordy on 12/01/14.
@@ -41,6 +53,7 @@ public class LocationsListFragment extends ItemListFragment<Location> {
     OnDataPass dataPasser;
 
     Location selected;
+    private String json;
 
 
 
@@ -113,7 +126,7 @@ public class LocationsListFragment extends ItemListFragment<Location> {
         };
 
     }
-
+/*
 
     public void onListItemClick(ListView l, View v, int position, long id) {
 
@@ -128,7 +141,20 @@ public class LocationsListFragment extends ItemListFragment<Location> {
 
     }
 
+*/
 
+    public void onListItemClick(ListView l, View v, int position, long id) {
+
+        int checked = l.getCheckedItemPosition();
+
+        selected = (Location) l.getItemAtPosition(checked);
+        //Toast.makeText(l.getContext(), "Checked ! " + selected.getName() , Toast.LENGTH_SHORT).show();
+
+        passLocation(selected);
+
+
+
+    }
 
 
     @Override
@@ -157,6 +183,7 @@ public class LocationsListFragment extends ItemListFragment<Location> {
     public void passLocation(Location selected) {
         dataPasser.onLocationPass(selected);
     }
+
 
 
 }
