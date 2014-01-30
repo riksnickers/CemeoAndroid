@@ -1,11 +1,16 @@
 package com.pxl.android.cemeo.ui;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.pxl.android.cemeo.R;
+import com.pxl.android.cemeo.core.Contact;
 import com.pxl.android.cemeo.core.Location;
+import com.pxl.android.cemeo.core.OnDataPass;
+
+import java.util.List;
 
 import butterknife.InjectView;
 
@@ -39,6 +44,7 @@ public class SummaryActivity extends BootstrapActivity {
 
 
     }
+
 
 
 

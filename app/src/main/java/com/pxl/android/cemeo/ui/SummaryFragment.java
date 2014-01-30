@@ -18,6 +18,9 @@ import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.Injector;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.authenticator.LogoutService;
+import com.pxl.android.cemeo.core.Contact;
+import com.pxl.android.cemeo.core.Location;
+import com.pxl.android.cemeo.core.OnDataPass;
 import com.pxl.android.cemeo.ui.CreateMeetingAddContactActivity;
 
 import java.util.Collections;
@@ -37,8 +40,18 @@ public class SummaryFragment extends SherlockFragment {
     @Inject
     protected LogoutService logoutService;
 
+    protected OnDataPass dataPasser;
+
     @InjectView(R.id.tv_summary)
     TextView summary;
+
+    private Location l;
+    private String duration;
+    private String time;
+    private String date;
+    private List<Contact> selected;
+    private List<Contact> req;
+
 
 
     @Override
@@ -46,6 +59,11 @@ public class SummaryFragment extends SherlockFragment {
         super.onCreate(savedInstanceState);
 
         Injector.inject(this);
+/*
+        getData();
+
+        summary.setText(l.getName());
+        */
 
     }
 
@@ -62,6 +80,28 @@ public class SummaryFragment extends SherlockFragment {
         return inflater.inflate(R.layout.create_meeting_summary, null);
     }
 
+
+/*
+    @Override
+    public void onAttach(Activity a) {
+
+        super.onAttach(a);
+        dataPasser = (OnDataPass) a;
+
+    }
+*/
+
+    public void getData() {
+        /*
+        l = dataPasser.getLocation();
+        date = dataPasser.getDate();
+        duration = dataPasser.getDuration();
+        time = dataPasser.getTime();
+        selected = dataPasser.getSelected();
+        req = dataPasser.getRequired();
+
+        */
+    }
 
 
 }

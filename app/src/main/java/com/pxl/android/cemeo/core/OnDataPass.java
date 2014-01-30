@@ -12,5 +12,10 @@ public interface OnDataPass {
     public void onTimeFramePass(String date , String time , String duration);
     public void onLocationPass(Location selected);
     public List<Contact> getSelected();
+    public List<Contact> getRequired();
+    public Location getLocation();
+    public String getDate();
+    public String getTime();
+    public String getDuration();
 
 }

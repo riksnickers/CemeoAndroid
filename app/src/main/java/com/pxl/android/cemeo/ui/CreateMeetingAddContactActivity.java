@@ -272,39 +272,34 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     @Override
     public void onLocationPass(Location location) {
 
-        /*
+
         this.location = location;
+        /*
         Ln.d("statuslog : Location : %s - %s - %s" , this.location.getName() , this.location.getCity() , this.location.getCountry() );
         */
     }
 
-    private CreateMeetingAddContactActivity show(final View view) {
-        ViewUtils.setGone(view, false);
-        return this;
+    @Override
+    public List<Contact> getRequired() {
+        return req;
     }
 
-    private CreateMeetingAddContactActivity hide(final View view) {
-        ViewUtils.setGone(view, true);
-        return this;
-    }
-
-
-
+    @Override
     public Location getLocation() {
         return location;
     }
 
-
+    @Override
     public String getDate() {
         return date;
     }
 
-
+    @Override
     public String getTime() {
         return time;
     }
 
-
+    @Override
     public String getDuration() {
         return duration;
     }

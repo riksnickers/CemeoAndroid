@@ -22,6 +22,7 @@ import com.pxl.android.cemeo.gcm.GCMUtils;
 import com.pxl.android.cemeo.gcm.log.GCMUtilsLog;
 import com.pxl.android.cemeo.ui.BootstrapActivity;
 import com.pxl.android.cemeo.ui.CarouselActivity;
+import com.pxl.android.cemeo.util.Ln;
 
 import org.apache.http.message.BasicNameValuePair;
 
@@ -36,7 +37,9 @@ import java.util.concurrent.ExecutionException;
 import javax.inject.Inject;
 
 import static android.accounts.AccountManager.KEY_AUTHTOKEN;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_AUTH;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_CREATE_MEETING;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_REGISTER;
 
 /**
  * User: Jarle Hansen (hansjar@gmail.com)
@@ -145,9 +148,17 @@ public class GCMSenderImpl extends AsyncTask<Void, Void, GCMSenderResponse> impl
             String key = "Bearer " + GCMUtils.getAuthKey();
             GCMUtilsLog.i("Key:", key, " code:" + key);
 
-            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", key).header("Content-Type" , "application/json").send(createRequestBody()).connectTimeout(20000);
+            String json = createRequestBody();
+
+            if(json != null){
+            HttpRequest request = HttpRequest.post(URL_REGISTER).header("Authorization", key).header("Content-Type" , "application/json").send(json).connectTimeout(500);
+
+            //Ln.d("statuslog: %s" , request.body());
+            Ln.d("statuslog: %s" , request.code());
 
             return new GCMSenderResponse(request.code(), null);
+            }
+        return null;
 
 
 

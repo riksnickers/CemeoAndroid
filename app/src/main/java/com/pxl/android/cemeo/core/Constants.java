@@ -46,6 +46,10 @@ public class Constants {
         //thuis
         //public static final String URL_BASE = "http://192.168.0.101:12429";
 
+        //blade
+        //public static final String URL_BASE = "http://193.190.154.242";
+        //public static final String URL_BASE = "http://app.cemeo.be";
+
         //azure
         public static final String URL_BASE = "http://cemeo.azurewebsites.net";
 
@@ -95,6 +99,15 @@ public class Constants {
          */
         public static final String URL_SET_LOCATION = URL_BASE + "/api/Account/SetLocation";
 
+        /**
+         * Set registration URL
+         */
+        public static final String URL_REGISTER = URL_BASE + "/api/Account/RegisterDevice";
+
+        /**
+         * Set registration URL
+         */
+        public static final String URL_PROP_ANSWER = URL_BASE + "/api/Proposition/Answer";
 
         /**
          * List Checkin's URL

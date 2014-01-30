@@ -145,6 +145,31 @@ public class SelectFavLocationActivity extends BootstrapFragmentActivity impleme
         return null;
     }
 
+    @Override
+    public List<Contact> getRequired() {
+        return null;
+    }
+
+    @Override
+    public Location getLocation() {
+        return null;
+    }
+
+    @Override
+    public String getDate() {
+        return null;
+    }
+
+    @Override
+    public String getTime() {
+        return null;
+    }
+
+    @Override
+    public String getDuration() {
+        return null;
+    }
+
 
     public void sendLocation(View view) {
 

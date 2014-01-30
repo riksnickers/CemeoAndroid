@@ -15,10 +15,18 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
+import com.github.kevinsawicki.http.HttpRequest;
 import com.google.android.gcm.GCMRegistrar;
+import com.google.gson.Gson;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.BootstrapService;
+import com.pxl.android.cemeo.core.Contact;
+import com.pxl.android.cemeo.core.MeetingProposition;
+import com.pxl.android.cemeo.core.Proposition;
+import com.pxl.android.cemeo.core.PropositionAnswer;
+import com.pxl.android.cemeo.core.RegisterDevice;
+import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.gcm.GCMUtils;
 import com.pxl.android.cemeo.util.Ln;
 import com.pxl.android.cemeo.util.SafeAsyncTask;
@@ -28,6 +36,7 @@ import net.simonvt.menudrawer.MenuDrawer;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,6 +44,8 @@ import butterknife.InjectView;
 import butterknife.Views;
 
 import static com.pxl.android.cemeo.core.Constants.Extra.USER;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_PROP_ANSWER;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_REGISTER;
 
 
 /**
@@ -53,6 +64,8 @@ public class CarouselActivity extends BootstrapFragmentActivity {
     private MenuDrawer menuDrawer;
 
     private boolean userHasAuthenticated = false;
+    private String json;
+    private List<MeetingProposition> proplist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,13 +228,216 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
 
     public void accept(View view){
-        Ln.d("statuslog : accept !");
-        Toast.makeText(getApplicationContext(), "Meeting Accepted !", Toast.LENGTH_LONG).show();
+
+        new SafeAsyncTask<Boolean>() {
+
+            @Override
+            public Boolean call()throws Exception{
+
+                proplist = serviceProvider.getService(getParent()).getPropositions();
+
+                //json van maken
+                PropositionAnswer answer = new PropositionAnswer();
+                answer.setAnswer(1);
+                answer.setInviteeID(proplist.get(0).getInviteeID());
+
+                Gson gson = new Gson();
+                json = gson.toJson(answer);
+
+                final BootstrapService svc = serviceProvider.getService(CarouselActivity.this);
+
+                Boolean res = svc.answerProposition(answer);
+
+                return res == true;
+
+
+            }
+
+
+            @Override
+            protected void onException(Exception e) throws RuntimeException {
+                super.onException(e);
+                if (e instanceof OperationCanceledException) {
+                    Toast.makeText( getApplicationContext(), "Failed to accept meeting!" , Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            protected void onSuccess(Boolean res) throws Exception {
+
+                if(res == true){
+                    Toast.makeText( getApplicationContext(), "Meeting Accepted !" , Toast.LENGTH_LONG).show();
+
+                }else{
+                    Toast.makeText( getApplicationContext(), "Failed to accept meeting!" , Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+        }.execute();
+
+
+
     }
 
     public void reject(View view){
-        Ln.d("statuslog : reject !");
-        Toast.makeText(getApplicationContext(), "Meeting Rejected !", Toast.LENGTH_LONG).show();
+
+        new SafeAsyncTask<Boolean>() {
+
+            @Override
+            public Boolean call()throws Exception{
+
+                proplist = serviceProvider.getService(getParent()).getPropositions();
+
+                //json van maken
+                PropositionAnswer answer = new PropositionAnswer();
+                answer.setAnswer(2);
+                answer.setInviteeID(proplist.get(0).getInviteeID());
+
+                Gson gson = new Gson();
+                json = gson.toJson(answer);
+
+                final BootstrapService svc = serviceProvider.getService(CarouselActivity.this);
+
+                Boolean res = svc.answerProposition(answer);
+
+                return res == true;
+
+
+            }
+
+
+            @Override
+            protected void onException(Exception e) throws RuntimeException {
+                super.onException(e);
+                if (e instanceof OperationCanceledException) {
+                    Toast.makeText( getApplicationContext(), "Failed to reject the meeting!" , Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            protected void onSuccess(Boolean res) throws Exception {
+
+                if(res == true){
+                    Toast.makeText(getApplicationContext(), "Meeting Rejected !", Toast.LENGTH_LONG).show();
+                    //finish();
+                }else{
+                    Toast.makeText( getApplicationContext(), "Failed to reject the meeting!" , Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+
+        }.execute();
+
+
+    }
+
+    public void unconfirm(View view){
+
+        new SafeAsyncTask<Boolean>() {
+
+            @Override
+            public Boolean call()throws Exception{
+
+                proplist = serviceProvider.getService(getParent()).getPropositions();
+
+                //json van maken
+                PropositionAnswer answer = new PropositionAnswer();
+                answer.setAnswer(0);
+                answer.setInviteeID(proplist.get(0).getInviteeID());
+
+                Gson gson = new Gson();
+                json = gson.toJson(answer);
+
+                final BootstrapService svc = serviceProvider.getService(CarouselActivity.this);
+
+                Boolean res = svc.answerProposition(answer);
+
+                return res == true;
+
+
+            }
+
+
+            @Override
+            protected void onException(Exception e) throws RuntimeException {
+                super.onException(e);
+                if (e instanceof OperationCanceledException) {
+                    Toast.makeText( getApplicationContext(), "Failed to uncomfirm meeting!" , Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            protected void onSuccess(Boolean res) throws Exception {
+
+                if(res == true){
+                    Toast.makeText(getApplicationContext(), "Meeting Unconfirmed !", Toast.LENGTH_LONG).show();
+                    //finish();
+                }else{
+                    Toast.makeText( getApplicationContext(), "Failed to uncomfirm meeting!" , Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+
+        }.execute();
+
+
+    }
+
+    public void online(View view){
+
+
+        new SafeAsyncTask<Boolean>() {
+
+            @Override
+            public Boolean call()throws Exception{
+
+                proplist = serviceProvider.getService(getParent()).getPropositions();
+
+                //json van maken
+                PropositionAnswer answer = new PropositionAnswer();
+                answer.setAnswer(3);
+                answer.setInviteeID(proplist.get(0).getInviteeID());
+
+                Gson gson = new Gson();
+                json = gson.toJson(answer);
+
+                final BootstrapService svc = serviceProvider.getService(CarouselActivity.this);
+
+                Boolean res = svc.answerProposition(answer);
+
+                return res == true;
+
+
+            }
+
+
+            @Override
+            protected void onException(Exception e) throws RuntimeException {
+                super.onException(e);
+                if (e instanceof OperationCanceledException) {
+                    Toast.makeText( getApplicationContext(), "Failed to accept meeting online!" , Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            protected void onSuccess(Boolean res) throws Exception {
+
+                if(res == true){
+                    Toast.makeText(getApplicationContext(), "Meeting Accepted Online !", Toast.LENGTH_LONG).show();
+                    //finish();
+                }else{
+                    Toast.makeText( getApplicationContext(), "Failed to accept meeting online!" , Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+
+        }.execute();
+
+
     }
 
 

@@ -56,30 +56,59 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
 
-    <Button
-        android:id="@+id/acceptbtn"
-        style="@style/ShadowText"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:background="@drawable/button_background_states"
-        android:text="@string/label_btn_accept"
-        android:textColor="@color/text"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:onClick="accept"
-        android:layout_marginRight="10dp"/>
+        <Button
+            android:id="@+id/unconfirmedbtn"
+            style="@style/ShadowText"
+            android:layout_width="85dp"
+            android:layout_height="35dp"
+            android:background="@drawable/button_background_orange"
+            android:text="@string/label_btn_unconfirmed"
+            android:textColor="@color/text"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:onClick="unconfirm"
+            android:layout_marginRight="1dp"/>
 
     <Button
         android:id="@+id/rejectbtn"
         style="@style/ShadowText"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:background="@drawable/button_background_disabled"
+        android:layout_width="85dp"
+        android:layout_height="35dp"
+        android:background="@drawable/button_background_red"
         android:text="@string/label_btn_reject"
         android:textColor="@color/text"
-        android:textSize="26sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        android:onClick="reject"/>
+        android:onClick="reject"
+        android:layout_marginRight="1dp"/>
+
+        <Button
+            android:id="@+id/onlinebtn"
+            style="@style/ShadowText"
+            android:layout_width="85dp"
+            android:layout_height="35dp"
+            android:background="@drawable/button_background_enabled"
+            android:text="@string/label_btn_online"
+            android:textColor="@color/text"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:onClick="online"
+            android:layout_marginRight="1dp"/>
+
+        <Button
+            android:id="@+id/acceptbtn"
+            style="@style/ShadowText"
+            android:layout_width="85dp"
+            android:layout_height="35dp"
+            android:background="@drawable/button_background_green"
+            android:text="@string/label_btn_accept"
+            android:textColor="@color/text"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:onClick="accept"
+            android:layout_marginRight="1dp"/>
+
+
     </LinearLayout>
 
 </LinearLayout>

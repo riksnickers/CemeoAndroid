@@ -95,6 +95,8 @@
     <string name="create_meeting_next_timeframe">Next</string>
     <string name="label_btn_accept">Accept</string>
     <string name="label_btn_reject">Reject</string>
+    <string name="label_btn_online">Online</string>
+    <string name="label_btn_unconfirmed">Unconfirmed</string>
     <string name="create_meeting_next_create">Create Meeting!</string>
     <string name="settings_menu">Settings</string>
     <string name="home">Home</string>

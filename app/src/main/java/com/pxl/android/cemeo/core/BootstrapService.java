@@ -26,6 +26,7 @@ import static com.pxl.android.cemeo.core.Constants.Http.URL_LOCATIONS;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_MEETING;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_NEWS;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_PROPOSITION;
+import static com.pxl.android.cemeo.core.Constants.Http.URL_PROP_ANSWER;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_USER_DATA;
 import static com.pxl.android.cemeo.core.Constants.Http.URL_CREATE_MEETING;
 
@@ -224,7 +225,43 @@ public class BootstrapService {
 
             //HttpRequest request = execute(HttpRequest.post(URL_CREATE_MEETING).send(json));
 
-            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json);
+            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json).connectTimeout(500);
+
+            if(request.ok()){
+                return true;
+            }else{
+                return false;
+            }
+
+
+
+
+
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
+
+    /**
+     * Answer prop
+     *
+     * @return result
+     * @throws IOException
+     */
+
+    public Boolean answerProposition(PropositionAnswer answer) throws IOException {
+        try {
+
+            Gson gson = new Gson();
+            String json = gson.toJson(answer);
+
+            Ln.d("statuslog : json = %s", json);
+
+            //HttpRequest request = execute(HttpRequest.post(URL_CREATE_MEETING).send(json));
+
+            HttpRequest request = HttpRequest.post(URL_PROP_ANSWER).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json).connectTimeout(500);
+
+            Ln.d("statuslog : req = %s" , request.code());
 
             if(request.ok()){
                 return true;
