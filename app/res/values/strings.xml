@@ -13,6 +13,7 @@
     <string name="page_users">Users</string>
     <string name="page_user_data">User Information</string>
     <string name="page_contacts">Contacts</string>
+    <string name="page_reqcontacts">RequiredContacts</string>
     <string name="page_checkins">Check In\'s</string>
     <string name="page_propositions">Propositions</string>
     <string name="page_locations">Locations</string>
@@ -85,6 +86,7 @@
     <string name="timer">Timer</string>
     <string name="create_meeting">Create Meeting</string>
     <string name="create_meeting_add">Add Contacts</string>
+    <string name="create_meeting_req">Select Required</string>
     <string name="create_meeting_timeframe">Time Frame</string>
     <string name="create_meeting_location">Location</string>
     <string name="create_meeting_summary">Summary</string>

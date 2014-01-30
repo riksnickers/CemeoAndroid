@@ -42,6 +42,7 @@ import javax.inject.Inject;
 import butterknife.InjectView;
 import butterknife.Views;
 
+import static com.pxl.android.cemeo.core.Constants.Extra.CONTACT;
 import static com.pxl.android.cemeo.core.Constants.Extra.CONTACTS_SELECTED;
 import static com.pxl.android.cemeo.core.Constants.Extra.USER;
 
@@ -58,6 +59,7 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     ProgressBar prog;
 
     protected List<Contact> selected;
+    protected List<Contact> req;
     protected String date;
     protected String time;
     protected String duration;
@@ -147,24 +149,38 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     public void createMeeting(View v) throws Exception{
 
         Schedule schedule = new Schedule();
-        schedule.setCreator(4);
+        schedule.setCreator(1006);
+
 
         //participants
-        Participant p1 = new Participant();
-        Participant p2 = new Participant();
-        p1.setId(1);
-        p1.setImportant(true);
-        p2.setId(2);
-        p2.setImportant(true);
         List<Participant> list = new ArrayList<Participant>();
-        list.add(p1);
-        list.add(p2);
+        for(Contact c : selected ){
 
+            Participant p1 = new Participant();
+            p1.setId( Integer.parseInt(c.getId()) );
+            if(req.contains(c)){
+               p1.setImportant(true);
+            }else{
+               p1.setImportant(false);
+            }
+            list.add(p1);
+        }
 
         schedule.setInvitedParticipants(list);
-        schedule.setDateindex(5);
+
+        if(this.date.compareTo("Today") == 1){
+            schedule.setDateindex(1);
+        }else{
+            schedule.setDateindex(14);
+        }
         schedule.setBeforeDate("2014-01-28T20:25:58+0100");
-        schedule.setDuration(1800);
+
+
+        if(this.duration.compareTo("30 min") == 1){
+            schedule.setDuration(30);
+        }else{
+            schedule.setDuration(60);
+        }
 
 
         final Schedule s = schedule;
@@ -221,10 +237,12 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
 
 
     @Override
-    public void onDataPass(List<Contact> selected) {
-
+    public void onReqContactsPass(List<Contact> req) {
+        this.req = req;
 
     }
+
+
 
     @Override
     public void onTimeFramePass(String date , String time , String duration) {
@@ -246,11 +264,18 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     }
 
     @Override
+    public List<Contact> getSelected(){
+        return this.selected;
+    }
+
+
+    @Override
     public void onLocationPass(Location location) {
 
+        /*
         this.location = location;
         Ln.d("statuslog : Location : %s - %s - %s" , this.location.getName() , this.location.getCity() , this.location.getCountry() );
-
+        */
     }
 
     private CreateMeetingAddContactActivity show(final View view) {
@@ -264,9 +289,6 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     }
 
 
-    public List<Contact> getSelected() {
-        return selected;
-    }
 
     public Location getLocation() {
         return location;

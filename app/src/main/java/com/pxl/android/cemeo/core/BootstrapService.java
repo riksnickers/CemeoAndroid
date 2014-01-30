@@ -220,11 +220,11 @@ public class BootstrapService {
             Gson gson = new Gson();
             String json = gson.toJson(schedule);
 
-            //Ln.d("statuslog : json = %s", json);
+            Ln.d("statuslog : json = %s", json);
 
             //HttpRequest request = execute(HttpRequest.post(URL_CREATE_MEETING).send(json));
 
-            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", "Bearer " + apiKey).send(json);
+            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json);
 
             if(request.ok()){
                 return true;

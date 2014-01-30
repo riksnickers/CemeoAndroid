@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
@@ -210,6 +211,17 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
 
 
+    }
+
+
+    public void accept(View view){
+        Ln.d("statuslog : accept !");
+        Toast.makeText(getApplicationContext(), "Meeting Accepted !", Toast.LENGTH_LONG).show();
+    }
+
+    public void reject(View view){
+        Ln.d("statuslog : reject !");
+        Toast.makeText(getApplicationContext(), "Meeting Rejected !", Toast.LENGTH_LONG).show();
     }
 
 

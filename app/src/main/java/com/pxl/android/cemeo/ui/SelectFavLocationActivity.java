@@ -116,8 +116,9 @@ public class SelectFavLocationActivity extends BootstrapFragmentActivity impleme
         }.execute();
     }
 
+
     @Override
-    public void onDataPass(List<Contact> selected) {
+    public void onReqContactsPass(List<Contact> selected) {
 
     }
 
@@ -139,6 +140,10 @@ public class SelectFavLocationActivity extends BootstrapFragmentActivity impleme
 
     }
 
+    @Override
+    public List<Contact> getSelected() {
+        return null;
+    }
 
 
     public void sendLocation(View view) {

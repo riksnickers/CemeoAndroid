@@ -42,13 +42,13 @@ public class CreateMeetingPagerAdapter extends FragmentPagerAdapter {
                 contactListFragment.setArguments(bundle);
                 return contactListFragment;
             case 1:
+                ReqContactListFragment reqcontactfragment = new ReqContactListFragment();
+                reqcontactfragment.setArguments(bundle);
+                return reqcontactfragment;
+            case 2:
                 TimeFrameFragment timeFrameFragment = new TimeFrameFragment();
                 timeFrameFragment.setArguments(bundle);
                 return timeFrameFragment;
-            case 2:
-                LocationsListFragment locationsFragment = new LocationsListFragment();
-                locationsFragment.setArguments(bundle);
-                return locationsFragment;
             case 3:
                 SummaryFragment summaryFragment = new SummaryFragment();
                 summaryFragment.setArguments(bundle);
@@ -64,9 +64,9 @@ public class CreateMeetingPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return resources.getString(R.string.page_contacts);
             case 1:
-                return resources.getString(R.string.page_timeframe);
+                return resources.getString(R.string.page_reqcontacts);
             case 2:
-                return resources.getString(R.string.page_locations);
+                return resources.getString(R.string.page_timeframe);
             case 3:
                 return resources.getString(R.string.page_summary);
             default:

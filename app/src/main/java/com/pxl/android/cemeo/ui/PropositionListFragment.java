@@ -111,4 +111,7 @@ public class PropositionListFragment extends ItemListFragment<MeetingProposition
     protected int getErrorMessage(Exception exception) {
         return R.string.error_loading_propositions;
     }
+
+
+
 }
