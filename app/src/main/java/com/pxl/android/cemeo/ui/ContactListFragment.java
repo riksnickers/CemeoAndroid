@@ -159,7 +159,7 @@ public class ContactListFragment extends ItemListFragment<Contact> {
 
 
             if (checked.get(i)){
-                if(!(selected.contains(l.getItemAtPosition(i))) || selected.size() == 0){
+                if(!(selected.contains(l.getItemAtPosition(i)))){
                     //Toast.makeText(l.getContext(), "Checked !", Toast.LENGTH_SHORT).show();
                     selected.add((Contact) l.getItemAtPosition(i));
                 }

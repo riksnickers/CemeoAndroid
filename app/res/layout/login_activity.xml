@@ -48,7 +48,7 @@
             <AutoCompleteTextView
                 android:id="@+id/et_email"
                 style="@style/SignInEditText"
-                android:text="jordy"
+                android:text="jordybaldewijns"
                 android:completionThreshold="1"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
@@ -69,7 +69,7 @@
             <EditText
                 android:id="@+id/et_password"
                 style="@style/SignInEditText"
-                android:text="test123"
+                android:text="jefjef91"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:password="true" />

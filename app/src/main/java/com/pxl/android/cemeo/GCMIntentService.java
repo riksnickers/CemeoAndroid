@@ -34,8 +34,9 @@ public class GCMIntentService extends GCMUtilsBaseIntentService {
         Ln.d("statuslog: Message received: %s", msg);
 
         try {
-            String result = get("http://cemeo.azurewebsites.net/api/Proposition/push");
+            //String result = get("http://cemeo.azurewebsites.net/api/Proposition/push");
 
+            String result = get("http://app.cemeo.be/api/Proposition/push");
             //Intent intent = new Intent(GCMUtilsActivity.MSG_ACTION);
             //intent.putExtra(GCMUtilsConstants.DATA_KEY_MSG, result);
             //context.sendBroadcast(intent);

@@ -87,7 +87,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
         checkAuth();
 
 
-        notifyMe();
+
 
 
 
@@ -131,6 +131,8 @@ public class CarouselActivity extends BootstrapFragmentActivity {
                 super.onSuccess(hasAuthenticated);
                 userHasAuthenticated = true;
                 initScreen();
+                notifyMe();
+
             }
         }.execute();
     }

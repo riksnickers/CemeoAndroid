@@ -14,6 +14,7 @@ import com.pxl.android.cemeo.Injector;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.authenticator.LogoutService;
 import com.pxl.android.cemeo.core.Meeting;
+import com.pxl.android.cemeo.core.Meetings;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +23,7 @@ import javax.inject.Inject;
 
 import static com.pxl.android.cemeo.core.Constants.Extra.MEETING;
 
-public class MeetingListFragment extends ItemListFragment<Meeting> {
+public class MeetingListFragment extends ItemListFragment<Meetings> {
 
     @Inject
     protected BootstrapServiceProvider serviceProvider;
@@ -52,9 +53,7 @@ public class MeetingListFragment extends ItemListFragment<Meeting> {
         listView.setFastScrollEnabled(true);
         listView.setDividerHeight(0);
 
-        getListAdapter()
-                .addHeader(activity.getLayoutInflater()
-                        .inflate(R.layout.meetings_list_item_labels, null));
+        //getListAdapter().addHeader(activity.getLayoutInflater().inflate(R.layout.meetings_list_item_labels, null));
     }
 
     @Override
@@ -70,12 +69,12 @@ public class MeetingListFragment extends ItemListFragment<Meeting> {
     }
 
     @Override
-    public Loader<List<Meeting>> onCreateLoader(int id, Bundle args) {
-        final List<Meeting> initialItems = items;
-        return new ThrowableLoader<List<Meeting>>(getActivity(), items) {
+    public Loader<List<Meetings>> onCreateLoader(int id, Bundle args) {
+        final List<Meetings> initialItems = items;
+        return new ThrowableLoader<List<Meetings>>(getActivity(), items) {
 
             @Override
-            public List<Meeting> loadData() throws Exception {
+            public List<Meetings> loadData() throws Exception {
                 try {
                     if (getActivity() != null) {
                         return serviceProvider.getService(getActivity()).getMeetings();
@@ -94,14 +93,14 @@ public class MeetingListFragment extends ItemListFragment<Meeting> {
     }
 
     @Override
-    protected SingleTypeAdapter<Meeting> createAdapter(List<Meeting> items) {
+    protected SingleTypeAdapter<Meetings> createAdapter(List<Meetings> items) {
         return new MeetingListAdapter(getActivity().getLayoutInflater(), items);
     }
 
     public void onListItemClick(ListView l, View v, int position, long id) {
-        Meeting meeting = ((Meeting) l.getItemAtPosition(position));
+        Meetings meetings = ((Meetings) l.getItemAtPosition(position));
 
-        startActivity(new Intent(getActivity(), MeetingActivity.class).putExtra(MEETING, meeting));
+        startActivity(new Intent(getActivity(), MeetingActivity.class).putExtra(MEETING, meetings));
     }
 
     @Override

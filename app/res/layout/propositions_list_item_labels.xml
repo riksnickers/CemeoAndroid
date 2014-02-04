@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:text="@string/meeting_state_column"
+        android:text="@string/meeting_time_column"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/table_text_header"
         android:textStyle="bold" />

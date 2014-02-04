@@ -55,7 +55,8 @@ public class UserDataAdapter extends SingleTypeAdapter<User> {
 
 
     @Override
-    protected void update(int position, User user) {
+    protected void update(int position, User item) {
+
 
 
         Picasso.with(BootstrapApplication.getInstance())
@@ -64,14 +65,16 @@ public class UserDataAdapter extends SingleTypeAdapter<User> {
                 .placeholder(R.drawable.gravatar_icon)
                 .into(imageView(0));
 
-        setText(8, String.format("%s", user.getUserName()));
-        setText(1, String.format("%s", user.getEMail()));
-        setText(2, String.format("%s", user.getFirstName()));
-        setText(3, String.format("%s", user.getLastName()));
-        setText(4, String.format("%s", user.getPreferedLocation().getName()));
-        setText(5, String.format("%s", user.getPreferedLocation().getStreet()));
-        setText(6, String.format("%s", user.getPreferedLocation().getCity()));
-        setText(7, String.format("%s", user.getPreferedLocation().getCountry()));
+        setText(8, String.format("%s", item.getUserName()));
+        setText(1, String.format("%s", item.getEMail()));
+        setText(2, String.format("%s", item.getFirstName()));
+        setText(3, String.format("%s", item.getLastName()));
+        setText(4, String.format("%s", item.getPreferedLocation().getName()));
+        setText(5, String.format("%s", item.getPreferedLocation().getStreet()));
+        setText(6, String.format("%s", item.getPreferedLocation().getCity()));
+        setText(7, String.format("%s", item.getPreferedLocation().getCountry()));
+
+
     }
 
 

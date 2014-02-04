@@ -9,9 +9,9 @@ public class MeetingActivity$$ViewInjector {
     View view;
     view = finder.findById(source, 2131099738);
     target.date = (android.widget.TextView) view;
-    view = finder.findById(source, 2131099739);
-    target.creator = (android.widget.TextView) view;
     view = finder.findById(source, 2131099740);
     target.location = (android.widget.TextView) view;
+    view = finder.findById(source, 2131099741);
+    target.room = (android.widget.TextView) view;
   }
 }

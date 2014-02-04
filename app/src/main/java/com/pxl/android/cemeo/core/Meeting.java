@@ -7,10 +7,8 @@ public class Meeting implements Serializable {
     private static final long serialVersionUID = -6641292855569752036L;
 
     private int meetingID;
-    private String creator;
-    private String date;
-    private String location;
-    private int state;
+    private String BeginTime;
+    private Double Duration;
 
     public int getMeetingID() {
         return meetingID;
@@ -20,35 +18,19 @@ public class Meeting implements Serializable {
         this.meetingID = meetingID;
     }
 
-    public String getCreator() {
-        return creator;
+    public String getBeginTime() {
+        return BeginTime;
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
+    public void setBeginTime(String beginTime) {
+        BeginTime = beginTime;
     }
 
-    public String getDate() {
-        return date;
+    public Double getDuration() {
+        return Duration;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
+    public void setDuration(Double duration) {
+        Duration = duration;
     }
 }

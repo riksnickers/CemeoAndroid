@@ -151,7 +151,7 @@ public class GCMSenderImpl extends AsyncTask<Void, Void, GCMSenderResponse> impl
             String json = createRequestBody();
 
             if(json != null){
-            HttpRequest request = HttpRequest.post(URL_REGISTER).header("Authorization", key).header("Content-Type" , "application/json").send(json).connectTimeout(500);
+            HttpRequest request = HttpRequest.post(URL_REGISTER).header("Authorization", key).header("Content-Type" , "application/json").send(json).connectTimeout(5000);
 
             //Ln.d("statuslog: %s" , request.body());
             Ln.d("statuslog: %s" , request.code());

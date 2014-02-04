@@ -48,10 +48,10 @@ public class Constants {
 
         //blade
         //public static final String URL_BASE = "http://193.190.154.242";
-        //public static final String URL_BASE = "http://app.cemeo.be";
+        public static final String URL_BASE = "http://app.cemeo.be";
 
         //azure
-        public static final String URL_BASE = "http://cemeo.azurewebsites.net";
+        //public static final String URL_BASE = "http://cemeo.azurewebsites.net";
 
         /**
          * Authentication URL
@@ -82,7 +82,7 @@ public class Constants {
         /**
          * List Upcoming meetings URL
          */
-        public static final String URL_MEETING = URL_BASE + "/api/Meeting/Upcomming?latest=10";
+        public static final String URL_MEETING = URL_BASE + "/api/Meeting/All";
 
         /**
          * List Propositions URL

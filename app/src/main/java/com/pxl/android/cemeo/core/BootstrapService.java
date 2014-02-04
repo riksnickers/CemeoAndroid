@@ -225,11 +225,13 @@ public class BootstrapService {
 
             //HttpRequest request = execute(HttpRequest.post(URL_CREATE_MEETING).send(json));
 
-            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json).connectTimeout(500);
+            HttpRequest request = HttpRequest.post(URL_CREATE_MEETING).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json).connectTimeout(800);
 
             if(request.ok()){
+                Ln.d("statuslog : meeting aanmaken is gelukt!");
                 return true;
             }else{
+                Ln.d("statuslog : meeting aanmaken is mislukt!");
                 return false;
             }
 
@@ -259,13 +261,15 @@ public class BootstrapService {
 
             //HttpRequest request = execute(HttpRequest.post(URL_CREATE_MEETING).send(json));
 
-            HttpRequest request = HttpRequest.post(URL_PROP_ANSWER).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json).connectTimeout(500);
+            HttpRequest request = HttpRequest.post(URL_PROP_ANSWER).header("Authorization", "Bearer " + apiKey).header("Content-Type" , "application/json").send(json).connectTimeout(5000);
 
             Ln.d("statuslog : req = %s" , request.code());
 
             if(request.ok()){
+                Ln.d("statuslog : Proposition is aanvaard !");
                 return true;
             }else{
+                Ln.d("statuslog : Proposition is aanvaarden is mislukt !");
                 return false;
             }
 
@@ -451,12 +455,12 @@ public class BootstrapService {
      * @throws IOException
      */
 
-    public List<Meeting> getMeetings() throws IOException {
+    public List<Meetings> getMeetings() throws IOException {
 
         try {
             HttpRequest request = execute(HttpRequest.get(URL_MEETING));
 
-            Meeting[] meetings = fromJson(request, Meeting[].class);
+            Meetings[] meetings = fromJson(request, Meetings[].class);
 
             if (request != null && meetings != null) {
                 return Arrays.asList(meetings);

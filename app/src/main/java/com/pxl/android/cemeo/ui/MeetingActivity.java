@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.Meeting;
+import com.pxl.android.cemeo.core.Meetings;
 
 import butterknife.InjectView;
 
@@ -12,14 +13,14 @@ import static com.pxl.android.cemeo.core.Constants.Extra.MEETING;
 
 public class MeetingActivity extends BootstrapActivity {
 
-    protected Meeting meetingItem;
+    protected Meetings meetings;
 
     @InjectView(R.id.tv_meeting_date)
     protected TextView date;
-    @InjectView(R.id.tv_meeting_creator)
-    protected TextView creator;
     @InjectView(R.id.tv_meeting_location)
     protected TextView location;
+    @InjectView(R.id.tv_meeting_room)
+    protected TextView room;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +29,17 @@ public class MeetingActivity extends BootstrapActivity {
         setContentView(R.layout.meetings);
 
         if (getIntent() != null && getIntent().getExtras() != null) {
-            meetingItem = (Meeting) getIntent().getExtras().getSerializable(MEETING);
+            meetings = (Meetings) getIntent().getExtras().getSerializable(MEETING);
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        setTitle(meetingItem.getDate());
+        setTitle(meetings.getMeeting().getBeginTime());
 
-        date.setText(meetingItem.getDate());
-        creator.setText(meetingItem.getCreator());
-        location.setText(meetingItem.getLocation());
+        date.setText(meetings.getMeeting().getBeginTime());
+        location.setText(meetings.getSelf().getRoom().getLocationID().getName());
+        room.setText(meetings.getSelf().getRoom().getName());
 
 
     }
