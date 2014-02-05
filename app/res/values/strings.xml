@@ -107,6 +107,11 @@
     <string name="label_cegeka">Cegeka</string>
 
 
+    <!-- Show meetings -->
+
+    <string name="label_meeting_page_title">Meeting Information</string>
+
+
     <!-- Show Userinfo -->
 
     <string name="label_user_info">User Information</string>

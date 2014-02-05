@@ -50,6 +50,7 @@ public class MeetingListAdapter extends AlternatingColorListAdapter<Meetings> {
         DateTime dateTime = iso.parseDateTime(begindate);
 
         int duration = item.getMeeting().getDuration().intValue();
+        duration = duration /60;
         String dur = String.valueOf(duration) + " minutes";
 
 

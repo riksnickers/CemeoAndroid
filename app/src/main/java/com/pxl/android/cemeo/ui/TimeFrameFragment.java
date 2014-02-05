@@ -69,12 +69,6 @@ public class TimeFrameFragment extends SherlockFragment {
         adapter.setDropDownViewResource(R.layout.select_timeframe_spinner_dropdown);
         spinner.setAdapter(adapter);
 
-        //Time spinner
-        Spinner spinner2 = (Spinner) v.findViewById(R.id.spinner_time);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource( c , R.array.time_array, R.layout.select_timeframe_list_item);
-        adapter2.setDropDownViewResource(R.layout.select_timeframe_spinner_dropdown);
-        spinner2.setAdapter(adapter2);
-
         //Duration
         Spinner spinner3 = (Spinner) v.findViewById(R.id.spinner_duration);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource( c , R.array.duration_array, R.layout.select_timeframe_list_item);
@@ -95,25 +89,6 @@ public class TimeFrameFragment extends SherlockFragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
                 date = (String) parent.getSelectedItem();
-                passTimeFrame(date , time , duration);
-            }
-
-
-        });
-
-        //Time
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                time = (String) parent.getItemAtPosition(position);
-                passTimeFrame(date , time , duration);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-                time = (String) parent.getSelectedItem();
                 passTimeFrame(date , time , duration);
             }
 
