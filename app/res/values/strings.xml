@@ -129,6 +129,14 @@
 
     <string name="label_info_loc_changebtn">Change location</string>
 
+
+    <!-- Create meeting -->
+
+    <string name="lbl_summary_timeframe_column">Timeframe</string>
+    <string name="lbl_summary_duration_column">Duration</string>
+    <string name="lbl_summary_invitees_column">Invitees</string>
+    <string name="lbl_summary_req_column">Required</string>
+
     <!-- Create meeting -->
 
     <string name="label_between">Between?</string>

@@ -26,7 +26,7 @@
             android:textColor="@color/table_text_selector" />
 
         <TextView
-            android:id="@+id/tv_prop_creator"
+            android:id="@+id/tv_prop_time"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:singleLine="true"
@@ -40,10 +40,16 @@
             android:id="@+id/tv_prop_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:paddingLeft="15dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/table_text_selector" />
+
+        <TextView
+            android:id="@+id/tv_prop_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/table_text_selector" />
+
 
 
     </LinearLayout>
@@ -53,8 +59,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp">
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_weight="0">
 
         <Button
             android:id="@+id/unconfirmedbtn"

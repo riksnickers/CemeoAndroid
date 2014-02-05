@@ -95,6 +95,7 @@ public class TimeFrameFragment extends SherlockFragment {
 
         });
 
+
         //Duration
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
