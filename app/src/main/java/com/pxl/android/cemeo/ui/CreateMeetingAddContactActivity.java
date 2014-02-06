@@ -3,8 +3,11 @@ package com.pxl.android.cemeo.ui;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -65,6 +68,7 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     protected String duration;
 
     protected Location location;
+    protected int uid = 0;
 
 
     @Inject
@@ -149,7 +153,12 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     public void createMeeting(View v) throws Exception{
 
         Schedule schedule = new Schedule();
-        schedule.setCreator(1006);
+
+
+        //get user id
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int uid = sharedPreferences.getInt("userid" , 0);
+        schedule.setCreator(uid);
 
 
         //participants
@@ -169,17 +178,38 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
         schedule.setInvitedParticipants(list);
 
         if(this.date.compareTo("Today") == 1){
+            schedule.setDateindex(0);
+        }else if(this.date.compareTo("WithinThisWorkWeek") == 1){
             schedule.setDateindex(1);
+        }else if(this.date.compareTo("Within7Days") == 1){
+            schedule.setDateindex(2);
+        }else if(this.date.compareTo("WithinThisMonth") == 1){
+            schedule.setDateindex(3);
+        }else if(this.date.compareTo("Within30Days") == 1){
+            schedule.setDateindex(4);
+        }else if(this.date.compareTo("BeforeADate") == 1){
+            schedule.setDateindex(5);
+            schedule.setBeforeDate("2014-01-28T20:25:58+0100");
         }else{
-            schedule.setDateindex(14);
+            schedule.setDateindex(0);
         }
-        schedule.setBeforeDate("2014-01-28T20:25:58+0100");
+
 
 
         if(this.duration.compareTo("30 min") == 1){
-            schedule.setDuration(30);
+            schedule.setDuration(1800);
+        }else if(this.duration.compareTo("1 hour") == 1){
+            schedule.setDuration(3600);
+        }else if(this.duration.compareTo("2 hours") == 1){
+            schedule.setDuration(7200);
+        }else if(this.duration.compareTo("3 hours") == 1){
+            schedule.setDuration(10800);
+        }else if(this.duration.compareTo("Unknown") == 1){
+            schedule.setDuration(99999);
+        }else if(this.duration.compareTo("All day") == 1){
+            schedule.setDuration(28800);
         }else{
-            schedule.setDuration(60);
+            schedule.setDuration(99999);
         }
 
 
@@ -191,7 +221,12 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
             public Boolean call() throws Exception {
                 final BootstrapService svc = serviceProvider.getService(CreateMeetingAddContactActivity.this);
 
-                Boolean res = svc.createMeeting(s);
+                Boolean res = false;
+                if(s.getCreator() != 0){
+                     res = svc.createMeeting(s);
+                }else{
+                    return res == false;
+                }
 
                 return res == true;
 

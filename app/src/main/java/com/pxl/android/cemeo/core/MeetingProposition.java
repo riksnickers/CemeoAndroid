@@ -32,7 +32,7 @@ public class MeetingProposition implements Serializable {
         InviteeID = inviteeID;
     }
 
-    public int isAnswer() {
+    public int getAnswer() {
         return Answer;
     }
 

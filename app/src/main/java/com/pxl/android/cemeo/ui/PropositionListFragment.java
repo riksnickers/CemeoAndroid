@@ -54,10 +54,12 @@ public class PropositionListFragment extends ItemListFragment<MeetingProposition
 
         listView.setFastScrollEnabled(true);
         listView.setDividerHeight(0);
-
+/*
         getListAdapter()
                 .addHeader(activity.getLayoutInflater()
                         .inflate(R.layout.meetings_list_item_labels, null));
+
+                        */
     }
 
     @Override

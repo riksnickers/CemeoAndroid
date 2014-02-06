@@ -9,8 +9,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
         android:paddingTop="5dp">
 
         <TextView
@@ -21,20 +21,89 @@
             android:textColor="@color/table_text_selector" />
 
         <TextView
-            android:id="@+id/tv_prop_creator"
+            android:id="@+id/tv_prop_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/table_text_light_selector" />
 
         <TextView
-            android:id="@+id/tv_prop_location"
+            android:id="@+id/tv_prop_duration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/table_text_light_selector" />
 
+        <TextView
+            android:id="@+id/tv_prop_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/table_text_light_selector" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:layout_weight="0">
+
+            <Button
+                android:id="@+id/unconfirmedbtn"
+                style="@style/ShadowText"
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                android:background="@drawable/button_background_orange"
+                android:text="@string/label_btn_unconfirmed"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginRight="1dp"/>
+
+            <Button
+                android:id="@+id/rejectbtn"
+                style="@style/ShadowText"
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                android:background="@drawable/button_background_red"
+                android:text="@string/label_btn_reject"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginRight="1dp"/>
+
+            <Button
+                android:id="@+id/onlinebtn"
+                style="@style/ShadowText"
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                android:background="@drawable/button_background_enabled"
+                android:text="@string/label_btn_online"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginRight="1dp"/>
+
+            <Button
+                android:id="@+id/acceptbtn"
+                style="@style/ShadowText"
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                android:background="@drawable/button_background_green"
+                android:text="@string/label_btn_accept"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginRight="1dp"/>
+
+
+        </LinearLayout>
+
     </LinearLayout>
+
+
 
 
 

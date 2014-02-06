@@ -1,9 +1,13 @@
 package com.pxl.android.cemeo.ui;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.User;
@@ -43,6 +47,7 @@ public class UserDataActivity extends BootstrapActivity {
             user = (User) getIntent().getExtras().getSerializable(USER);
         }
 
+
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -58,6 +63,8 @@ public class UserDataActivity extends BootstrapActivity {
         location.setText(user.getPreferedLocation().getName());
         userid.setText(user.getUserId());
         username.setText(user.getUserName());
+
+
 
 
 

@@ -3,7 +3,9 @@ package com.pxl.android.cemeo.ui;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.Loader;
 import android.view.View;
 import android.widget.ListView;
@@ -32,6 +34,7 @@ public class UserDataFragment extends ItemListFragment<User> {
     protected LogoutService logoutService;
 
     protected User user;
+    protected int uid;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,14 @@ public class UserDataFragment extends ItemListFragment<User> {
                     if (getActivity() != null)
 
                         user = serviceProvider.getService(getActivity()).getUserData();
+
+                        uid = Integer.parseInt(user.getUserId());
+
+                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt("userid", uid);
+                        editor.commit();
+
 
                     if (user != null){
                         latest.add(user);

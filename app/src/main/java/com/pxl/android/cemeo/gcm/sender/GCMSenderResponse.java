@@ -35,7 +35,7 @@ public class GCMSenderResponse {
     }
 
     public boolean ok() {
-        return code == 200;
+        return code == 204;
     }
 
     @Override

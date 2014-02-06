@@ -1,6 +1,8 @@
 package com.pxl.android.cemeo.ui;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 

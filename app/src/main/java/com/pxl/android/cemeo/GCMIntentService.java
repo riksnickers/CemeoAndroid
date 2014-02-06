@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 
 
+import com.pxl.android.cemeo.gcm.GCMUtilsConstants;
 import com.pxl.android.cemeo.ui.CarouselActivity;
 import com.pxl.android.cemeo.util.Ln;
 
@@ -29,25 +30,13 @@ public class GCMIntentService extends GCMUtilsBaseIntentService {
 
 
     @Override
-    protected void onMessage(Context context, String msg) {
+    protected void onMessage(Context context, Intent intent) {
 
-        Ln.d("statuslog: Message received: %s", msg);
+        Ln.d("statuslog: Message received: %s", intent.toString());
 
-        try {
-            //String result = get("http://cemeo.azurewebsites.net/api/Proposition/push");
+        String msg = intent.getStringExtra("alert");
 
-            String result = get("http://app.cemeo.be/api/Proposition/push");
-            //Intent intent = new Intent(GCMUtilsActivity.MSG_ACTION);
-            //intent.putExtra(GCMUtilsConstants.DATA_KEY_MSG, result);
-            //context.sendBroadcast(intent);
-
-            generateNotification(context, result);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+        generateNotification(context, msg);
 
 
     }
@@ -82,7 +71,7 @@ public class GCMIntentService extends GCMUtilsBaseIntentService {
             conn.connect();
             // handle the response
             int status = conn.getResponseCode();
-            if (status != 200) {
+            if (status != 204) {
                 //Log.v(TAG, "inhoud " + conn.getResponseCode());
                 throw new IOException("Get failed with error code " + status);
             }

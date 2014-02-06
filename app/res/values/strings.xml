@@ -8,7 +8,7 @@
     <string name="refresh_action">Refresh</string>
     <string name="logout_action">Logout</string>
     <string name="page_news">News</string>
-    <string name="page_meetings">Meetings</string>
+    <string name="page_meetings">Upcoming Meetings</string>
     <string name="page_timeframe">Timeframe</string>
     <string name="page_users">Users</string>
     <string name="page_user_data">User Information</string>
@@ -69,6 +69,11 @@
     <string name="options_unregister">Unregister</string>
     <string name="options_clear">Clear</string>
     <string name="options_exit">Exit</string>
+
+
+    <!-- DataStorage -->
+    <string name="preference_file_key">cemeodatastoragefile1337</string>
+    <string name="saved_user_id">userId</string>
 
 
     <!-- AuthenticatorActivity -->
@@ -146,23 +151,13 @@
 
     <string-array name="date_array">
         <item>Today</item>
-        <item>Within 2 days</item>
-        <item>Within 3 days</item>
-        <item>Within a week</item>
-        <item>Within 2 weeks</item>
-        <item>Within a month</item>
-        <item>Specific day</item>
+        <item>WithinThisWorkWeek</item>
+        <item>Within7Days</item>
+        <item>WithinThisMonth</item>
+        <item>Within30Days</item>
+        <item>BeforeADate</item>
     </string-array>
 
-    <string-array name="time_array">
-        <item>8:00 - 10:00</item>
-        <item>10:00 - 12:00</item>
-        <item>12:00 - 14:00</item>
-        <item>14:00 - 16:00</item>
-        <item>16:00 - 18:00</item>
-        <item>18:00 - 20:00</item>
-        <item>No preference</item>
-    </string-array>
 
     <string-array name="duration_array">
         <item>30 min</item>

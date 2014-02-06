@@ -10,8 +10,10 @@ public class PropositionActivity$$ViewInjector {
     view = finder.findById(source, 2131099769);
     target.date = (android.widget.TextView) view;
     view = finder.findById(source, 2131099770);
-    target.creator = (android.widget.TextView) view;
+    target.time = (android.widget.TextView) view;
     view = finder.findById(source, 2131099771);
-    target.location = (android.widget.TextView) view;
+    target.duration = (android.widget.TextView) view;
+    view = finder.findById(source, 2131099772);
+    target.status = (android.widget.TextView) view;
   }
 }

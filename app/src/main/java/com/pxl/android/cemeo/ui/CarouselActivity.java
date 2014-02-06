@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.view.MenuItem;
@@ -28,6 +30,7 @@ import com.pxl.android.cemeo.core.PropositionAnswer;
 import com.pxl.android.cemeo.core.RegisterDevice;
 import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.gcm.GCMUtils;
+import com.pxl.android.cemeo.gcm.GCMUtilsBaseIntentService;
 import com.pxl.android.cemeo.util.Ln;
 import com.pxl.android.cemeo.util.SafeAsyncTask;
 import com.viewpagerindicator.TitlePageIndicator;
@@ -66,6 +69,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
     private boolean userHasAuthenticated = false;
     private String json;
     private List<MeetingProposition> proplist;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,6 +218,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
     }
 
 
+
     private void navigateToCreateMeeting() {
         final Intent i = new Intent(this, CreateMeetingAddContactActivity.class);
         startActivity(i);
@@ -229,7 +234,8 @@ public class CarouselActivity extends BootstrapFragmentActivity {
     }
 
 
-    public void accept(View view){
+    public void accept(final String InviteeID , final Context c){
+
 
         new SafeAsyncTask<Boolean>() {
 
@@ -241,7 +247,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
                 //json van maken
                 PropositionAnswer answer = new PropositionAnswer();
                 answer.setAnswer(1);
-                answer.setInviteeID(proplist.get(0).getInviteeID());
+                answer.setInviteeID(InviteeID);
 
                 Gson gson = new Gson();
                 json = gson.toJson(answer);
@@ -260,7 +266,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onException(Exception e) throws RuntimeException {
                 super.onException(e);
                 if (e instanceof OperationCanceledException) {
-                    Toast.makeText( getApplicationContext(), "Failed to accept meeting!" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText( c, "Failed to accept meeting!" , Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -268,10 +274,10 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onSuccess(Boolean res) throws Exception {
 
                 if(res == true){
-                    Toast.makeText( getApplicationContext(), "Meeting Accepted !" , Toast.LENGTH_LONG).show();
+                    Toast.makeText( c, "Meeting Accepted !" , Toast.LENGTH_LONG).show();
 
                 }else{
-                    Toast.makeText( getApplicationContext(), "Failed to accept meeting!" , Toast.LENGTH_LONG).show();
+                    Toast.makeText( c, "Failed to accept meeting!" , Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -282,7 +288,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
     }
 
-    public void reject(View view){
+    public void reject(final String InviteeID , final Context c){
 
         new SafeAsyncTask<Boolean>() {
 
@@ -294,7 +300,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
                 //json van maken
                 PropositionAnswer answer = new PropositionAnswer();
                 answer.setAnswer(2);
-                answer.setInviteeID(proplist.get(0).getInviteeID());
+                answer.setInviteeID(InviteeID);
 
                 Gson gson = new Gson();
                 json = gson.toJson(answer);
@@ -313,7 +319,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onException(Exception e) throws RuntimeException {
                 super.onException(e);
                 if (e instanceof OperationCanceledException) {
-                    Toast.makeText( getApplicationContext(), "Failed to reject the meeting!" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText( c, "Failed to reject the meeting!" , Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -321,10 +327,10 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onSuccess(Boolean res) throws Exception {
 
                 if(res == true){
-                    Toast.makeText(getApplicationContext(), "Meeting Rejected !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(c , "Meeting Rejected !", Toast.LENGTH_LONG).show();
                     //finish();
                 }else{
-                    Toast.makeText( getApplicationContext(), "Failed to reject the meeting!" , Toast.LENGTH_LONG).show();
+                    Toast.makeText( c, "Failed to reject the meeting!" , Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -335,7 +341,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
     }
 
-    public void unconfirm(View view){
+    public void unconfirm(final String InviteeID , final Context c){
 
         new SafeAsyncTask<Boolean>() {
 
@@ -347,7 +353,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
                 //json van maken
                 PropositionAnswer answer = new PropositionAnswer();
                 answer.setAnswer(0);
-                answer.setInviteeID(proplist.get(0).getInviteeID());
+                answer.setInviteeID(InviteeID);
 
                 Gson gson = new Gson();
                 json = gson.toJson(answer);
@@ -366,7 +372,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onException(Exception e) throws RuntimeException {
                 super.onException(e);
                 if (e instanceof OperationCanceledException) {
-                    Toast.makeText( getApplicationContext(), "Failed to uncomfirm meeting!" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText( c, "Failed to uncomfirm meeting!" , Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -374,10 +380,10 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onSuccess(Boolean res) throws Exception {
 
                 if(res == true){
-                    Toast.makeText(getApplicationContext(), "Meeting Unconfirmed !", Toast.LENGTH_LONG).show();
+                    Toast.makeText( c , "Meeting Unconfirmed !", Toast.LENGTH_LONG).show();
                     //finish();
                 }else{
-                    Toast.makeText( getApplicationContext(), "Failed to uncomfirm meeting!" , Toast.LENGTH_LONG).show();
+                    Toast.makeText( c, "Failed to uncomfirm meeting!" , Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -388,7 +394,9 @@ public class CarouselActivity extends BootstrapFragmentActivity {
 
     }
 
-    public void online(View view){
+    public void online(final String InviteeID , final Context c){
+
+        //Ln.d("statuslog: Position is: %s" , position);
 
 
         new SafeAsyncTask<Boolean>() {
@@ -401,7 +409,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
                 //json van maken
                 PropositionAnswer answer = new PropositionAnswer();
                 answer.setAnswer(3);
-                answer.setInviteeID(proplist.get(0).getInviteeID());
+                answer.setInviteeID(InviteeID);
 
                 Gson gson = new Gson();
                 json = gson.toJson(answer);
@@ -420,7 +428,7 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onException(Exception e) throws RuntimeException {
                 super.onException(e);
                 if (e instanceof OperationCanceledException) {
-                    Toast.makeText( getApplicationContext(), "Failed to accept meeting online!" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText( c, "Failed to accept meeting online!" , Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -428,10 +436,10 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             protected void onSuccess(Boolean res) throws Exception {
 
                 if(res == true){
-                    Toast.makeText(getApplicationContext(), "Meeting Accepted Online !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(c, "Meeting Accepted Online !", Toast.LENGTH_LONG).show();
                     //finish();
                 }else{
-                    Toast.makeText( getApplicationContext(), "Failed to accept meeting online!" , Toast.LENGTH_LONG).show();
+                    Toast.makeText( c, "Failed to accept meeting online!" , Toast.LENGTH_LONG).show();
                 }
             }
 
