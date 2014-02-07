@@ -71,6 +71,13 @@
     <string name="options_exit">Exit</string>
 
 
+    <!-- Dialog -->
+    <string name="dialog_title">Save meeting as draft ?</string>
+    <string name="dialog_text">Unable to create a meeting at this time.</string>
+    <string name="dialog_yes">Save as concept</string>
+    <string name="dialog_no">Discard</string>
+
+
     <!-- DataStorage -->
     <string name="preference_file_key">cemeodatastoragefile1337</string>
     <string name="saved_user_id">userId</string>
@@ -107,6 +114,7 @@
     <string name="label_btn_unconfirmed">Unconfirmed</string>
     <string name="create_meeting_next_create">Create Meeting!</string>
     <string name="settings_menu">Settings</string>
+    <string name="about_menu">About</string>
     <string name="home">Home</string>
     <string name="label_welcome_text">Welcome , Please sign in</string>
     <string name="label_cegeka">Cegeka</string>
@@ -123,7 +131,7 @@
     <string name="label_info_email">E-mail</string>
     <string name="label_info_firstname">Firstname</string>
     <string name="label_info_lastname">Lastname</string>
-    <string name="label_info_location">Favorite Location</string>
+    <string name="label_info_location">Prefered Location</string>
     <string name="label_info_userid">User id</string>
     <string name="label_info_username">Username</string>
 

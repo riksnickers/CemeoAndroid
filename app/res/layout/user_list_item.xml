@@ -57,14 +57,23 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp"
+            android:padding="2dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:padding="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,60 +102,14 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="25dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_location"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"/>
+                </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_loc_name"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_loc_street"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_loc_city"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_loc_country"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="5dp">
-
+                android:orientation="vertical"
+                android:layout_marginTop="2dp"
+                android:padding="2dp">
 
             <TextView
                 android:id="@+id/tv_email"
@@ -172,6 +135,79 @@
                 android:textColor="@color/table_text_selector"
                 android:layout_marginBottom="25dp"/>
 
+                </LinearLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp"
+            android:padding="2dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="2dp"
+                android:padding="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/table_text_selector"
+                android:text="@string/label_info_location"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/table_text_selector"
+                android:text="@string/label_info_loc_name"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="35dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/table_text_selector"
+                android:text="@string/label_info_loc_street"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="35dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/table_text_selector"
+                android:text="@string/label_info_loc_city"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="35dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:textColor="@color/table_text_selector"
+                android:text="@string/label_info_loc_country"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="35dp"/>
+
+                </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
             <Button
                 android:id="@+id/btn_change_loc"
                 style="@style/ShadowText"
@@ -194,7 +230,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
-                android:id="@+id/tv_location_ci"
+                android:id="@+id/tv_location_s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -202,12 +238,14 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
-                android:id="@+id/tv_location_s"
+                android:id="@+id/tv_location_ci"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/table_text_selector"
                 android:layout_marginBottom="10dp"/>
+
+
 
             <TextView
                 android:id="@+id/tv_location_co"
@@ -221,8 +259,10 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
 
 
 </LinearLayout>
+
+    </LinearLayout>
+

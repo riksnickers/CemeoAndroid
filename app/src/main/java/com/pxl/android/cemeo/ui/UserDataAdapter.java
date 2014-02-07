@@ -10,6 +10,7 @@ import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.pxl.android.cemeo.BootstrapApplication;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.User;
+import com.pxl.android.cemeo.util.Ln;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -67,15 +68,21 @@ public class UserDataAdapter extends SingleTypeAdapter<User> {
                 .placeholder(R.drawable.gravatar_icon)
                 .into(imageView(0));
 
+        try{
+
         setText(8, String.format("%s", item.getUserName()));
         setText(1, String.format("%s", item.getEMail()));
         setText(2, String.format("%s", item.getFirstName()));
         setText(3, String.format("%s", item.getLastName()));
         setText(4, String.format("%s", item.getPreferedLocation().getName()));
-        setText(5, String.format("%s", item.getPreferedLocation().getStreet()));
-        setText(6, String.format("%s", item.getPreferedLocation().getCity()));
+        setText(5, String.format("%s %s", item.getPreferedLocation().getStreet() ,item.getPreferedLocation().getNumber() ));
+        setText(6, String.format("%s %s", item.getPreferedLocation().getZip(), item.getPreferedLocation().getCity()));
         setText(7, String.format("%s", item.getPreferedLocation().getCountry()));
 
+        }catch(NullPointerException ex){
+
+            Ln.d("statuslog : Error --> Prefered location = NULL");
+        }
 
     }
 

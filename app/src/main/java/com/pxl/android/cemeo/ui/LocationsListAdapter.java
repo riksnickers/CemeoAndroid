@@ -58,8 +58,8 @@ public class LocationsListAdapter extends SingleTypeAdapter<Location> {
 
 
         setText(0, String.format("%s", location.getName()));
-        setText(1, String.format("%s", location.getStreet()));
-        setText(2, String.format("%s", location.getCity()));
+        setText(1, String.format("%s %s", location.getStreet(), location.getNumber()));
+        setText(2, String.format("%s %s", location.getZip(), location.getCity()));
         setText(3, String.format("%s", location.getCountry()));
 
 

@@ -5,7 +5,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
@@ -32,11 +35,22 @@ public class PropositionListFragment extends ItemListFragment<MeetingProposition
     @Inject
     protected LogoutService logoutService;
 
+    private Button acceptbtn;
+    private View myFragmentView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Injector.inject(this);
+
+
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
     }
 
     @Override
@@ -44,8 +58,12 @@ public class PropositionListFragment extends ItemListFragment<MeetingProposition
         super.onActivityCreated(savedInstanceState);
 
         setEmptyText(R.string.no_propositions);
-
-
+/*
+        acceptbtn = (Button) getView().findViewById(R.id.status_btn_accepted);
+        acceptbtn.setVisibility(1);
+        acceptbtn.setVisibility(View.GONE);
+        //acceptbtn.setVisibility(View.VISIBLE);
+*/
     }
 
     @Override
@@ -108,6 +126,7 @@ public class PropositionListFragment extends ItemListFragment<MeetingProposition
 
         startActivity(new Intent(getActivity(), PropositionActivity.class).putExtra(PROPOSITION, prop));
     }
+
 
     @Override
     protected int getErrorMessage(Exception exception) {

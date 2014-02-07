@@ -1,5 +1,6 @@
 package com.pxl.android.cemeo.ui;
 
+import android.content.Context;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,9 @@ import org.joda.time.format.ISODateTimeFormat;
 import java.util.List;
 
 public class PropositionListAdapter extends AlternatingColorListAdapter<MeetingProposition> {
+
+    private Button statusbtn;
+
     /**
      * @param inflater
      * @param items
@@ -42,13 +46,12 @@ public class PropositionListAdapter extends AlternatingColorListAdapter<MeetingP
 
     @Override
     protected int[] getChildViewIds() {
-        return new int[]{R.id.tv_prop_date,R.id.tv_prop_time , R.id.tv_prop_location , R.id.tv_prop_status};
+        return new int[]{R.id.tv_prop_date,R.id.tv_prop_time , R.id.tv_prop_location  , R.id.tv_prop_status ,R.id.status_btn_accepted};
     }
 
     @Override
     protected void update(int position, MeetingProposition item) {
         super.update(position, item);
-
 
         String begindate = item.getProposition().getBeginTime();
         DateTimeFormatter iso = ISODateTimeFormat.dateHourMinuteSecond();
@@ -71,11 +74,11 @@ public class PropositionListAdapter extends AlternatingColorListAdapter<MeetingP
                 break;
         }
 
-        setText(0, dateTime.toString("dd-MM-yyyy"));
-        setText(1, dateTime.toString("hh:mm"));
+        setText(0, "Meeting on " + dateTime.toString("EEEE , dd-MM-yyyy"));
+        setText(1, "At " + dateTime.toString("hh:mm"));
         setText(2, item.getProposition().getProposedRoom().getName());
-        setText(3, answer);
-
+        setText(3, "Current Status : ");
+        setText(4, answer);
 
 
 

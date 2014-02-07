@@ -47,8 +47,8 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/settings_menu"
-        android:text="@string/settings_menu"
+        android:id="@+id/about_menu"
+        android:text="@string/about_menu"
         android:drawableLeft="@drawable/ic_action_settings"
         style="@style/NavMenuButton"
         android:paddingLeft="10dp"
