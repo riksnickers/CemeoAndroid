@@ -7,9 +7,9 @@ import butterknife.Views.Finder;
 public class CarouselActivity$$ViewInjector {
   public static void inject(Finder finder, com.pxl.android.cemeo.ui.CarouselActivity target, Object source) {
     View view;
-    view = finder.findById(source, 2131099722);
+    view = finder.findById(source, 2131099728);
     target.indicator = (com.viewpagerindicator.TitlePageIndicator) view;
-    view = finder.findById(source, 2131099723);
+    view = finder.findById(source, 2131099729);
     target.pager = (android.support.v4.view.ViewPager) view;
   }
 }

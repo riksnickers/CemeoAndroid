@@ -71,7 +71,7 @@ public class PropositionListFragment extends ItemListFragment<MeetingProposition
         super.configureList(activity, listView);
 
         listView.setFastScrollEnabled(true);
-        listView.setDividerHeight(0);
+        listView.setDividerHeight(1);
 /*
         getListAdapter()
                 .addHeader(activity.getLayoutInflater()

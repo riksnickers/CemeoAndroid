@@ -134,10 +134,10 @@ public class PropositionActivity extends BootstrapActivity {
 
 
 
-        date.setText(dateTime.toString("dd-MM-yyyy"));
-        time.setText(dateTime.toString("hh:mm"));
+        date.setText( "Meeting on " + dateTime.toString("dd-MM-yyyy"));
+        time.setText("At " + dateTime.toString("hh:mm"));
         duration.setText(prop.getProposition().getProposedRoom().getName());
-        status.setText(answer);
+        status.setText("Current Status : " + answer);
     }
 
 }

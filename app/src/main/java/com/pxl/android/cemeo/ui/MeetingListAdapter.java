@@ -54,7 +54,7 @@ public class MeetingListAdapter extends AlternatingColorListAdapter<Meetings> {
         String dur = String.valueOf(duration) + " minutes";
 
 
-        setText(0, dateTime.toString("dd-MM-yyyy"));
+        setText(0, dateTime.toString("EEEE , dd-MM-yyyy"));
         setText(1, dateTime.toString("hh:mm"));
         setText(2, dur);
         setText(3, item.getSelf().getRoom().getLocationID().getName());

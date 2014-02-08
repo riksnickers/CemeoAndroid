@@ -51,7 +51,7 @@ public class MeetingListFragment extends ItemListFragment<Meetings> {
         super.configureList(activity, listView);
 
         listView.setFastScrollEnabled(true);
-        listView.setDividerHeight(0);
+        listView.setDividerHeight(1);
 
         //getListAdapter().addHeader(activity.getLayoutInflater().inflate(R.layout.meetings_list_item_labels, null));
     }
