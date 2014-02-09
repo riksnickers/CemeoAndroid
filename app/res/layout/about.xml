@@ -9,31 +9,6 @@
     android:paddingRight="5dp"
     android:paddingTop="5dp">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center_horizontal|center_vertical"
-        android:visibility="gone">
-
-        <ListView
-            android:id="@android:id/list"
-            style="@style/ListView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@android:id/empty"
-            style="@style/ListSubtitleText"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-
-        <ProgressBar
-            android:id="@+id/pb_loading"
-            style="@style/ListSpinner" />
-
-    </RelativeLayout>
-
     <TextView
         style="@style/ShadowText"
         android:layout_width="wrap_content"
@@ -41,9 +16,9 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_marginBottom="10dp"
-        android:textSize="40sp"
+        android:textSize="25sp"
         android:textColor="?android:attr/textColorPrimary"
-        android:id="@+id/tv_username" />
+        android:id="@+id/tv_title" />
 
     <ImageView
         android:id="@+id/iv_avatar"
@@ -52,7 +27,9 @@
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/avatar"
         android:layout_height="100dp"
-        android:layout_width="100dp" />
+        android:layout_width="250dp"
+        android:src="@drawable/cegeka"/>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -67,42 +44,6 @@
             android:layout_marginTop="2dp"
             android:padding="2dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="10dp"
-                android:padding="2dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_email"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_firstname"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector"
-                android:text="@string/label_info_lastname"
-                android:textStyle="bold"
-                android:layout_marginBottom="25dp"/>
-
-                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -112,7 +53,7 @@
                 android:padding="2dp">
 
             <TextView
-                android:id="@+id/tv_email"
+                android:id="@+id/tv_about_us"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -120,7 +61,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
-                android:id="@+id/tv_firstname"
+                android:id="@+id/tv_about_us_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -128,12 +69,36 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
-                android:id="@+id/tv_lastname"
+                android:id="@+id/tv_about_us_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/table_text_selector"
                 android:layout_marginBottom="25dp"/>
+
+                <TextView
+                    android:id="@+id/tv_about_us_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/table_text_selector"
+                    android:layout_marginBottom="25dp"/>
+                <TextView
+                    android:id="@+id/tv_about_us_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/table_text_selector"
+                    android:layout_marginBottom="25dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_avatar2"
+                    style="@style/AvatarExtraExtraLarge"
+                    android:layout_marginRight="50dp"
+                    android:contentDescription="@string/avatar"
+                    android:layout_height="100dp"
+                    android:layout_width="250dp"
+                    android:src="@drawable/pxl"/>
 
 
     </LinearLayout>

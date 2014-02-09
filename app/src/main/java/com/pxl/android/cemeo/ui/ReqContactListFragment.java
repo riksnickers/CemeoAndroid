@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
@@ -26,6 +27,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.InjectView;
+
 
 /**
  * Created by jordy on 12/01/14.
@@ -38,6 +41,9 @@ public class ReqContactListFragment extends ItemListFragment<Contact> {
     protected LogoutService logoutService;
 
     protected OnDataPass dataPasser;
+
+    @InjectView(R.id.tv_no_contacts_selected)
+    protected TextView noContacts;
 
     protected List<Contact> selected;
     protected List<Contact> required = new ArrayList<Contact>();
@@ -103,7 +109,13 @@ public class ReqContactListFragment extends ItemListFragment<Contact> {
 
                     return selected;
                 }else{
-                    return Collections.emptyList();
+                    List<Contact> emptylist = new ArrayList<Contact>();
+                    Contact c = new Contact();
+                    c.setFirstName("No Contacts selected");
+                    c.setLastName("");
+                    emptylist.add(c);
+                    //return Collections.emptyList();
+                    return emptylist;
                 }
             }
         };

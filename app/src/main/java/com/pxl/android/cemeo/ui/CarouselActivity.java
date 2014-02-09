@@ -201,6 +201,14 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             }
         });
 
+        menuDrawer.findViewById(R.id.about_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuDrawer.toggleMenu();
+                navigateToAboutPage();
+            }
+        });
+
     }
 
     @Override
@@ -212,11 +220,18 @@ public class CarouselActivity extends BootstrapFragmentActivity {
             case R.id.createmeeting:
                 navigateToCreateMeeting();
                 return true;
+            case R.id.about_menu:
+                navigateToAboutPage();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    private void navigateToAboutPage() {
+        final Intent i = new Intent(this, AboutActivity.class);
+        startActivity(i);
+    }
 
 
     private void navigateToCreateMeeting() {

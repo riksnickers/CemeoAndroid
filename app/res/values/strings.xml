@@ -100,8 +100,10 @@
     <string name="resume">Resume</string>
     <string name="timer">Timer</string>
     <string name="create_meeting">Create Meeting</string>
+    <string name="about_page">About</string>
     <string name="create_meeting_add">Add Contacts</string>
     <string name="create_meeting_req">Select Required</string>
+    <string name="create_meeting_no_cont">No Contacts selected !</string>
     <string name="create_meeting_timeframe">Time Frame</string>
     <string name="create_meeting_location">Location</string>
     <string name="create_meeting_summary">Summary</string>

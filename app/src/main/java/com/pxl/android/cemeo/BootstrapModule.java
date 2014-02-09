@@ -6,6 +6,7 @@ import android.content.Context;
 
 import com.pxl.android.cemeo.authenticator.BootstrapAuthenticatorActivity;
 import com.pxl.android.cemeo.authenticator.LogoutService;
+import com.pxl.android.cemeo.ui.AboutActivity;
 import com.pxl.android.cemeo.ui.CarouselActivity;
 import com.pxl.android.cemeo.ui.ContactActivity;
 import com.pxl.android.cemeo.ui.ContactListFragment;
@@ -42,6 +43,7 @@ import dagger.Provides;
 
                 injects = {
                         GCMIntentService.class,
+                        AboutActivity.class,
                         BootstrapApplication.class,
                         BootstrapAuthenticatorActivity.class,
                         CarouselActivity.class,

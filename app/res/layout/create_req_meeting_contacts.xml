@@ -35,6 +35,19 @@
             android:hapticFeedbackEnabled="true"
             android:choiceMode="multipleChoice"/>
 
+        <TextView
+            style="@style/ShadowText"
+            android:id="@+id/tv_no_contacts_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/create_meeting_no_cont"
+            android:textSize="20sp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:visibility="invisible"/>
+
 
         <Button
             android:id="@+id/addcontactsbtn"

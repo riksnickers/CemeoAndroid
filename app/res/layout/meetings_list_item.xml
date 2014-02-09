@@ -24,7 +24,8 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/table_text_selector"
             android:textStyle="bold"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
 
         <TextView
             android:id="@+id/lbl_meeting_time"

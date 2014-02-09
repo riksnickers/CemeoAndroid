@@ -136,8 +136,15 @@ public class ContactListFragment extends ItemListFragment<Contact> {
 
                     if (latest != null)
                         return latest;
-                    else
-                        return Collections.emptyList();
+                    else{
+                    List<Contact> emptylist = new ArrayList<Contact>();
+                    Contact c = new Contact();
+                    c.setFirstName("Error loading contacts");
+                    c.setLastName("");
+                    emptylist.add(c);
+                    //return Collections.emptyList();
+                    return emptylist;
+                    }
                 } catch (OperationCanceledException e) {
                     Activity activity = getActivity();
                     if (activity != null)

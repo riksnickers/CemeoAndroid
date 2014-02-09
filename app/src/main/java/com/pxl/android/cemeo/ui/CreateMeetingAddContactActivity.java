@@ -276,6 +276,7 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
                             .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // User cancelled the dialog
+                                    finish();
                                 }
                             });
                     // 3. Get the AlertDialog from create()

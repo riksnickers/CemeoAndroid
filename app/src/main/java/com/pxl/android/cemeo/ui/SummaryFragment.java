@@ -8,6 +8,7 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -59,6 +60,8 @@ public class SummaryFragment extends SherlockFragment {
     private String selectedcontacts = "";
     private String requiredcontacts = "";
 
+    private Button createmeeting;
+
 
 
     @Override
@@ -88,9 +91,9 @@ public class SummaryFragment extends SherlockFragment {
         required = (TextView) v.findViewById(R.id.tv_summary_req_attendees);
         timeframe = (TextView) v.findViewById(R.id.tv_summary_timeframe);
         duration = (TextView) v.findViewById(R.id.tv_summary_duration);
+        //createmeeting = (Button) v.findViewById(R.id.createmeetingbtn);
 
         new SafeAsyncTask<Boolean>() {
-
 
 
             @Override
@@ -112,7 +115,7 @@ public class SummaryFragment extends SherlockFragment {
                     requiredcontacts = "";
                 }
 
-                for(Contact c : selected){
+                for(Contact c : req){
 
                     requiredcontacts += c.getFirstName()+ " " + c.getLastName() + "\r\n";
                 }
