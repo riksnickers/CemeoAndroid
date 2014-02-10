@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -115,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -123,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -131,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -139,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -147,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -155,7 +155,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -163,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -171,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_light_selector"
+            android:textColor="@color/table_text_selector"
             android:layout_marginBottom="5dp"/>
     </LinearLayout>
 
