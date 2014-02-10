@@ -41,6 +41,8 @@ public class PropositionListAdapter extends AlternatingColorListAdapter<MeetingP
      */
     public PropositionListAdapter(LayoutInflater inflater, List<MeetingProposition> items) {
         super(R.layout.propositions_list_item, inflater, items);
+
+
     }
 
 
@@ -81,6 +83,12 @@ public class PropositionListAdapter extends AlternatingColorListAdapter<MeetingP
         setText(4, answer);
 
 
+        //statusbtn = (Button) inflater.findViewById(R.id.createmeetingbtn);
+        //statusbtn.setBackgroundResource(R.drawable.button_background_green);
+
+
 
     }
+
+
 }

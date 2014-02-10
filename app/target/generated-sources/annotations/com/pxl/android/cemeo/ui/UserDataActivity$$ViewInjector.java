@@ -9,17 +9,17 @@ public class UserDataActivity$$ViewInjector {
     View view;
     view = finder.findById(source, 2131099680);
     target.avatar = (android.widget.ImageView) view;
-    view = finder.findById(source, 2131099790);
-    target.email = (android.widget.TextView) view;
     view = finder.findById(source, 2131099791);
-    target.firstname = (android.widget.TextView) view;
+    target.email = (android.widget.TextView) view;
     view = finder.findById(source, 2131099792);
+    target.firstname = (android.widget.TextView) view;
+    view = finder.findById(source, 2131099793);
     target.lastname = (android.widget.TextView) view;
-    view = finder.findById(source, 2131099798);
-    target.location = (android.widget.TextView) view;
     view = finder.findById(source, 2131099799);
+    target.location = (android.widget.TextView) view;
+    view = finder.findById(source, 2131099800);
     target.userid = (android.widget.TextView) view;
-    view = finder.findById(source, 2131099789);
+    view = finder.findById(source, 2131099790);
     target.username = (android.widget.TextView) view;
   }
 }

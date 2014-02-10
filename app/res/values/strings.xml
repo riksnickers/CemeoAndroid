@@ -120,6 +120,7 @@
     <string name="home">Home</string>
     <string name="label_welcome_text">Welcome , Please sign in</string>
     <string name="label_cegeka">Cegeka</string>
+    <string name="label_change_status">Change status</string>
 
 
     <!-- Show meetings -->

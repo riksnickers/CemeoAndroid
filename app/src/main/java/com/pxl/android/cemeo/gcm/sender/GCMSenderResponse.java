@@ -35,6 +35,10 @@ public class GCMSenderResponse {
     }
 
     public boolean ok() {
+        return code == 200;
+    }
+
+    public boolean almostOk() {
         return code == 204;
     }
 

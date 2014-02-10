@@ -4,8 +4,6 @@ package com.pxl.android.cemeo.core.core;
 
 import com.github.kevinsawicki.http.HttpRequest;
 import com.pxl.android.cemeo.core.BootstrapService;
-import com.pxl.android.cemeo.core.CheckIn;
-import com.pxl.android.cemeo.core.News;
 import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.core.UserAgentProvider;
 
@@ -76,29 +74,4 @@ public class BootstrapServiceTest {
         assertTrue(users.isEmpty());
     }
 
-    /**
-     * Verify getting news with an empty response
-     *
-     * @throws IOException
-     */
-    @Test
-    public void getContentEmptyResponse() throws IOException {
-        doReturn(createReader("")).when(request).bufferedReader();
-        List<News> content = service.getNews();
-        assertNotNull(content);
-        assertTrue(content.isEmpty());
-    }
-
-    /**
-     * Verify getting checkins with an empty response
-     *
-     * @throws IOException
-     */
-    @Test
-    public void getReferrersEmptyResponse() throws IOException {
-        doReturn(createReader("")).when(request).bufferedReader();
-        List<CheckIn> referrers = service.getCheckIns();
-        assertNotNull(referrers);
-        assertTrue(referrers.isEmpty());
-    }
 }

@@ -69,21 +69,11 @@ public class BootstrapService {
 
     }
 
-    private static class NewsWrapper {
-
-        private List<News> results;
-    }
-
     private static class MeetingWrapper {
 
         private List<Meeting> results;
     }
 
-    private static class CheckInWrapper {
-
-        private List<CheckIn> results;
-
-    }
 
 
     private static class JsonException extends IOException {
@@ -428,26 +418,6 @@ public class BootstrapService {
     }
 
 
-
-    /**
-     * Get all bootstrap News
-     *
-     * @return non-null but possibly empty list of bootstrap
-     * @throws IOException
-     */
-
-    public List<News> getNews() throws IOException {
-        try {
-            HttpRequest request = execute(HttpRequest.get(URL_NEWS));
-            NewsWrapper response = fromJson(request, NewsWrapper.class);
-            if (response != null && response.results != null)
-                return response.results;
-            return Collections.emptyList();
-        } catch (HttpRequestException e) {
-            throw e.getCause();
-        }
-    }
-
     /**
      * Get all meetings
      *
@@ -522,25 +492,6 @@ public class BootstrapService {
 
     }
 
-    /**
-     * Get all bootstrap Checkins
-     *
-     * @return non-null but possibly empty list of bootstrap
-     * @throws IOException
-     */
-
-    public List<CheckIn> getCheckIns() throws IOException {
-        try {
-
-            HttpRequest request = execute(HttpRequest.get(URL_CHECKINS));
-            CheckInWrapper response = fromJson(request, CheckInWrapper.class);
-            if (response != null && response.results != null)
-                return response.results;
-            return Collections.emptyList();
-        } catch (HttpRequestException e) {
-            throw e.getCause();
-        }
-    }
 
 
 }

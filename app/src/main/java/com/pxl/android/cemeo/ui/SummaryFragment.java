@@ -91,7 +91,7 @@ public class SummaryFragment extends SherlockFragment {
         required = (TextView) v.findViewById(R.id.tv_summary_req_attendees);
         timeframe = (TextView) v.findViewById(R.id.tv_summary_timeframe);
         duration = (TextView) v.findViewById(R.id.tv_summary_duration);
-        //createmeeting = (Button) v.findViewById(R.id.createmeetingbtn);
+        createmeeting = (Button) v.findViewById(R.id.createmeetingbtn);
 
         new SafeAsyncTask<Boolean>() {
 
@@ -101,6 +101,10 @@ public class SummaryFragment extends SherlockFragment {
 
 
                 getData();
+
+                if(selected != null && req != null && timefr != null && dura != null){
+
+
 
                 if(!selectedcontacts.isEmpty()){
                     selectedcontacts = "";
@@ -125,6 +129,11 @@ public class SummaryFragment extends SherlockFragment {
                 Boolean res = !requiredcontacts.isEmpty();
 
                 return res;
+                }else{
+
+                    toggleButton(false);
+                    return false;
+                }
 
             }
 
@@ -147,6 +156,7 @@ public class SummaryFragment extends SherlockFragment {
                     timeframe.setText(timefr);
                     duration.setText(dura);
 
+                    toggleButton(true);
 
                     //Toast.makeText(getActivity().getApplicationContext(), "gelukt!", Toast.LENGTH_LONG).show();
 
@@ -158,6 +168,8 @@ public class SummaryFragment extends SherlockFragment {
 
 
             }
+
+
 
 
         }.execute();
@@ -181,13 +193,20 @@ public class SummaryFragment extends SherlockFragment {
 
         selected = dataPasser.getSelected();
         req = dataPasser.getRequired();
-
         timefr = dataPasser.getDate();
         dura = dataPasser.getDuration();
 
 
+    }
 
+    public void toggleButton(Boolean bool){
 
+        createmeeting.setEnabled(bool);
+        if(bool){
+            createmeeting.setBackgroundResource(R.drawable.button_background_enabled);
+        }else{
+            createmeeting.setBackgroundResource(R.drawable.button_background_disabled);
+        }
     }
 
 

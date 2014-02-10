@@ -3,6 +3,7 @@ package com.pxl.android.cemeo.ui;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -56,7 +57,7 @@ import static com.pxl.android.cemeo.core.Constants.Extra.USER;
 /**
  * Created by jordy on 13/01/14.
  */
-public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity implements OnDataPass {
+public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity implements OnDataPass  {
 
     @InjectView(R.id.vp_meeting_pages)
     ViewPager pager;
@@ -89,12 +90,6 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
         super.onCreate(savedInstanceState);
 
         super.setContentView(R.layout.create_meeting_view);
-
-
-        //navigation drawer
-        //menuDrawer = MenuDrawer.attach(this);
-        //menuDrawer.setContentView(R.layout.create_meeting_view);
-        //menuDrawer.setDrawerIndicatorEnabled(true);
 
         Views.inject(this);
 
@@ -149,11 +144,18 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
     public void nextFragment( View v){
 
         //Next Fragment
+        pager.setOffscreenPageLimit(0);
+        pager.willNotCacheDrawing();
+        pager.destroyDrawingCache();
+        pager.buildDrawingCache();
+        pager.refreshDrawableState();
+        pager.getAdapter().notifyDataSetChanged();
         pager.setCurrentItem(pager.getCurrentItem() + 1, true);
 
     }
 
     public void createMeeting(View v) throws Exception{
+
 
         Schedule schedule = new Schedule();
 
@@ -261,27 +263,11 @@ public class CreateMeetingAddContactActivity extends BootstrapFragmentActivity i
                 //Toaster.showShort(getParent() , "Meeting Created Successful !");
                 if(res == true){
                     Toast.makeText( getApplicationContext(), "Meeting Created Successful !" , Toast.LENGTH_LONG).show();
+
                     finish();
                 }else{
-                    // 1. Instantiate an AlertDialog.Builder with its constructor
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParent());
 
-                    // 2. Chain together various setter methods to set the dialog characteristics
-                    builder.setMessage(R.string.dialog_text).setTitle(R.string.dialog_title)
-                            .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // FIRE ZE MISSILES!
-                                }
-                            })
-                            .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // User cancelled the dialog
-                                    finish();
-                                }
-                            });
-                    // 3. Get the AlertDialog from create()
-                    AlertDialog dialog = builder.create();
-                    //Toast.makeText( getApplicationContext(), "Meeting Creation failed ! !" , Toast.LENGTH_LONG).show();
+                    Toast.makeText( getApplicationContext(), "Meeting Creation failed ! !" , Toast.LENGTH_LONG).show();
                 }
                 //Ln.d("statuslog : Meeting Created successful!" );
 

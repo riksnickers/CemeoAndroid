@@ -1,36 +1,25 @@
 
 package com.pxl.android.cemeo.ui;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.accounts.AccountsException;
 import android.accounts.OperationCanceledException;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.util.SparseBooleanArray;
+import android.util.AndroidRuntimeException;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
-import com.github.kevinsawicki.http.HttpRequest;
-import com.google.android.gcm.GCMRegistrar;
 import com.google.gson.Gson;
 import com.pxl.android.cemeo.BootstrapServiceProvider;
 import com.pxl.android.cemeo.R;
 import com.pxl.android.cemeo.core.BootstrapService;
-import com.pxl.android.cemeo.core.Contact;
 import com.pxl.android.cemeo.core.MeetingProposition;
-import com.pxl.android.cemeo.core.Proposition;
 import com.pxl.android.cemeo.core.PropositionAnswer;
-import com.pxl.android.cemeo.core.RegisterDevice;
-import com.pxl.android.cemeo.core.User;
 import com.pxl.android.cemeo.gcm.GCMUtils;
-import com.pxl.android.cemeo.gcm.GCMUtilsBaseIntentService;
 import com.pxl.android.cemeo.util.Ln;
 import com.pxl.android.cemeo.util.SafeAsyncTask;
 import com.viewpagerindicator.TitlePageIndicator;
@@ -38,17 +27,12 @@ import com.viewpagerindicator.TitlePageIndicator;
 import net.simonvt.menudrawer.MenuDrawer;
 
 import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.InjectView;
 import butterknife.Views;
-
-import static com.pxl.android.cemeo.core.Constants.Extra.USER;
-import static com.pxl.android.cemeo.core.Constants.Http.URL_PROP_ANSWER;
-import static com.pxl.android.cemeo.core.Constants.Http.URL_REGISTER;
 
 
 /**
@@ -153,25 +137,22 @@ public class CarouselActivity extends BootstrapFragmentActivity {
                     GCMUtils.setAuthKey(authkey);
                     Ln.d("statuslog : test ********" + GCMUtils.getAuthKey());
 
+
+                    //dev only
+                    //GCMRegistrar.checkDevice(getApplicationContext());
+                    //GCMUtils.checkExtended(getApplicationContext());
+
+                    GCMUtils.getAndSendRegId(getApplicationContext());
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (AccountsException e) {
                     e.printStackTrace();
+                } catch (AndroidRuntimeException e){
+                    e.printStackTrace();
+                } catch(Exception e){
+                    e.printStackTrace();
                 }
-
-
-
-                //dev only
-                //GCMRegistrar.checkDevice(getApplicationContext());
-                //GCMUtils.checkExtended(getApplicationContext());
-
-                GCMRegistrar.checkDevice(getApplicationContext());
-                GCMUtils.checkExtended(getApplicationContext());
-                GCMUtils.getAndSendRegId(getApplicationContext());
-
-
-
-                //GCMUtils.getAndSendRegId(getApplicationContext());
 
                 return true;
 

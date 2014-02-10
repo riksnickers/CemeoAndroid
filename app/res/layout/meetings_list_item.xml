@@ -98,7 +98,8 @@
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/table_text_selector"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_meeting_time"

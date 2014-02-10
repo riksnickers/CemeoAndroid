@@ -114,11 +114,16 @@ public class GCMSenderImpl extends AsyncTask<Void, Void, GCMSenderResponse> impl
 
         GCMSenderResponse errorResponse = null;
         for (int counter = 0; counter <= retries; counter++) {
+            try{
             GCMSenderResponse response = sendRequest();
-            if (response.ok())
+            if (response.ok() || response.almostOk())
                 return response;
             else if (counter == retries)
                 errorResponse = response;
+
+            }catch (Exception e){
+                GCMUtilsLog.w("Exception caught : No connection to the server", e);
+            }
 
             try {
                 Thread.sleep(backoff);

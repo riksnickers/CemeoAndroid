@@ -182,6 +182,7 @@ public class ContactListFragment extends ItemListFragment<Contact> {
 
         passData(selected);
 
+
     }
 
 

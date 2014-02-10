@@ -127,7 +127,7 @@ public class ReqContactListFragment extends ItemListFragment<Contact> {
     public void onListItemClick(ListView l, View v, int position, long id) {
 
         SparseBooleanArray checked = l.getCheckedItemPositions();
-
+        required.clear();
 
         for (int i = 0; i < checked.size(); i++){
 
