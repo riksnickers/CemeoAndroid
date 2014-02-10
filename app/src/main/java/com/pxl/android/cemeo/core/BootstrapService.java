@@ -281,9 +281,7 @@ public class BootstrapService {
 
     public List<Contact> getContacts() throws IOException {
         try {
-            Ln.d("statuslog : 111111111111111");
             HttpRequest request = execute(HttpRequest.get(URL_CONTACTS));
-            Ln.d("statuslog : 222222222222222");
             Ln.d("statuslog : request = %s", request);
 
             Contact[] contacts = fromJson(request , Contact[].class);
@@ -320,9 +318,7 @@ public class BootstrapService {
 
     public List<User> getUsers() throws IOException {
         try {
-            Ln.d("statuslog : 111111111111111");
             HttpRequest request = execute(HttpRequest.get(URL_CONTACTS));
-            Ln.d("statuslog : 222222222222222");
             Ln.d("statuslog : request = %s", request);
 
             User[] users = fromJson(request, User[].class);
@@ -335,9 +331,6 @@ public class BootstrapService {
 
             return Collections.emptyList();
 
-            //oude manier
-            //UsersWrapper response = fromJson(request , UsersWrapper.class);
-            //if (response != null && response.results != null)
 
         } catch (HttpRequestException e) {
             throw e.getCause();
@@ -353,7 +346,6 @@ public class BootstrapService {
 
     public User getUserData() throws IOException {
         try {
-            Ln.d("statuslog : 111111111111111");
             HttpRequest request = execute(HttpRequest.get(URL_USER_DATA));
 
             User user = fromJson(request, User.class);
@@ -366,7 +358,6 @@ public class BootstrapService {
 
             }
 
-            Ln.d("statuslog : 222222222222222");
             Ln.d("statuslog : request = %s", request);
 
             //return Collections.emptyList();
@@ -387,23 +378,10 @@ public class BootstrapService {
 
     public List<Location> getLocations() throws IOException {
         try {
-            Ln.d("statuslog : 111111111111111");
             HttpRequest request = execute(HttpRequest.get(URL_LOCATIONS));
-            Ln.d("statuslog : 222222222222222");
             Ln.d("statuslog : request = %s", request);
 
             Location[] locations = fromJson(request , Location[].class);
-            //User[] users = fromJson(request, User[].class);
-
-            //oude manier
-            //UsersWrapper response = fromJson(request , UsersWrapper.class);
-            //if (response != null && response.results != null)
-/*
-            if (request != null && users != null) {
-                return Arrays.asList(users);
-                //return response.results;
-            }
-*/
 
             if (request != null && locations != null) {
                 return Arrays.asList(locations);
@@ -439,15 +417,7 @@ public class BootstrapService {
 
 
             return Collections.emptyList();
-/*
 
-            MeetingWrapper response = fromJson(request, MeetingWrapper.class);
-
-            if (response != null && response.results != null)
-                return response.results;
-            return Collections.emptyList();
-
-*/
         } catch (HttpRequestException e) {
             throw e.getCause();
         }
@@ -476,15 +446,7 @@ public class BootstrapService {
 
 
             return Collections.emptyList();
-/*
 
-            MeetingWrapper response = fromJson(request, MeetingWrapper.class);
-
-            if (response != null && response.results != null)
-                return response.results;
-            return Collections.emptyList();
-
-*/
         } catch (HttpRequestException e) {
             throw e.getCause();
         }

@@ -54,8 +54,6 @@ public class UserDataActivity extends BootstrapActivity {
         Picasso.with(this).load(R.drawable.gravatar_icon).placeholder(R.drawable.gravatar_icon).into(avatar);
 
 
-        Ln.d("statuslog : *********************** : %s" , user.getEMail());
-
 
         email.setText(user.getEMail());
         firstname.setText(user.getFirstName());

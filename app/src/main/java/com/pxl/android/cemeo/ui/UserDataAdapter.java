@@ -30,10 +30,6 @@ public class UserDataAdapter extends SingleTypeAdapter<User> {
     public UserDataAdapter(LayoutInflater inflater, List<User> items) {
         super(inflater, R.layout.user_list_item);
 
-        //Object usr = items;
-        //setItems(usr);
-
-        //setItems(items);
     }
 
     /**

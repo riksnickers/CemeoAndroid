@@ -86,33 +86,6 @@ public class ContactListFragment extends ItemListFragment<Contact> {
         //listView.setDividerHeight(0);
         //getListAdapter().addHeader(activity.getLayoutInflater().inflate(R.layout.add_contact_list_item_labels, null));
 
-/*
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Ln.d("statuslog : Selected : %s", "-------------------------------------------------");
-
-
-                //Contact contact = (Contact) parent.getItemAtPosition(position);
-                //Toast.makeText(parent.getContext(), parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-
-
-                //Contact contact = (Contact) parent.getSelectedItem();
-                //selected.add(contact);
-
-                //passData(selected);
-
-
-                //Ln.d("statuslog : Selected : %s", contact.getFirstName());
-
-
-
-            }
-        });
-
-*/
     }
 
     @Override

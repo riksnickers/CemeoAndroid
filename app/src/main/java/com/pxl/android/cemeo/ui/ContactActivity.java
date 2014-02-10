@@ -37,10 +37,6 @@ public class ContactActivity extends BootstrapActivity {
             contact = (Contact) getIntent().getExtras().getSerializable(CONTACT);
         }
 
-        //getSupportActionBar().setHomeButtonEnabled(true);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //Picasso.with(this).load(user.getAvatarUrl()).placeholder(R.drawable.gravatar_icon).into(avatar);
         Picasso.with(this).load(R.drawable.gravatar_icon).placeholder(R.drawable.gravatar_icon).into(avatar);
 
         name.setText(String.format("%s %s", contact.getFirstName(), contact.getLastName()));
