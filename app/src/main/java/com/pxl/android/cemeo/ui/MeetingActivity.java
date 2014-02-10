@@ -76,7 +76,7 @@ public class MeetingActivity extends BootstrapActivity {
 
 
         locname.setText(meetings.getSelf().getRoom().getLocationID().getName());
-        locstreet.setText(meetings.getSelf().getRoom().getLocationID().getStreet());
+        locstreet.setText(meetings.getSelf().getRoom().getLocationID().getStreet() + " " + meetings.getSelf().getRoom().getLocationID().getNumber());
         loccity.setText(meetings.getSelf().getRoom().getLocationID().getCity());
         loccountry.setText(meetings.getSelf().getRoom().getLocationID().getCountry());
 
